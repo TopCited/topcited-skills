@@ -2,7 +2,9 @@
 
 ## What this is (tell the user)
 Every action in a visibility session runs as you, authenticated by a
-personal API key. Before spending on anything expensive, we check your
+personal API key, which carries full rights over that account — it is a
+credential to guard, not a scoped read token. Before spending on anything
+expensive, we check your
 remaining credit balance so you're never surprised by a blocked request.
 This guide covers how a session proves who it is, how to check what's left
 on the plan, and what it means when a call is refused for running out of
@@ -11,7 +13,9 @@ credits.
 ## When the workflow uses it
 Cross-cutting: every stage authenticates the same way, and `GET
 /users/me/usage` should be checked before any credit-hungry step — most
-importantly before Stage 6 (`pillar_clusters`, 62 T-coins/run) and before
+importantly before Stage 6 (`pillar_clusters`, the priciest operation and
+one whose cost scales with page count — see
+[content-pillar-cluster.md](content-pillar-cluster.md)) and before
 triggering a large Stage 2/8 monitoring run (1 T-coin per query per engine —
 see [monitoring.md](monitoring.md)).
 
@@ -57,7 +61,7 @@ is what most features draw from — see the cost notes in each other guide),
 `GET /api/v1/users/me/coin-balance` is more precise: it separates plan
 allowance, carryover, bonus, and purchased balance and sums them into
 `total_available` — that total is the number to tell the user before a
-62-credit pillar/cluster run or a large monitoring run.
+pillar/cluster run or a large monitoring run.
 
 ## UI links
 - `{TOPCITED_UI_URL}/settings/billing` — credit balance, plan, and the
@@ -87,17 +91,20 @@ endpoint that does the same thing — the balance is genuinely exhausted.
 ## Failure modes
 - Missing/invalid/revoked/expired `TOPCITED_API_KEY` → every call fails, not
   just one endpoint. `GET /users/me` at session start is the fastest way to
-  catch this before the user has invested time in a longer workflow.
+  catch this before the user has invested time in a longer workflow. Note that
+  keys **expire 90 days after generation**, so a key that worked last month can
+  fail today with nothing else having changed — check
+  `GET /users/me/api-key` for the expiry before assuming a wider outage.
 - 402 anywhere → see "What a 402 means" above. It is not specific to one
   feature; expect it on any of the metered calls documented across
   [content-pillar-cluster.md](content-pillar-cluster.md),
   [monitoring.md](monitoring.md), [recommendations.md](recommendations.md),
   [seo-geo-analysis.md](seo-geo-analysis.md), [reports.md](reports.md), and
   the `sci_defense` check in [audit.md](audit.md).
-- `POST /users/me/api-key` (regenerate) is still being rolled out: accounts
-  that are not enabled for it get a 403 with "API keys are coming soon for
-  your account." Regenerating also **revokes the key you are currently using**,
-  so never call it mid-session — leave key management to the human in
+- `POST /users/me/api-key` (regenerate) is not open to every account: one
+  that is not enabled gets a 403 with "API keys are coming soon for your
+  account." Regenerating also **revokes the key you are currently using**, so
+  never call it mid-session — leave key management to the human in
   `{TOPCITED_UI_URL}/settings/profile`.
 - `GET /tasks` / `GET /tasks/{task_id}` cover generic background-task
   tracking, but most features in this API have their **own** dedicated

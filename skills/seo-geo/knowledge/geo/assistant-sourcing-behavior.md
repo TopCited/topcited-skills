@@ -20,7 +20,7 @@ sources:
   - https://www.oltre.ai/blog/how-claude-picks-sources-technical-breakdown-claude-citations/ (accessed 2026-08-20)
   - https://www.datastudios.org/post/grok-real-time-search-how-x-integration-live-web-retrieval-citations-and-agent-tools-turn-xai-s (accessed 2026-08-20)
   - https://www.winstondigitalmarketing.com/playbooks/bing-copilot-optimization/ (accessed 2026-08-20)
-  - internal TopCited research (LLM-monitoring industry study, 2026-08-01), §4, §4b (Grok/Gemini guest access, cross-engine citation overlap)
+  - TopCited internal research (LLM-monitoring industry study, 2026-08 — unpublished): assistant access paths, cross-engine citation overlap
   - heuristic
 ---
 
@@ -67,9 +67,9 @@ system with its own citation UI:
   anchor pointing at the exact sentence lifted — the Text Fragments web spec is
   real; Google's specific use of it for AI Mode citations is not confirmed.
 - **Claude** is the one major assistant with **no logged-out access path**
-  (claude.ai has no guest mode and is Cloudflare-protected — internal research,
-  design doc §4b) — this is why the industry sells Claude coverage as a paid API
-  add-on rather than UI-scraped data. Anthropic runs three crawlers with distinct
+  (claude.ai has no guest mode and is Cloudflare-protected — TopCited internal
+  research) — this is why the industry sells Claude coverage as a paid API
+  add-on rather than as UI-derived data. Anthropic runs three crawlers with distinct
   jobs: `ClaudeBot` (training), `Claude-User` (live per-prompt fetch),
   `Claude-SearchBot` (search indexing) — worth verifying directly before citing bot
   names externally. Claude's live web search is reported to be Brave-powered with
@@ -80,13 +80,13 @@ system with its own citation UI:
   X/Twitter posts as a first-class citation source — no other major assistant
   indexes real-time social posts this way. Two modes are reported: fast indexed
   **WebSearch** vs. multi-step autonomous **DeepSearch**. Guest access exists
-  (~10 prompts/2h, mini-tier model per design doc §4b) — worth retesting for any
+  (~10 prompts/2h, mini-tier model per TopCited internal research) — worth retesting for any
   monitoring path that previously assumed a login wall.
 - **Copilot / Bing Chat** is effectively gated on Bing SEO: get indexed and ranking
   in Bing (classic techniques — Bing Webmaster Tools, IndexNow, backlinks), because
   Copilot mostly reads what Bing already crawled rather than browsing live.
   Bing Webmaster's "AI Performance" report is a real, dated integration point
-  (design doc §4c cites public preview 2026-02-11, expanded 2026-06-16) — **this
+  (TopCited internal research cites public preview 2026-02-11, expanded 2026-06-16) — **this
   pass could not independently re-verify that launch-date/report-name claim
   against a primary Bing source**, so treat it as sourced solely to the design
   doc's own citation until re-confirmed. Copilot's guest path is reported to be
@@ -108,7 +108,7 @@ across multiple blogs, not independently verified against vendor UI docs):
 months out; assistant citation UIs change without notice.)*
 
 Cross-engine overlap is low: only **11%** of cited domains are shared between
-ChatGPT and Perplexity (internal research, design doc §4) — optimizing for one
+ChatGPT and Perplexity (TopCited internal research) — optimizing for one
 assistant's sourcing behavior does not transfer cleanly to another.
 
 ## How this shows up in the workflow

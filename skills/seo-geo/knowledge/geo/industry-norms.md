@@ -3,7 +3,7 @@ topic: How the AI-visibility monitoring industry collects data — cadence, surf
 stage-relevance: [2, 8]
 last-verified: 2026-08-20
 sources:
-  - internal TopCited research (LLM-monitoring industry study, 2026-08-01), §2, §4, §4b, §4c
+  - TopCited internal research (LLM-monitoring industry study, 2026-08 — unpublished)
   - https://www.surmado.com/blog/best-ai-visibility-tools-2026 (accessed 2026-08-20)
   - heuristic
 ---
@@ -13,57 +13,48 @@ sources:
 ## In plain words
 Every serious vendor that tracks "is my brand mentioned by ChatGPT/Perplexity/etc."
 runs the same basic playbook: query each assistant once per day, per prompt, per
-platform, while logged out (or as a "neutral" user), and treat any single day's
-result as noisy. This isn't a TopCited-specific choice — it's the converged
-industry standard as of mid-2026, and nothing found in this research pass
-contradicts it.
+platform, in a neutral, non-personalized session, and treat any single day's
+result as noisy. That is the converged industry standard as of mid-2026, and
+nothing found in this research pass contradicts it.
 
 ## What practitioners need to know
 
-This file validates, and does not re-derive, the internal design doc's monitoring
-findings (internal TopCited research (LLM-monitoring industry study, 2026-08-01), §2/§4/§4b) —
-that document remains the authoritative source. This pass specifically searched
-for reversals and found none as of 2026-08-20 (19 days after the design doc's own
-research date):
+These are the norms the AI-visibility monitoring market has converged on. This
+pass specifically searched for reversals as of 2026-08-20 and found none:
 
 - **Cadence remains 1 run/prompt/platform/geo/day** across the named vendors
   (Peec, Otterly, Profound) — no vendor found this pass has moved off that
   cadence. One 2026 comparison piece describes Otterly's collection as "neutral,
   non-personalized querying... designed to avoid personalization bias rather than
   reflect a logged-in user state" (heuristic, weak corroboration — no single
-  source strong enough to cite individually) — consistent with, though not an
-  independent confirmation of, the design doc's "logged-out" characterization.
-  Defer to the design doc's own citations (docs.peec.ai) over this source.
-- **Claude coverage is still sold as a paid API add-on**, not UI-monitored —
-  confirmed unchanged, matches design doc §4b exactly.
-- **No new legal development** was found on the account-pool question beyond the
-  design doc's §4c coverage (OpenAI/Anthropic/Google ToS bans on automated access,
-  the account-pool-is-not-viable finding). Note: Amazon v. Perplexity and Web Bot
-  Auth were not specifically re-searched this pass, since they're a
-  playbooks/legal question rather than a "geo" one per the research brief's
-  per-track split — flagging the gap rather than silently treating it as checked.
+  source strong enough to cite individually).
+- **Claude coverage is still sold as a paid API add-on** rather than derived from
+  the consumer chat UI — confirmed unchanged this pass. See
+  [assistant-sourcing-behavior.md](assistant-sourcing-behavior.md) for the
+  mechanism behind that (claude.ai has no logged-out path at all).
 - **No assistant was found to have opened or closed a guest-access path** since
-  the design doc's 2026-08-01 research date. One specific line is flagged as
-  possibly stale and unverified either way: **Copilot's guest-access status** —
-  the design doc says "tightening... through 2025-26," and no fresher
-  confirmation (in either direction) was found this pass. Treat that line as
-  needing a targeted re-check before treating it as current.
+  the 2026-08-01 research pass. One line is flagged as possibly stale and
+  unverified either way: **Copilot's guest-access status**, reported as tightening
+  through 2025–26, with no fresher confirmation in either direction found this
+  pass. Treat it as needing a targeted re-check before relying on it.
 
-**New since the design doc (market positioning, not collection methodology):**
-vendor-comparison content as of 2026-08 positions **Profound as the enterprise
-leader, Peec AI as the fastest-growing mid-market challenger, and Otterly as the
-most accessible/lightweight entry tier** (heuristic — vendor-comparison marketing
+**Market positioning (not collection methodology):** vendor-comparison content as
+of 2026-08 positions **Profound as the enterprise leader, Peec AI as the
+fastest-growing mid-market challenger, and Otterly as the most
+accessible/lightweight entry tier** (heuristic — vendor-comparison marketing
 content, treat market-share claims skeptically; source:
 https://www.surmado.com/blog/best-ai-visibility-tools-2026 and similar). This is
-tangential to GEO proper and belongs more to a competitive-landscape note for the
-playbooks/measurement tracks than to monitoring-methodology guidance here.
+tangential to GEO proper and belongs more to a competitive-landscape note than to
+monitoring-methodology guidance here.
 
-**What this means in practice:** TopCited's own 1×/day, per-platform, logged-out
-(where possible) collection design is aligned with converged industry practice,
-not an outlier or a corner cut. Where TopCited diverges from a vendor (e.g., no
-Claude UI coverage, since Claude has no guest mode — see
-`assistant-sourcing-behavior.md`), that divergence matches the rest of the
-industry's own workaround (API add-on), not a gap unique to TopCited.
+**What this means in practice:** when you read an AI-visibility report from any
+vendor, the once-daily cadence and the neutral, non-personalized framing are
+industry defaults, not that vendor's differentiator — and neither is a corner
+cut. Judge a monitoring product on prompt-set design, on whether it reports
+per-engine rather than pooling engines together, and on how honestly it handles
+noise; not on collection frequency. Expect gaps where an assistant offers no
+neutral access path (Claude being the clearest case) to be filled by a paid API
+add-on across the whole industry, rather than to be a gap unique to one vendor.
 
 ## How this shows up in the workflow
 Not currently referenced by any stage file in `visibility-workflow/stages/` (grep

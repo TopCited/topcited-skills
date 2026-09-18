@@ -23,8 +23,11 @@ real expertise."
    Stage 3 competitor/keyword summary, and any accepted recommendations.
    **Suggest-and-approve.**
 3. Before starting the run, warn the user this is the most credit-hungry step
-   in the whole workflow — 62 T-coins per pillar/cluster run — and check
-   their balance first.
+   in the whole workflow, and that its cost scales with the number of pages
+   requested. Check their balance and compute the actual figure for the page
+   count you are proposing (see the `topcited-api` skill's
+   `references/content-pillar-cluster.md`) — quote that number, not a
+   remembered one.
 4. Start the run and poll until complete; it's a long-running job (research,
    scrape, analyze, draft, generate are separate stages), so tell the user to
    check back rather than wait live.
@@ -34,7 +37,7 @@ real expertise."
 **Routed action (agent-direct):** refine or edit drafts and adapt tone based
 on the user's feedback. For a smaller fix to a page that already exists (not
 a new pillar page), use a content-optimization submission instead of a fresh
-62-credit run.
+pillar/cluster run.
 
 ## Knowledge
 - [content-strategy/keyword-intent-research.md](../../seo-geo/knowledge/content-strategy/keyword-intent-research.md)

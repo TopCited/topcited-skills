@@ -100,10 +100,21 @@ Default locale (`en`) is unprefixed — don't add `/en/`.
 
 ## Cost & quota
 Pillar/cluster runs are the **most credit-hungry operation in the whole
-workflow** — 62 T-coins per run on the unified credit model, against 1–10
-T-coins for everything else (SEO audit 9, report 10, URL analysis 1,
-optimization 7, monitoring run 1). Always confirm with the user and mention
-the cost before calling `POST /runs` — a wasted run is expensive to redo.
+workflow**, against 1–10 T-coins for everything else (SEO audit 9, report 10,
+URL analysis 1, optimization 7, monitoring run 1).
+
+**The cost is not flat — it scales with the number of pages you ask for:**
+
+```
+cost = <your plan's pillar_clusters base cost> + 40 × (target_page_count − 1)
+```
+
+`target_page_count` is 1–30 (1 pillar page, the rest clusters), so a large
+run costs many times a single-page one. The base is a per-plan value, not a
+constant, so **do not quote a fixed number from memory** — read the user's
+plan cost and balance from `GET /api/v1/users/me/coin-balance` (free), compute
+the figure for the page count you are about to request, and state that number
+before calling `POST /runs`. A wasted run is expensive to redo.
 `cancel` and `replay` do not spend additional quota — the original run's
 charge stands; cancelling doesn't refund it, and replaying continues the
 same run rather than starting a fresh metered one.
@@ -134,5 +145,5 @@ The output-retrieval endpoints (`outputs/draft`, `outputs/pages`,
   set the user's expectation that partial runs have partial outputs.
 - A `failed` or `budget_exceeded` run does not silently refund — mention to
   the user that a run consumed the credit even if it didn't finish; `replay`
-  from the last-good stage is the way to salvage it rather than starting a
-  fresh (again 62-credit) run from scratch.
+  from the last-good stage is the way to salvage it rather than paying for a
+  fresh run from scratch.

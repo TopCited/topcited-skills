@@ -18,7 +18,7 @@ sources:
   - https://www.similarweb.com/blog/marketing/geo/what-is-geo/
   - https://www.searchpilot.com/resources/blog/what-is-seo-split-testing
   - https://www.searchpilot.com/resources/blog/the-math-behind-searchpilot-how-seo-a/b-testing-actually-works
-  - docs/design-docs/2026-08-01-llm-monitoring-industry-research-design.md §4 (in-repo, cites petralabs.com and arXiv:2603.08924 / 2604.07585)
+  - TopCited internal research (LLM-monitoring industry study, 2026-08 — unpublished), itself citing petralabs.com and arXiv:2603.08924 / 2604.07585
   - heuristic
 ---
 
@@ -100,10 +100,10 @@ of their strategy, but fewer than a quarter say they can actually measure
 its impact. Two structural reasons: most AI answers are zero-click (no
 referral session to attribute), and the most valuable AI influence —
 landing on a shortlist a user later acts on outside the chat — happens
-*before* any trackable touchpoint exists. *(I)* This matches the monitoring
-design doc's independent finding that Bing Webmaster Tools' "grounding
-queries" report is the only first-party ground truth GEO has today, and
-only for Copilot/Bing-grounded answers.
+*before* any trackable touchpoint exists. *(I)* This matches TopCited's own
+internal monitoring research, which independently found that Bing Webmaster
+Tools' "grounding queries" report is the only first-party ground truth GEO has
+today, and only for Copilot/Bing-grounded answers.
 
 **Recommendation:** state GEO KPIs as *leading/directional* indicators
 (visibility, share of voice, citation rate), not *outcome* metrics — the
@@ -134,7 +134,7 @@ the time at 100 runs (Petra Labs, 7,200 trials); rank ordering stabilizes
 resampling variance (34.8%) and prompt-phrasing variance (26.5%) dwarf
 brand-identity variance (1.5%) — most of the "signal" in a before/after
 comparison is noise from the prompt portfolio, not the brand's actual
-standing. *(I, design doc §4)* Never attribute a single-period visibility
+standing. *(I — TopCited internal research)* Never attribute a single-period visibility
 delta to a specific content change without (a) a frozen, versioned prompt
 set for both periods, (b) a stated sample size, and (c) a stated noise
 floor below which deltas are suppressed. No major vendor publishes a causal

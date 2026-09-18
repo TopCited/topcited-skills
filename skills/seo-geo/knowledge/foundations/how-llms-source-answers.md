@@ -150,7 +150,7 @@ surfaces, do not conflate**
 
 ## How this shows up in the workflow
 No workflow stage currently cites this file by name (grepped against
-`.claude/skills/visibility-workflow/stages/*.md` — no match). It's
+the `visibility-workflow` skill's `stages/*.md` — no match). It's
 background material that underpins stage 2 (baseline monitoring — explains
 why prompt-visibility results differ so much across engines) and stage 3/6
 (competitor research and content — explains why winning classic SEO rank

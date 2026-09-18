@@ -6,7 +6,7 @@ sources:
   - https://www.apollotechnical.com/ai-share-of-voice-best-tools-and-how-to-measure-it/
   - https://www.semrush.com/blog/how-to-measure-ai-share-of-voice/
   - https://searchengineland.com/ai-share-of-voice-metrics-that-matter-more-479611
-  - docs/design-docs/2026-08-01-llm-monitoring-industry-research-design.md §2 (Peec, Profound, Ahrefs Brand Radar methodology) and §4 (cross-engine overlap, variance decomposition)
+  - TopCited internal research (LLM-monitoring industry study, 2026-08 — unpublished): vendor methodology (Peec, Profound, Ahrefs Brand Radar), cross-engine citation overlap, variance decomposition
   - heuristic
 ---
 
@@ -49,21 +49,21 @@ Nearly every vendor uses the same base calculation:
   with visibility smoothed over a **rolling 7-day window** to cut day-to-day
   noise. Peec is also the vendor most transparent about splitting
   "Sources" (URLs the model's tool-use accessed) from "Citations" (URLs
-  actually referenced in the visible text) as two distinct signals. *(I,
-  design doc §2)*
+  actually referenced in the visible text) as two distinct signals.
+  *(I — TopCited internal research)*
 - **Profound** captures via geo-distributed headless browsers, once per
   day per platform/config, across ~11 surfaces. Its own variance experiment
   found that sampling 10×/day vs. 1×/day changed measured visibility by
   ≤2 percentage points, because **platform response drift dominates
   sampling noise** — resampling more within a day buys little; a broader
   prompt portfolio buys more stability than deeper sampling per prompt.
-  *(I, design doc §2)*
+  *(I — TopCited internal research)*
 - **Ahrefs Brand Radar** runs prompts **monthly** (not daily) through free
   public web interfaces, ~14M queries/mo per chatbot, separately from its
   continuous AI Overviews crawl (~282M/mo). Its prompt universe is
   synthetic — derived from Ahrefs' own keyword database plus
   People-Also-Ask harvesting plus semantic "Fanout" expansion — not
-  observed real user prompts. *(I, design doc §2/§5)*
+  observed real user prompts. *(I — TopCited internal research)*
 
 ### Why the metric is contested
 Search Engine Land's sharpest documented critique (Dan Taylor, 2026-06-08):
@@ -100,7 +100,7 @@ The same variance findings that apply to raw visibility (see
 11% shared-cited-domain overlap between ChatGPT and Perplexity, and the
 same brand named by 3+ engines only 21% of the time, mean a cross-engine
 "blended" share-of-voice number is close to meaningless. Every credible
-vendor reports **per-engine**, never pooled. *(I, design doc §4)*
+vendor reports **per-engine**, never pooled. *(I — TopCited internal research)*
 
 ## How this shows up in the workflow
 Stage 8 (review & ongoing monitoring) uses this file when presenting

@@ -6,8 +6,8 @@ sources:
   - https://developers.google.com/search/docs/appearance/core-updates (page last updated 2025-12-10 UTC)
   - https://resources.averi.ai/benchmarks/seo-ranking-timeline
   - https://peaklora.com/blog/how-long-to-rank-in-google-search/
-  - internal TopCited research notes (2026-06), citing searchengineland.com/mastering-generative-engine-optimization-in-2026-full-guide-469142 — not independently re-verified in this pass
-  - docs/design-docs/2026-08-01-llm-monitoring-industry-research-design.md §2 (Peec 7-day rolling window) and §4 (SE Ranking / Semrush Sensor citation-churn studies)
+  - TopCited internal research notes (2026-06, unpublished), citing searchengineland.com/mastering-generative-engine-optimization-in-2026-full-guide-469142 — not independently re-verified in this pass
+  - TopCited internal research (LLM-monitoring industry study, 2026-08 — unpublished): Peec 7-day rolling window; SE Ranking / Semrush Sensor citation-churn studies
   - heuristic
 ---
 
@@ -78,13 +78,13 @@ standing changed:
 - Peec computes visibility on a rolling 7-day window specifically because
   daily numbers are too noisy to read as a trend — i.e., **the minimum
   honest GEO reporting cadence is ~weekly, not daily**, even though
-  collection itself runs daily. *(I, design doc §2)*
+  collection itself runs daily. *(I — TopCited internal research)*
 - SE Ranking measured only **9.2%** URL consistency across same-day AI Mode
   reruns; a Semrush Sensor study found **0%** of AI Overview keywords kept
   a stable URL set over a 31-day window — the *citation set*, not just the
   visibility percentage, is highly non-stationary, and a short observation
-  window will show churn unrelated to any brand action. *(I, design doc
-  §4)*
+  window will show churn unrelated to any brand action.
+  *(I — TopCited internal research)*
 
 ### Combined guidance
 SEO and GEO timelines are **not comparable and should not be reported on
