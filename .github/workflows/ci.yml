@@ -1,0 +1,45 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  skills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate skill frontmatter and relative links
+        run: python3 scripts/validate_skills.py
+
+  shell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint the API helper script
+        run: shellcheck skills/topcited-api/scripts/tc-api.sh
+
+  no-internal-references:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # This repo is public. Nothing here may point at TopCited's private repos,
+      # internal environments, source tree, or unpublished internal documents.
+      # Citing internal research is fine ("TopCited internal research,
+      # 2026-08 — unpublished"); citing its file path or section numbers is not.
+      # The specific forbidden patterns live in the LEAK_GUARD_PATTERNS secret
+      # (extended regexes, one per line) so this file does not list them.
+      - name: Grep for internal references
+        env:
+          LEAK_GUARD_PATTERNS: ${{ secrets.LEAK_GUARD_PATTERNS }}
+          IS_FORK_PR: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
+        run: |
+          if [ -z "$LEAK_GUARD_PATTERNS" ]; then
+            if [ "$IS_FORK_PR" = "true" ]; then
+              echo "::notice::Fork PR: secrets are unavailable, so only generic patterns are checked. The full check runs after merge."
+            else
+              echo "::error::LEAK_GUARD_PATTERNS secret is missing; refusing to pass without it."
+              exit 1
+            fi
+          fi
+          scripts/leak_guard.sh
