@@ -1,7 +1,6 @@
 ---
 name: topcited-api
 description: Call the TopCited API (brands, competitors, site audits, monitoring, keyword/prompt recommendations, SEO/GEO analysis, pillar-cluster content, reports) with a personal API key. Use whenever the task involves reading or changing data in a TopCited account, or measuring a brand's visibility in search engines and AI assistants.
-license: MIT
 ---
 
 # TopCited API
