@@ -24,12 +24,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       # This repo is public. Nothing here may point at TopCited's private repos,
-      # internal environments, or source tree. Keep this list in sync with the
-      # publication audit in the design doc.
+      # internal environments, source tree, or unpublished internal documents.
+      # Citing internal research is fine ("TopCited internal research,
+      # 2026-08 — unpublished"); citing its file path or section numbers is not,
+      # because an outside reader cannot follow either one.
       - name: Grep for internal references
         run: |
           set -o pipefail
-          pattern='topcited-saas|topcited-agents|topcited\.cloud|api\.staging|backend/app/|frontend/src/|AGENT_ENABLED|free_alpha|trial_plus'
+          pattern='topcited-saas|topcited-agents|topcited\.cloud|api\.staging|backend/app/|frontend/src/|AGENT_ENABLED|free_alpha|trial_plus|docs/design-docs|design-docs/|design doc|\.claude/skills/(seo-geo|topcited-api|visibility-workflow)|case-studies/'
           if grep -rInE "$pattern" --exclude-dir=.git --exclude-dir=.github . ; then
             echo "::error::Found a reference that must not ship in a public repo (see matches above)"
             exit 1

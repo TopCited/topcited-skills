@@ -136,7 +136,7 @@ Get Source Citations
 Return top-100 by-URL and by-domain source citations for a time window.
 
 Brand matching is recomputed at request time against the customer's
-current brand + competitor list (see spec §6). Multiple query sets pool
+current brand + competitor list. Multiple query sets pool
 their source rows and union their brand/competitor name sets.
 
 Parameters:

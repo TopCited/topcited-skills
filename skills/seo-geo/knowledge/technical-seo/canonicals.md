@@ -7,7 +7,7 @@ sources:
   - https://www.digitalapplied.com/blog/google-canonicalization-fixes-two-weeks-2026
   - https://seonorth.ca/screaming-frog/audit-canonicalized-urls/
   - https://techsy.io/en/blog/screaming-frog-guide
-  - `.claude/skills/seo-geo/knowledge/case-studies/topcited-ai.md`
+  - TopCited internal case study (unpublished), anonymized below
 ---
 
 # Canonicals
@@ -63,20 +63,23 @@ it.
     framing, not independently checked against Ahrefs' own docs)
 
 ### Canonical-bug example
-`.claude/skills/seo-geo/knowledge/case-studies/topcited-ai.md` documents a
-real instance of the post-migration-staleness pattern above: a single
-hardcoded `SITE_URL` constant pointed every blog page's canonical tag,
-`og:url`, and JSON-LD `@id`s at `topcited.com` — a different, unrelated
-company — while the homepage used the correct `topcited.ai` domain the whole
-time. The bug was sufficient on its own to explain total invisibility in
-search and AI answers, independent of any other SEO factor, and it only
-surfaced because someone checked the SEO source-of-truth for *every*
-page-type rather than just the homepage.
+A real case (anonymized) shows how quietly the post-migration-staleness
+pattern above can bite. A single hardcoded `SITE_URL` constant pointed every
+blog page's canonical tag, `og:url`, and JSON-LD `@id`s at the wrong
+domain — one owned by a different, unrelated company — while the homepage
+used the correct domain the whole time. That bug alone was enough to explain
+near-total invisibility in search and AI answers, independent of every other
+SEO factor. It surfaced only because someone checked the SEO source-of-truth
+for *every* page type rather than just the homepage.
+
+The transferable lessons: a canonical audit that samples only the homepage
+proves nothing; and one shared constant feeding canonical, `og:url` and
+JSON-LD means one typo silently deindexes an entire section.
 
 ## How this shows up in the workflow
 Stage 4 (site audit) checks canonical tags across page types (not just the
-homepage) for exactly this class of bug, using the topcited.ai case study as
-the reference pattern for what a canonical audit should catch, and uses
+homepage) for exactly this class of bug, using the case above as the
+reference pattern for what a canonical audit should catch, and uses
 Screaming Frog / Site Audit style tooling to surface conflicting or
 non-indexable canonical targets. Stage 5 (technical/entity fixes)
 prioritizes fixing a wrong canonical as the single highest-leverage

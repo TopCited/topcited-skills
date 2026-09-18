@@ -19,12 +19,16 @@ how an agent drives that platform over HTTP.
 | `TOPCITED_UI_URL` | no | `https://topcited.ai` |
 
 Get a key in the TopCited app under **Settings → Profile → API Key**. It is shown
-once, starts with `tc_`, and acts as the signed-in user — generating a new one
-revokes the old one. Availability is being rolled out; if the app answers
-*"API keys are coming soon for your account"*, the account is not enabled yet.
+once, starts with `tc_`, and acts as the signed-in user with full rights over
+that account — generating a new one revokes the old one, and a key **expires 90
+days** after it is generated. Key availability is currently limited; if the app
+answers *"API keys are coming soon for your account"*, that account is not
+enabled and the user should contact TopCited.
 
 `TOPCITED_UI_URL` is only used to build deep links you show the user. It is a
-separate host from the API — never derive one from the other.
+separate host from the API — never derive one from the other. A call sent to the
+UI host returns the web app's HTML instead of JSON, so an HTML response to an API
+call means the base URL is wrong, not that the endpoint is missing.
 
 ## Making a call
 

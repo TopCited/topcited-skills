@@ -4,6 +4,21 @@ The full 29-file knowledge tree. Each file follows `_template.md` (topic,
 stage relevance, last-verified date, sources; a plain-words section and a
 practitioner-depth section).
 
+## How to read the evidence tags
+
+Claims carry an inline tag saying how well sourced they are. Weigh them
+accordingly, and say which tier you relied on when a user asks how confident you
+are:
+
+| Tag | Means |
+|---|---|
+| *(P)* | **Primary** — the platform's own documentation or announcement (Google, OpenAI, Anthropic…). Treat as fact. |
+| *(I)* | **Industry** — a named vendor, research firm, or study. Credible, but the methodology is usually not independently verifiable. |
+| heuristic | Practitioner consensus across blogs, with no primary source. Directional only — never state it to a user as settled fact. |
+
+Every file also carries a `last-verified` date. This field moves fast: if a file
+is more than ~6 months old, flag that to the user when you rely on it.
+
 ## foundations/
 - [how-search-ranking-works.md](foundations/how-search-ranking-works.md) — how classic search ranking works, at a mechanism level
 - [how-llms-source-answers.md](foundations/how-llms-source-answers.md) — how assistants retrieve and cite when answering

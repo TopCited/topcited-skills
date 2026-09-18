@@ -48,7 +48,9 @@ says what to read next.
 1. Sign in at [topcited.ai](https://topcited.ai).
 2. **Settings → Profile → API Key → Generate.**
 3. Copy it — it is shown once, starts with `tc_`, and generating a new one
-   revokes the old one.
+   revokes the old one. Keys **expire 90 days** after generation; when one
+   lapses every call starts failing at once, and the fix is to generate a new
+   one.
 
 Then export it:
 
@@ -58,15 +60,19 @@ export TOPCITED_API_KEY="tc_..."
 
 | Variable | Required | Default | What it is |
 |---|---|---|---|
-| `TOPCITED_API_KEY` | yes | — | Your personal key. Acts as you; treat it like a password. |
+| `TOPCITED_API_KEY` | yes | — | Your personal key. Acts as you, with full rights over your account; treat it like a password. |
 | `TOPCITED_BASE_URL` | no | `https://api.topcited.ai` | API base. |
 | `TOPCITED_UI_URL` | no | `https://topcited.ai` | Web app base, used only to build links shown to you. |
 
 The API and the web app are different hosts — if you override one, override both.
+Pointing an API call at the web-app host does not fail cleanly: `https://topcited.ai/api/v1/...`
+returns the web app's HTML rather than JSON or a 404, so "my agent got HTML back"
+almost always means the base URL is wrong.
 
-Self-service key generation is still being rolled out. If the app says *"API keys
-are coming soon for your account"*, your account is not enabled yet; the
-`seo-geo` skill works regardless.
+**API key availability is currently limited** and not yet open to every account.
+If the app answers *"API keys are coming soon for your account"*, yours is not
+enabled — contact TopCited rather than waiting for it to switch on by itself. The
+`seo-geo` skill needs no key and works regardless.
 
 ### A note on spending
 

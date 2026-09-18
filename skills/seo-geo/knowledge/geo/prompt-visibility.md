@@ -5,7 +5,7 @@ last-verified: 2026-08-20
 sources:
   - https://www.rankshift.ai/blog/impact-of-prompt-phrasing-on-ai-brand-visibility/ (accessed 2026-08-20)
   - https://www.searchenginejournal.com/ai-prompt-intent-keywords-peec-spa/576201/ (accessed 2026-08-20)
-  - internal TopCited research (LLM-monitoring industry study, 2026-08-01), §4 (variance decomposition, ChatGPT vs. Perplexity fan-out)
+  - TopCited internal research (LLM-monitoring industry study, 2026-08 — unpublished): variance decomposition, ChatGPT vs. Perplexity fan-out
   - heuristic
 ---
 
@@ -47,14 +47,14 @@ May 2026 study (heuristic — could not trace to a named primary source) reporte
 recommendation-set Jaccard similarity of **0.288** for cosmetic paraphrases and
 **0.135** for constraint-changing variants (e.g., "SMB" → "enterprise"), compared
 with **0.50–0.61** for exact-repeat reruns of the identical prompt. This
-corroborates — from an independent source — the design doc's own variance
-decomposition (internal research, design doc §4): **within-prompt resampling is
+corroborates — from an independent source — TopCited's own internal variance
+decomposition: **within-prompt resampling is
 34.8%** of total variance, **prompt phrasing/language ~26.5%**, and **brand
 identity only 1.5%**. Two independent sources now agree that phrasing accounts for
 far more measured variance than which brand is actually being asked about.
 
-**Per-assistant sensitivity to phrasing differs sharply.** Per the design doc
-(internal research, §4): ChatGPT fans out to **91%** unique retrieval sub-queries
+**Per-assistant sensitivity to phrasing differs sharply.** Per TopCited internal
+research: ChatGPT fans out to **91%** unique retrieval sub-queries
 per prompt, vs. Perplexity's **14%** — ChatGPT's retrieval is far more sensitive to
 exact wording than Perplexity's. This has a direct implication for prompt-set
 design per engine (see below); no equivalent breakdown was found this pass for
@@ -73,7 +73,7 @@ promising domain-level stability is promising something the data can't support.
 **Gaps:** no study was found isolating prompt *length* alone (holding intent
 constant) as a variable, independent of the conversational-vs-concise framing
 above; no per-assistant phrasing-sensitivity breakdown was found beyond the
-ChatGPT/Perplexity fan-out contrast already in the design doc.
+ChatGPT/Perplexity fan-out contrast already noted above.
 
 ## How this shows up in the workflow
 Referenced by **stage 02 (baseline monitoring)** — used when building the initial

@@ -87,7 +87,7 @@ users better, not that the page got flagged.
 
 ## How this shows up in the workflow
 No workflow stage currently cites this file by name (grepped against
-`.claude/skills/visibility-workflow/stages/*.md` — no match). It's
+the `visibility-workflow` skill's `stages/*.md` — no match). It's
 background material rather than a stage-triggered lookup today: useful for
 setting client expectations before a site audit (stage 4/5) — e.g. that a
 canonical/indexing fix is a prerequisite, not itself a ranking lever, and
