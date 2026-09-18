@@ -37,9 +37,27 @@ cp -r topcited-skills/skills/* ~/.claude/skills/
 ```
 
 For a project rather than your whole machine, use `.claude/skills/` in the repo
-instead. For agents that aren't Claude Code, point the agent at
-`skills/<name>/SKILL.md` — each one is plain Markdown with YAML frontmatter and
-says what to read next.
+instead.
+
+### Any agent (no install)
+
+Everything here is plain Markdown, so an agent that can fetch a URL needs no
+install at all — point it at a raw file and it will follow the links from there:
+
+```
+https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/seo-geo/SKILL.md
+https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/topcited-api/SKILL.md
+https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/visibility-workflow/SKILL.md
+```
+
+Each `SKILL.md` opens with YAML frontmatter (`name`, `description`) and a routing
+table saying what to read next. Two caveats when fetching rather than cloning:
+the internal links are **relative paths**, so resolve them against the file's own
+directory; and `skills/topcited-api/scripts/tc-api.sh` will not be on disk, so
+either fetch it too or make the calls with plain `curl` — the SKILL.md shows the
+equivalent one-liner.
+
+Pin to a tag or commit SHA instead of `main` if you need the content to stay put.
 
 ## Getting an API key
 
