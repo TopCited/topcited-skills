@@ -1,0 +1,13 @@
+{
+  "name": "topcited-skills",
+  "description": "SEO/GEO knowledge, the TopCited API reference, and a guided visibility-improvement workflow — as Agent Skills.",
+  "version": "0.1.0",
+  "author": {
+    "name": "TopCited",
+    "url": "https://topcited.ai"
+  },
+  "homepage": "https://github.com/TopCited/topcited-skills",
+  "repository": "https://github.com/TopCited/topcited-skills",
+  "license": "MIT",
+  "keywords": ["seo", "geo", "aeo", "topcited", "visibility", "llm-search"]
+}

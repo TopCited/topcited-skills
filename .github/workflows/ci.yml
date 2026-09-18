@@ -1,0 +1,37 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  skills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate skill frontmatter and relative links
+        run: python3 scripts/validate_skills.py
+
+  shell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint the API helper script
+        run: shellcheck skills/topcited-api/scripts/tc-api.sh
+
+  no-internal-references:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # This repo is public. Nothing here may point at TopCited's private repos,
+      # internal environments, or source tree. Keep this list in sync with the
+      # publication audit in the design doc.
+      - name: Grep for internal references
+        run: |
+          set -o pipefail
+          pattern='topcited-saas|topcited-agents|topcited\.cloud|api\.staging|backend/app/|frontend/src/|AGENT_ENABLED|free_alpha|trial_plus'
+          if grep -rInE "$pattern" --exclude-dir=.git --exclude-dir=.github . ; then
+            echo "::error::Found a reference that must not ship in a public repo (see matches above)"
+            exit 1
+          fi
+          echo "No internal references found."
