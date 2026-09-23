@@ -25,7 +25,7 @@ see [monitoring.md](monitoring.md)).
 | Smoke-test the session / get the current user | `GET /api/v1/users/me` | [endpoints/users.md](endpoints/users.md) |
 | Check remaining credit balance per feature | `GET /api/v1/users/me/usage` | [endpoints/users.md](endpoints/users.md) |
 | Check T-coin balance broken down by bucket | `GET /api/v1/users/me/coin-balance` | [endpoints/users.md](endpoints/users.md) |
-| Check the caller's own API-key status | `GET /api/v1/users/me/api-key` | [endpoints/users.md](endpoints/users.md) |
+| List the caller's API keys (prefix, expiry, last use) | `GET /api/v1/users/me/api-keys` | [endpoints/users.md](endpoints/users.md) |
 | See in-flight async work across all features | `GET /api/v1/users/me/active-work` | [endpoints/users.md](endpoints/users.md) |
 | List background tasks (generic) | `GET /api/v1/tasks` | [endpoints/tasks.md](endpoints/tasks.md) |
 | Get one background task by id | `GET /api/v1/tasks/{task_id}` | [endpoints/tasks.md](endpoints/tasks.md) |
@@ -40,8 +40,8 @@ call it.
 Every call carries `Authorization: Bearer $TOPCITED_API_KEY`. The
 `scripts/tc-api.sh` helper next to this skill's `SKILL.md` does that for you,
 so you never construct the header by hand. The key is created by the account
-owner in the TopCited app under **Settings → Profile → API Key** and starts
-with the `tc_` prefix.
+owner in the TopCited app under **Settings → Profile → API keys** and starts
+with the `tc_` prefix. Any account can create one.
 
 Smoke-test a session at the start of every run:
 ```bash
@@ -66,9 +66,9 @@ pillar/cluster run or a large monitoring run.
 ## UI links
 - `{TOPCITED_UI_URL}/settings/billing` — credit balance, plan, and the
   upgrade flow — this is where to send a user who hits a 402.
-- `{TOPCITED_UI_URL}/settings/profile` — the user's own API-key status and
-  session management. This is where a human goes to create, see or regenerate
-  the key you are authenticating with.
+- `{TOPCITED_UI_URL}/settings/profile` — the user's API keys and
+  session management. This is where a human goes to create, list or revoke
+  the keys, including the one you are authenticating with.
 
 Default locale (`en`) is unprefixed — don't add `/en/`.
 
@@ -94,17 +94,17 @@ endpoint that does the same thing — the balance is genuinely exhausted.
   catch this before the user has invested time in a longer workflow. Note that
   keys **expire 90 days after generation**, so a key that worked last month can
   fail today with nothing else having changed — check
-  `GET /users/me/api-key` for the expiry before assuming a wider outage.
+  `GET /users/me/api-keys` (the entry whose `prefix` matches the first 12
+  characters of your key) for its `expires_at` before assuming a wider outage.
 - 402 anywhere → see "What a 402 means" above. It is not specific to one
   feature; expect it on any of the metered calls documented across
   [content-pillar-cluster.md](content-pillar-cluster.md),
   [monitoring.md](monitoring.md), [recommendations.md](recommendations.md),
   [seo-geo-analysis.md](seo-geo-analysis.md), [reports.md](reports.md), and
   the `sci_defense` check in [audit.md](audit.md).
-- `POST /users/me/api-key` (regenerate) is not open to every account: one
-  that is not enabled gets a 403 with "API keys are coming soon for your
-  account." Regenerating also **revokes the key you are currently using**, so
-  never call it mid-session — leave key management to the human in
+- Key management (creating or revoking keys, changing email/password) needs
+  a signed-in session: called with an API key it returns 403. Never try to
+  rotate your own key mid-session — send the human to
   `{TOPCITED_UI_URL}/settings/profile`.
 - `GET /tasks` / `GET /tasks/{task_id}` cover generic background-task
   tracking, but most features in this API have their **own** dedicated

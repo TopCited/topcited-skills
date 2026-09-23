@@ -14,7 +14,7 @@
 set -euo pipefail
 : "${TOPCITED_BASE_URL:=https://api.topcited.ai}"
 if [[ -z "${TOPCITED_API_KEY:-}" ]]; then
-  echo "error: TOPCITED_API_KEY is not set (Settings -> Profile -> API Key in the TopCited app)" >&2
+  echo "error: TOPCITED_API_KEY is not set (Settings -> Profile -> API keys in the TopCited app)" >&2
   exit 2
 fi
 method=${1:?usage: tc-api.sh METHOD /api/v1/path [curl args...]}

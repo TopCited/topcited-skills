@@ -30,9 +30,13 @@ Update Current User
 
 Update current user.
 
-Users can update their own profile (email, full_name).
-Role changes require admin privileges — for an API-key principal, the key
-itself must also carry the admin grant (keys never inherit the owner's role).
+Users can update their own profile (email, full_name, password).
+`role` is not part of UserUpdate, so it can never be set here — a `role`
+key in the body is ignored.
+
+Changing `email`, `password` or `is_active` requires a signed-in session:
+called with an API key, those fields are rejected with a 403. Other fields
+(`full_name`, `active_brand_id`) can be changed with a key.
 
 Request body: `UserUpdate` — fields under [Request body schemas](#request-body-schemas)
 
@@ -50,10 +54,9 @@ Responses: 200
 
 Get My Api Key Status
 
-Report the caller's newest active (non-revoked, non-expired) API key.
+Deprecated: use `GET /users/me/api-keys`.
 
-Open to any authenticated principal — unlike POST, no admin gate:
-checking whether you already have a key doesn't need elevated access.
+Report the caller's newest active (non-revoked, non-expired) API key.
 
 Responses: 200
 
@@ -61,13 +64,44 @@ Responses: 200
 
 Regenerate My Api Key
 
-Mint a fresh self-service API key, revoking any of the caller's existing ones.
-
-Gated: accounts not yet enabled for self-service keys are rejected with a
-403. One active personal key per user — minting always revokes whatever was
-active before, including the key used to make this call.
+Deprecated: use `POST /users/me/api-keys`.
 
 Responses: 200
+
+### GET /api/v1/users/me/api-keys
+
+List My Api Keys
+
+List the caller's non-revoked API keys (expired ones included), newest first.
+Works with an API key. Each entry: `id`, `prefix`, `is_admin`, `created_at`,
+`expires_at`, `last_used_at` — the secret itself is never returned.
+
+Responses: 200
+
+### POST /api/v1/users/me/api-keys
+
+Create My Api Key
+
+Mint a new API key for the caller. The raw key is returned exactly once.
+
+Open to every signed-in user on any plan: plan quotas, not the mint,
+decide what the key can do. The key carries the owner's role (never
+admin for a customer) and expires after 90 days. 409 at the active-key
+cap (5); 403 when called with an API key.
+
+Responses: 201
+
+### DELETE /api/v1/users/me/api-keys/{key_id}
+
+Revoke My Api Key
+
+Revoke one of the caller's keys. 404 if it isn't theirs or is already
+revoked. 403 when called with an API key.
+
+Parameters:
+- `key_id` in path (required)
+
+Responses: 204, 422
 
 ### POST /api/v1/users/me/avatar
 
@@ -173,11 +207,10 @@ Body for POST /me/upgrade-requests.
 
 ### UserUpdate
 
-Schema for updating a user.
+Schema for a user updating their own profile.
 
 - `email`: `string (email) | null` (optional)
 - `password`: `string | null` (optional)
 - `full_name`: `string | null` (optional)
 - `is_active`: `boolean | null` (optional)
-- `role`: `"admin" | "user" | null` (optional)
 - `active_brand_id`: `string (uuid) | null` (optional)
