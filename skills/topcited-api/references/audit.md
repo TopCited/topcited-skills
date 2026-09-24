@@ -54,7 +54,7 @@ and ICD detectors, plus a 200-character `text_preview` of what was scanned.
 ## Cost & quota
 `POST /api/v1/audit-requests` is unauthenticated and free — it only writes a
 row, and it is rate-limited per IP (not against plan quota).
-`POST /api/v1/sci-defense/analyze` spends **2 T-coins** (`sci_defense`) at
+`POST /api/v1/sci-defense/analyze` spends **5 T-coins** (`sci_defense`) at
 route entry, refunded automatically if the detection pipeline itself throws
 (not refunded for 422 user errors like an unreachable or private URL).
 

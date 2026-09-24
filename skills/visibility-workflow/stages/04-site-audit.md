@@ -23,7 +23,7 @@ list in plain language."
 2. List the issues the crawl found.
 3. For pages that look suspicious or heavily AI-generated, run a manipulation
    check (`sci-defense/analyze`) to get a concrete verdict rather than a
-   guess — this costs 2 T-coins per check; state that before triggering.
+   guess — this costs 5 T-coins per check; state that before triggering.
 4. End the stage by instantiating `improvement-plan.md`: turn every finding
    into a row with a plain-language "why it matters," a route
    (topcited/agent/user), and get the user's approval item by item — don't
