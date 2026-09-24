@@ -13,7 +13,7 @@ everything in plain language.
 ## Session setup
 
 1. `TOPCITED_API_KEY` must be set. If it isn't, stop and tell the user how to get
-   one: **Settings → Profile → API Key** in the TopCited app. `TOPCITED_BASE_URL`
+   one: **Settings → Profile → API keys → Create key** in the TopCited app. `TOPCITED_BASE_URL`
    (API) defaults to `https://api.topcited.ai` and `TOPCITED_UI_URL` (UI links)
    to `https://topcited.ai`.
 2. **Env-pairing check:** the API base and the UI base are two different hosts, so

@@ -64,11 +64,11 @@ Pin to a tag or commit SHA instead of `main` if you need the content to stay put
 `seo-geo` needs no credentials. `topcited-api` and `visibility-workflow` do.
 
 1. Sign in at [topcited.ai](https://topcited.ai).
-2. **Settings → Profile → API Key → Generate.**
-3. Copy it — it is shown once, starts with `tc_`, and generating a new one
-   revokes the old one. Keys **expire 90 days** after generation; when one
-   lapses every call starts failing at once, and the fix is to generate a new
-   one.
+2. **Settings → Profile → API keys → Create key.** Any account can create one.
+3. Copy it — it is shown once and starts with `tc_`. You can hold up to 5
+   active keys and revoke them individually. Keys **expire 90 days** after
+   creation; when one lapses every call starts failing at once, and the fix is
+   to create a new one.
 
 Then export it:
 
@@ -86,11 +86,6 @@ The API and the web app are different hosts — if you override one, override bo
 Pointing an API call at the web-app host does not fail cleanly: `https://topcited.ai/api/v1/...`
 returns the web app's HTML rather than JSON or a 404, so "my agent got HTML back"
 almost always means the base URL is wrong.
-
-**API key availability is currently limited** and not yet open to every account.
-If the app answers *"API keys are coming soon for your account"*, yours is not
-enabled — contact TopCited rather than waiting for it to switch on by itself. The
-`seo-geo` skill needs no key and works regardless.
 
 ### A note on spending
 
