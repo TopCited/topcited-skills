@@ -548,7 +548,7 @@ Schema for creating a new query set.
 - `competitor_ids`: `array<string (uuid)> | null` (optional)
 - `tracks_all_competitors`: `boolean` (optional, default `false`)
 - `run_mode`: `"auto" | "manual"` (optional, default `"auto"`)
-- `schedule_cron`: `string` (optional, default `"0 0 * * *"`)
+- `schedule_cron`: `string` (optional, default `"0 0 * * *"`) — Monitoring runs once a day; only a daily cron is accepted. Omit it to use the default.
 - `schedule_timezone`: `string` (optional, default `"UTC"`)
 - `platforms`: `array<"chatgpt" | "gemini" | "grok" | "google" | "bing" | "brave" | "deepseek" | "baidu_search">` (required)
 - `methods_per_platform`: `map<string, "api" | "browser">` (optional, default `{}`)
@@ -563,7 +563,7 @@ Schema for updating an existing query set.
 - `tracks_all_competitors`: `boolean | null` (optional)
 - `run_mode`: `"auto" | "manual" | null` (optional)
 - `paused`: `boolean | null` (optional)
-- `schedule_cron`: `string | null` (optional)
+- `schedule_cron`: `string | null` (optional) — Monitoring runs once a day; only a daily cron is accepted. Omit it to use the default.
 - `schedule_timezone`: `string | null` (optional)
 - `platforms`: `array<"chatgpt" | "gemini" | "grok" | "google" | "bing" | "brave" | "deepseek" | "baidu_search"> | null` (optional)
 - `methods_per_platform`: `map<string, "api" | "browser"> | null` (optional)

@@ -49,8 +49,11 @@ for the full list rather than treating the table above as exhaustive.
 ## Example
 ```bash
 scripts/tc-api.sh POST /api/v1/monitoring/query-sets \
-  -d '{"name": "Espresso machines"}'
+  -d '{"name": "Espresso machines", "platforms": ["chatgpt", "google"]}'
 ```
+`platforms` is required. Auto topics (`run_mode: "auto"`, the default) run
+once a day — that is the only cadence. Don't send `schedule_cron`; the
+default is already daily.
 Returns the query set with its `id`. Then add queries:
 ```bash
 scripts/tc-api.sh POST /api/v1/monitoring/query-sets/$SET_ID/queries \
@@ -108,6 +111,10 @@ free.
   complete" endpoint — poll `GET /runs` filtered to the batch/query set, or
   watch the metrics endpoints, and tell the user results trickle in rather
   than arriving all at once.
+- `POST /query-sets` or `PATCH /query-sets/{query_set_id}` 422s if
+  `schedule_cron` is anything other than a once-a-day cron (every 3 days,
+  weekly, hourly, weekdays only, ...) — monitoring always runs daily; drop
+  the field.
 - `POST .../run` 400s with `QUERY_SET_EMPTY` if every query in the set is
   inactive or filtered out by platform/query-type routing — add at least one
   runnable query first.
