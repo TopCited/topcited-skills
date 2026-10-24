@@ -28,7 +28,7 @@ numbers against the Stage 2 baseline.
 | Visibility, gaps, share of voice | `topcited monitor results [--set <set>] [--since YYYY-MM-DD] [--until …]` |
 | Pause / rename / change platforms | `topcited api -X PATCH /monitoring/query-sets/<id> -d '{"paused": true}'` |
 | Raw runs for a set | `topcited api /monitoring/runs -f query_set_id=<id> --paginate` |
-| Mention-rate time series, per-query table, mentions | `topcited api /monitoring/metrics/visibility` · `/monitoring/metrics/per-query` · `/monitoring/mentions` (same `query_set_id` / date filters) |
+| Mention-rate time series, per-query table, mentions | `topcited api /monitoring/metrics/visibility` · `topcited api /monitoring/metrics/per-query` · `topcited api /monitoring/mentions` (same `query_set_id` / date filters) |
 | Projected spend vs balance | `topcited api /monitoring/credit-forecast` (also in `topcited usage`) |
 
 A set is referenced by id, a 6+ character id prefix, or name; when names tie,

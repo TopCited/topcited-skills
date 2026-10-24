@@ -1,0 +1,50 @@
+# Operations the topcited-api skill documents as *internal*: they work through
+# `topcited api` but are not in the public OpenAPI spec. drift_check.py treats
+# a documented operation as drift unless it is public or listed here, and flags
+# an entry here once it becomes public. One "METHOD /path" per line; path
+# params as {}.
+DELETE /brands/{}
+DELETE /competitors/{}
+DELETE /monitoring/query-sets/{}
+DELETE /seo/sites/{}
+GET /brands/{}/competitor-keywords/dashboard
+GET /brands/{}/competitor-keywords/overlap
+GET /brands/{}/prompts/importable
+GET /competitors/{}/keyword-scans/latest
+GET /competitors/{}/keywords
+GET /geo-optimizer/runs/{}
+GET /monitoring/runs/{}/sources
+GET /pillar-cluster/runs
+GET /pillar-cluster/runs/{}
+GET /pillar-cluster/runs/{}/outputs/draft
+GET /pillar-cluster/runs/{}/outputs/pages
+GET /pillar-cluster/trending-topics
+GET /seo/analyses/{}
+GET /seo/sites/{}/pages
+PATCH /competitors/{}
+PATCH /monitoring/queries/{}
+PATCH /seo/issues/{}
+POST /audit-requests
+POST /brands/{}/competitor-keywords/scan-all
+POST /brands/{}/competitors:bulk
+POST /brands/{}/competitors:suggest
+POST /brands/{}/keywords
+POST /brands/{}/keywords/{}:accept
+POST /brands/{}/keywords:difficulty
+POST /brands/{}/prompts/{}:add-to-topics
+POST /brands/{}/prompts:import
+POST /competitors/{}/keyword-scans
+POST /geo-optimizer/analyze
+POST /geo-optimizer/runs/{}/blocks/{}/optimize
+POST /geo-optimizer/runs/{}/optimize
+POST /geo-optimizer/runs/{}/optimize-async
+POST /monitoring/query-sets/{}/suggest-queries
+POST /optimization/core/submit
+POST /optimization/submissions/from-seo
+POST /pillar-cluster/runs
+POST /pillar-cluster/runs/{}/cancel
+POST /pillar-cluster/runs/{}/replay
+POST /sci-defense/analyze
+POST /sci-defense/public-analyze
+POST /seo/analyses/{}/ai-visibility
+POST /seo/analyze

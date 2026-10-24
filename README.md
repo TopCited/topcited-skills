@@ -101,11 +101,22 @@ skills/
   topcited-api/         SKILL.md + references/
   visibility-workflow/  SKILL.md + stages/ + templates/
 .claude-plugin/         Claude Code plugin + marketplace manifests
+scripts/                validate_skills.py, leak_guard.sh, drift_check.py (+ drift/ snapshot and maps)
+tests/                  unit tests for the drift check
 ```
 
 The API reference is the public OpenAPI spec at
 `https://api.topcited.ai/api/v1/openapi.public.json`; the guides under
 `topcited-api/references/` cover only what the CLI's `--help` can't.
+
+## Keeping the skills current
+
+A weekly workflow (`.github/workflows/skills-drift.yml`, also runnable by hand
+with a dry-run switch) runs `scripts/drift_check.py`. It compares the
+`topcited-api` skill against the public API spec and the CLI's command list,
+and flags `seo-geo` knowledge files not re-verified in 90 days. Drift opens or
+updates one issue labelled `skills-drift`. Run it locally with
+`python3 scripts/drift_check.py`.
 
 ## Contributing
 
