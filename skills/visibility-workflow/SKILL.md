@@ -13,8 +13,8 @@ everything in plain language.
 ## Session setup
 
 1. The `topcited` CLI must be installed and signed in. If `topcited` isn't on the
-   PATH, install it (`curl -fsSL https://topcited.ai/install.sh | sh`, or
-   `npx @topcited/cli`) after telling the user what you're installing. If
+   PATH, install it (`curl -fsSL https://topcited.ai/install.sh | sh`; Windows:
+   `irm https://topcited.ai/install.ps1 | iex`) after telling the user what you're installing. If
    `topcited auth status` exits 3, run `topcited auth login --no-wait`, show the
    user the URL and code to approve, then `topcited auth login --continue` — or
    use a `TOPCITED_API_KEY` they give you (**Settings → Profile → API keys**).

@@ -16,7 +16,7 @@ stable exit codes, and `topcited api` for everything else.
 curl -fsSL https://topcited.ai/install.sh | sh   # Linux/macOS → ~/.local/bin, SHA-256 verified
 ```
 
-or `npx @topcited/cli …` / `npm i -g @topcited/cli`. Check with
+On Windows: `irm https://topcited.ai/install.ps1 | iex`. Check with
 `topcited --version`; `topcited doctor` diagnoses config, sign-in, connectivity
 and CLI/API version skew; `topcited upgrade` updates in place.
 
