@@ -65,7 +65,7 @@ Pin to a tag or commit SHA instead of `main` if you need the content to stay put
 through the `topcited` CLI:
 
 ```bash
-curl -fsSL https://topcited.ai/install.sh | sh    # or: npx @topcited/cli …
+curl -fsSL https://topcited.ai/install.sh | sh    # Windows: irm https://topcited.ai/install.ps1 | iex
 topcited auth login                               # approve in the browser
 ```
 
