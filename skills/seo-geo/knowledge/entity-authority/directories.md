@@ -1,11 +1,13 @@
 ---
 topic: Which directory types still matter for humans, search, and AI citation in 2026
 stage-relevance: [5]
-last-verified: 2026-08-20
+last-verified: 2026-10-24
 sources:
-  - https://developers.google.com/search/docs/advanced/guidelines/link-schemes
-  - https://www.yext.com/blog/ai-visibility-in-2025-how-gemini-chatgpt-perplexity-cite-brands
-  - https://www.averi.ai/ (accessed via search; primary report not directly fetched — flag for spot-check)
+  - https://developers.google.com/search/docs/essentials/spam-policies#link-spam (updated 2026-08-28)
+  - https://www.yext.com/blog/ai-visibility-in-2025-how-gemini-chatgpt-perplexity-cite-brands (2025-10-29)
+  - Yext press release, Business Wire, 2025-10-09 ("86% of AI citations come from brand-managed sources")
+  - https://www.tryprofound.com/blog/ai-platform-citation-patterns (Profound, 680M citations, 2025-06-05)
+  - https://www.averi.ai/how-to/chatgpt-vs.-perplexity-vs.-google-ai-mode-the-b2b-saas-citation-benchmarks-report-(2026) (Averi, 2026-01-07 — secondary aggregator)
   - heuristic
 ---
 
@@ -22,12 +24,13 @@ from going into low-value, generic listings first.
 ## What practitioners need to know
 
 ### Directories are not link spam by default
-Google's link-spam policy (the "link schemes" documentation) defines link
-spam as links created "primarily for the purpose of manipulating a site's
-ranking" — examples include buying/selling links, excessive link exchanges,
-and automated link-creation programs. It does **not** ban directory listings
-as a format; a listing is fine when it's an editorially-curated business
-listing rather than a manipulative scheme. The risk is in *how* a listing is
+Google's spam policies define link spam as "creating links to or from a site
+primarily for the purpose of manipulating search rankings" — examples
+include buying/selling links, excessive link exchanges, automated
+link-creation programs, and, explicitly, **"low-quality directory or
+bookmark site links."** *(P)* It does **not** ban directory listings as a
+format; a listing is fine when it's an editorially-curated business listing
+rather than a manipulative scheme. The risk is in *how* a listing is
 acquired (mass-submitted, paid purely for link-passing) rather than in
 directories as a category. Pacing submissions and using consistent brand
 fields (rather than mass-blasting dozens of directories in a day) lines up
@@ -36,14 +39,18 @@ publish a specific submission-rate threshold *(inference from the primary
 doc, not a stated Google threshold)*.
 
 ### The strongest evidence in this track: Yext's AI-citation dataset — and its scope
-- Yext's "AI Citation Behavior Across Models" research (first-party, disclosed
-  methodology) analyzed 6.8 million AI citations from 1.6 million queries per
-  model, collected 2025-07-01 to 2025-08-31, across ChatGPT, Gemini, and
-  Perplexity, spanning 4 intent quadrants and 4 industries (retail, financial
-  services, healthcare, food service). Finding: **48.73% of ChatGPT citations
-  came from third-party sites** (directories/review platforms such as Yelp,
-  TripAdvisor, MapQuest); for subjective "what's the best…" queries the
-  third-party/directory share rose to 46.3% even within that mix.
+- Yext's AI-citation research (first-party, disclosed methodology) analyzed
+  6.8 million AI citations across 1.6 million responses, collected
+  2025-07-01 to 2025-08-31, across ChatGPT, Gemini, and Perplexity, spanning
+  4 intent quadrants and 4 industries (retail, financial services,
+  healthcare, food service). Finding: **48.73% of ChatGPT citations came
+  from third-party sites** (directories/review platforms such as Yelp,
+  TripAdvisor, MapQuest), while Gemini drew 52.15% from brand-owned sites;
+  Yext puts the directory share for subjective "what's the best…" queries
+  at 46.3%. *(I)* Yext's own headline cuts the other way: it reports **86%
+  of citations come from brand-managed sources** — websites 44%, *listings*
+  42% — because it counts a brand's directory listings as brand-managed.
+  Either way, listings a brand controls are a large share of what AI cites.
 - **Scope limit — read this carefully before reusing the stat**: this dataset
   covers general local/consumer business categories (retail, financial
   services, healthcare, food service), not software/SaaS or AI-tool
@@ -57,17 +64,15 @@ doc, not a stated Google threshold)*.
   queries pull heavily from third-party/directory sources"), not a
   directly-measured finding — the playbooks track separately confirmed it
   found zero direct evidence for that narrower claim.
-- Averi (680M AI citations analyzed, early 2026, methodology not
-  independently verified here) found only 11% domain overlap between
-  ChatGPT's and Perplexity's citation sets — a directory cited by one
-  assistant is not a reliable proxy for being cited by another. Averi also
-  reports brands present on 4+ platforms are 2.8x more likely to appear in
-  ChatGPT responses — directionally supportive of broad, consistent
-  multi-directory presence, but "platforms" here conflates directories with
-  social/review/press presence, and the source doesn't disentangle whether
-  presence *causes* citation or already-cited brands simply get listed
-  everywhere *(heuristic, causal direction unresolved — flag for
-  spot-check)*.
+- Cross-engine overlap is low: only ~11% of cited domains are shared
+  between ChatGPT and Perplexity (reported by Averi's Jan 2026 aggregator
+  report, citing a third-party analysis; consistent with TopCited internal
+  research) — a directory cited by one assistant is not a reliable proxy
+  for being cited by another. *(I)* (The large citation dataset often cited
+  alongside it — 680M citations — is Profound's Aug 2024–Jun 2025 analysis,
+  not Averi's. A widely repeated "brands on 4+ platforms are 2.8x more
+  likely to appear in ChatGPT" figure could not be found in the Averi
+  report and should not be cited.)
 
 ### Directory tiers and what each is actually good for
 - **AI-tool/SaaS directories** (There's An AI For That, Futurepedia,
@@ -116,6 +121,6 @@ doc, not a stated Google threshold)*.
 ## How this shows up in the workflow
 Stage 5 (technical & entity fixes) uses this file to explain to the user
 *why* directory submissions matter and which tiers are worth the effort,
-scoped honestly to what the Yext/Averi data actually covers versus what's
+scoped honestly to what the Yext data actually covers versus what's
 inferred. The mechanics of picking and submitting to specific directories
 live in `../playbooks/directories-playbook.md` (Stage 7).

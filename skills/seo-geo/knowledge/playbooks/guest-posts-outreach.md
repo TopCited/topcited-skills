@@ -1,12 +1,13 @@
 ---
 topic: Guest posts and listicle outreach — target selection and pitch structure
 stage-relevance: [7]
-last-verified: 2026-08-20
+last-verified: 2026-10-24
 sources:
   - internal TopCited directories-and-backlinks playbook (2026-06-14, generalized)
   - internal TopCited content-distribution playbook (2026-06-14, generalized)
   - [industry] response-rate and quality-funnel data (t-ranks.com, staydigitalmarketers.com, buzzstream.com, accessed 2026-08-20) — vendor/practitioner-reported, not independently audited
   - [industry] HARO-successor platform landscape (presspulse.ai, linkinbound.com, accessed 2026-08-20)
+  - [primary] Featured, About page (featured.com/about, accessed 2026-10-24) — owns and runs HARO since 2025
   - heuristic
 ---
 
@@ -34,14 +35,17 @@ pattern that drives being recommended rather than just found.
   that route journalist and blogger source requests) are a source of
   low-effort, high-authority bylined mentions — answering a relevant query
   with a specific, useful quote earns a mention with a link, for the cost of
-  writing one good answer. HARO itself was discontinued/relaunched under
-  Cision; as of 2026 the useful current platforms to name are **Qwoted**,
-  **Featured** (the closest spiritual successor — structured questions,
-  picked answers published across a network of sites), **MentionMatch**
-  (formerly Help A B2B Writer, now under Superpath — most relevant for a B2B
-  SaaS brand specifically), and **Source of Sources** (founded by HARO's
-  original founder, has a free tier) [industry, converged across several
-  2026 sources, no primary platform comparison found]. Best practice:
+  writing one good answer. HARO's history matters because old guides are
+  wrong about it: Cision renamed HARO "Connectively" and shut it down in
+  Dec 2024; **Featured** acquired the HARO brand and relaunched it as a free
+  daily email in Apr 2025, and revived Connectively in 2026 [primary for
+  Featured's ownership; industry for the dates]. As of 2026 the useful
+  platforms to name are **HARO / Featured** (free plan, paid from ~$29/mo;
+  structured questions, picked answers published across a network of
+  sites), **Qwoted**, **MentionMatch** (formerly Help A B2B Writer, now
+  under Superpath — most relevant for a B2B SaaS brand specifically), and
+  **Source of Sources** (founded by HARO's original founder, free) [industry,
+  all confirmed live 2026-10; no primary platform comparison found]. Best practice:
   **respond within the first hour**, **lead with a ready-to-publish quote**
   rather than a pitch to be interviewed later, and **give specific,
   original expertise rather than generic AI-sounding answers** — editors are

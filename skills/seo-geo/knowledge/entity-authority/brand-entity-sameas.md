@@ -1,12 +1,14 @@
 ---
 topic: Brand entity establishment via structured data and sameAs — what's confirmed vs assumed
 stage-relevance: [5]
-last-verified: 2026-08-20
+last-verified: 2026-10-24
 sources:
-  - https://schema.org/sameAs
-  - https://developers.google.com/search/docs/appearance/structured-data/organization
+  - https://schema.org/sameAs (schema.org V30.1, 2026-09-16)
+  - https://developers.google.com/search/docs/appearance/structured-data/organization (updated 2026-09-08)
   - https://developers.google.com/knowledge-graph
-  - https://www.wikidata.org/wiki/Wikidata:Requests_for_comment/Notability_policy_reform
+  - https://www.wikidata.org/wiki/Wikidata:Notability (edited 2026-09-28)
+  - https://www.wikidata.org/wiki/Wikidata:Requests_for_comment/Notability_policy_reform (open RfC, Dec 2025 – 2026)
+  - https://www.wikidata.org/wiki/Wikidata:Self-promotion (essay)
   - https://www.mlforseo.com/knowledge-graph-strategy/wikidata-for-brands-notability-criteria-and-a-realistic-path/ (heuristic framing)
   - https://jottler.co/blog/knowledge-graph-seo (heuristic)
   - https://www.stackmatix.com/blog/wikipedia-wikidata-knowledge-graph (heuristic)
@@ -46,14 +48,16 @@ than an observed, measured outcome *(heuristic)*:
 - schema.org defines `sameAs` narrowly as "URL of a reference Web page that
   unambiguously indicates the item's identity" (e.g. a Wikipedia or Wikidata
   page, or the official site) — a `Thing`-level property, in use on 10M+
-  domains as of July 2026.
+  domains per schema.org's Aug 2026 usage aggregation.
 - Google's own Organization structured-data documentation is the key primary
   source here, and it does **not** say `sameAs` drives Knowledge Panel
   eligibility or entity disambiguation. It instead names a different, formal
-  set of properties (`iso6523`, `naics`) as what's "used behind the scenes to
-  disambiguate your organization from other organizations," and says the
-  plain `url` property — not `sameAs` — "helps Google uniquely identify your
-  organization."
+  set of properties (`iso6523Code`, `naics`) as what's "used behind the
+  scenes to disambiguate your organization from other organizations," and
+  says the plain `url` property — not `sameAs` — "helps Google uniquely
+  identify your organization." It lists no required properties; other
+  recommended identifiers include `duns`, `leiCode`, `globalLocationNumber`,
+  `taxID`, and `vatID`.
 - **This means the common claim "`sameAs` is a ranking/disambiguation
   signal" overstates what Google itself documents.** Treat `sameAs` as a
   legitimate, low-cost identity hint worth adding — not a confirmed
@@ -86,13 +90,22 @@ than an observed, measured outcome *(heuristic)*:
   facts across sources than by `sameAs` links alone — our own inference from
   reading the primary doc, not a claim any source states explicitly.
 
-### Wikidata as the more defensible long-game play
-- Wikidata's notability bar is lower than Wikipedia's — an entity qualifies
-  if it can be "clearly identified, reliably distinguished from other
-  entities and supported by verifiable information," per Wikidata's own
-  policy discussion. That makes a Wikidata item a realistic near-term target
-  for a small SaaS brand, well before it could clear Wikipedia's
-  independent-coverage bar.
+### Wikidata: a long-game outcome, not something to self-create
+- Wikidata's notability bar is lower than Wikipedia's — the current policy
+  admits "a clearly identifiable conceptual or material entity" that can be
+  described using "serious and publicly available references." *(P)*
+- **But self-created brand items are discouraged, and may soon be banned.**
+  Wikidata's Self-promotion essay already says creating an item about your
+  own organisation is "strongly discouraged" and "likely to be deleted." A
+  notability-reform RfC open since Dec 2025 proposes that "creating an Item
+  about yourself, your close relatives or your business is not permitted,"
+  that self-assigned identifiers or ones "obtained without editorial review
+  (such as typical social-media profiles) are not sufficient," and that
+  "routine listings, directory entries" don't count as significant
+  coverage. *(P — proposal text, not yet adopted as of 2026-10)* So a
+  Wikidata item is something a brand earns through independent coverage
+  that others document — not a near-term task for the brand (or an agency
+  acting for it) to do itself.
 - Wikidata is reported to be part of the pretraining corpus for major LLM
   families (structured subject-predicate-object triples) — the mechanistic
   reason several 2026 GEO-agency blogs claim a clean Wikidata item improves
@@ -111,10 +124,11 @@ than an observed, measured outcome *(heuristic)*:
    across the site's own schema, social profiles, and any directory listing
    (see `directories.md`) — treat drift anywhere as a bug to fix, not a
    cosmetic issue.
-3. Pursue a Wikidata item once the brand has enough independent,
-   verifiable coverage to support one (press mentions, review platforms,
-   directory listings) — it's a lower bar than Wikipedia and is the
-   higher-confidence long-game play relative to `sameAs` alone.
+3. **Don't create a Wikidata item for the brand yourself.** Earn
+   independent, editorially-reviewed coverage (press, analyst or academic
+   mentions — directory listings and social profiles won't count) and let
+   an independent editor create the item; once one exists, add it to
+   `sameAs` and keep its facts consistent with the site.
 4. Don't oversell `sameAs`/consistency work internally or to a user as a
    ranking lever with a known size — describe it as "widely recommended
    best practice with a plausible but not Google-confirmed mechanism."
@@ -122,5 +136,6 @@ than an observed, measured outcome *(heuristic)*:
 ## How this shows up in the workflow
 Stage 5 (technical & entity fixes) uses this file when generating
 `Organization`/`Person` structured data (including `sameAs`) and when
-deciding whether a Wikidata push is worth recommending to the user — framed
-honestly as hygiene/long-game work rather than a measured ranking factor.
+explaining to the user why a Wikidata item is a by-product of earned
+coverage rather than something to submit — framed honestly as hygiene/
+long-game work rather than a measured ranking factor.

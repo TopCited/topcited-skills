@@ -1,11 +1,13 @@
 ---
 topic: Social channels (LinkedIn, X) — post patterns and cadence for visibility-driving content
 stage-relevance: [7]
-last-verified: 2026-08-20
+last-verified: 2026-10-24
 sources:
   - internal TopCited content-distribution playbook (2026-06-14, generalized)
   - internal TopCited generated LinkedIn/X drafts (2026-06-14, generalized as pattern examples)
   - [industry] LinkedIn personal-vs-company reach analyses (tryordinal.com, digitalapplied.com, refinelabs.com, accessed 2026-08-20) — third-party analyses, no LinkedIn primary source publishes exact reach percentages
+  - [industry] Metricool 2026 LinkedIn study (673,658 posts) and Algorithm InSights 2025 (1.8M posts), via search summaries, accessed 2026-10-24
+  - [industry] LinkedIn feed-ranking rebuild, Mar 2026 (searchengineland.com/linkedin-updates-feed-algorithm-llm-ranking-retrieval-471708, accessed via search summary)
   - heuristic
 ---
 
@@ -53,17 +55,18 @@ than being one-off creative writing.
   member) and the company page — personal-profile reach is much higher on
   LinkedIn's algorithm than company-page reach, so treat the personal post as
   primary and the company reshare as reinforcement, not the other way
-  around. This is more than a general impression: 2026 third-party analyses
-  put company pages at roughly **5% of LinkedIn's feed allocation vs ~65%
-  for personal profiles**, and put personal-profile reach at **~561% higher**
-  than company pages sharing identical content. The gap is also **widening**,
-  not stable — company-page organic reach declined an estimated **60–66%**
-  from 2024 to early 2026, a steeper drop than personal profiles' ~50%
-  decline over the same window, so leaning further into personal-profile
-  posting is an intensifying trend, not just a static ratio *(industry —
-  convergent third-party analyses, not LinkedIn's own published numbers;
-  re-verify yearly since methodology isn't fully disclosed in any single
-  source)*.
+  around. The better-sourced numbers: Metricool's 2026 study (673,658
+  posts) found personal-profile posts get **~63% higher engagement** than
+  company-page posts (2.60% vs 1.74%), and a 2025 analysis of 1.8M posts
+  found company posts reach only **~1.6% of followers** *(industry,
+  disclosed sample sizes)*. Widely repeated bigger figures — "company pages
+  get 5% of feed allocation vs 65% for people," "personal reach is 561%
+  higher" — have no traceable study behind them; don't cite them.
+  LinkedIn also rebuilt feed ranking in Mar 2026 around LLM-based
+  retrieval and topical relevance, favoring expert posts that travel beyond
+  the poster's connections and demoting engagement bait *(industry, per
+  LinkedIn Engineering coverage)* — substance on a topic the poster is
+  known for matters more than engagement tricks.
 - **X**: longer-form findings work better as a numbered thread than as a
   single post — each tweet in the thread should be able to stand alone as a
   small, complete claim, with the payoff/link placed in the final tweet
@@ -75,9 +78,9 @@ than being one-off creative writing.
   reader something concrete to act on.
 - **Broken preview cards silently kill this whole channel.** If the site's
   Open Graph image or metadata is broken, every social post's link preview
-  renders blank or broken, which measurably suppresses click-through — verify
-  OG tags render correctly (see `technical-seo/structured-data.md`, pending)
-  before investing in a social cadence.
+  renders blank or broken, which suppresses click-through — verify OG tags
+  render correctly (e.g. with LinkedIn's Post Inspector, or by pasting the URL
+  into a draft post) before investing in a social cadence. *(heuristic)*
 
 ### Cadence
 Two to three posts per week is a sustainable default that keeps the account

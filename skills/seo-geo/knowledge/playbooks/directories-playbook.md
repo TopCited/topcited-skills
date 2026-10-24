@@ -1,12 +1,12 @@
 ---
 topic: Directory submissions — how to pick directories and submit without looking spammy
 stage-relevance: [7]
-last-verified: 2026-08-20
+last-verified: 2026-10-24
 sources:
   - internal TopCited directories-and-backlinks playbook (2026-06-14, generalized)
-  - [primary] Product Hunt, "How Product Hunt Works" (producthunt.com/launch/how-product-hunt-works, accessed 2026-08-20)
-  - [primary] Futurepedia submission/verified pricing (futurepedia.io/submit-tool, futurepedia.io/verified, accessed 2026-08-20)
-  - [primary] There's An AI For That pricing (theresanaiforthat.com/s/pricing/, accessed 2026-08-20)
+  - [primary] Product Hunt, "How Product Hunt Works" and "Preparing for launch" (producthunt.com/launch/how-product-hunt-works, producthunt.com/launch/preparing-for-launch, accessed 2026-10-24)
+  - [primary] There's An AI For That, "Get featured" (theresanaiforthat.com/get-featured/, accessed 2026-10-24)
+  - [industry] Futurepedia pricing — former submission pages (futurepedia.io/submit-tool, /verified) return 404 as of 2026-10-24; current pricing seen only in search summaries
   - [industry] 2026 directory-landscape roundups (aiso.blog, getintel.ai, revavenues.ai, accessed 2026-08-20)
   - [industry] launch-timing guides (favors.dev, getlaunchlist.com, accessed 2026-08-20)
   - heuristic
@@ -64,14 +64,17 @@ cheapest visibility wins a new site has.
    not evidence the listing itself caused the citation)*.
 3. **Weigh cost against verified value**, not against sticker price alone —
    and re-verify pricing per directory, since it changes without notice and
-   "free" often isn't. As of 2026-08-20, Futurepedia charges **$247** (Basic,
-   7-day publish) or **$497** (Verified, 2-day + editorial review) with no
-   confirmed free tier live [primary]; There's An AI For That offers a
-   **$49** "website only" tier (1–2 day turnaround) and a **$347**
-   "everything" tier (includes their ~2.5M-subscriber newsletter), plus a
-   **free route**: a monthly X thread where indie makers can submit at no
-   cost, with one tool per thread picked for a free listing [primary/
-   industry]. Check current pricing before assuming a directory is free or
+   "free" often isn't. As of 2026-10-24: There's An AI For That charges
+   **$49** for a listing (website only, or listing + "Just Released") and
+   **$437** one-off for "everything" (listing + Just Released + its
+   2.5M+-subscriber newsletter), ~1–2 day processing, with a full automatic
+   refund if the tool isn't published; paid add-ons include a $99/mo
+   highlight [primary]. A previously reported free route (a monthly X
+   thread) isn't mentioned on its current pages — treat as unverified.
+   Futurepedia restructured its site in 2026 and its old submission pages
+   are gone; search summaries suggest a ~$497 "Verified" tier with the
+   cheaper tier sold out, but this couldn't be confirmed on the site
+   [industry]. Check current pricing before assuming a directory is free or
    assuming the sticker price is the only tier. A directory with a
    submission fee that's well-established in the target category can still
    be worth more than ten free listings on directories no one visits. Where
@@ -104,10 +107,13 @@ own rules, straight from Product Hunt's own guide
   matter more.
 - **Only real, triable products get accepted** — blog posts, lists, and
   closed betas nobody can actually try are rejected.
-- **Best launch timing is Tuesday or Wednesday, 12:01 AM Pacific** —
-  weekends and Fridays underperform [industry consensus across several 2026
-  launch guides; Product Hunt itself doesn't publish an official "best
-  day"].
+- **Launch at 12:01 AM Pacific** — Product Hunt itself recommends it as "a
+  rule of thumb," because the homepage runs on a 24-hour Pacific-time
+  cycle [primary]. **Tuesday or Wednesday** tends to work best, with
+  weekends and Fridays underperforming [industry consensus across several
+  2026 launch guides; Product Hunt doesn't name a best day].
+- **Unreleased products** can launch only with a trustworthy release
+  timeline; ask for feedback, "NOT upvotes" [primary].
 
 ### Submission mechanics
 - **Identity consistency is the whole game.** Every listing should carry the
@@ -115,7 +121,7 @@ own rules, straight from Product Hunt's own guide
   mismatched name or an old URL fragments the entity signal that both search
   engines and LLMs use to recognize "this is the same company" across the
   web — the same underlying mechanism that makes broken `sameAs` links a
-  negative signal (see `entity-authority/brand-entity-sameas.md`, pending).
+  negative signal (see `../entity-authority/brand-entity-sameas.md`).
 - **Prepare the listing payload once, reuse everywhere**: short description
   (~160 chars), medium description (~50 words), long description (~120
   words), a tags/category list, and — where the field exists — an

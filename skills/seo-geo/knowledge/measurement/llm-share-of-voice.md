@@ -1,11 +1,15 @@
 ---
 topic: How LLM/AI share-of-voice is computed, and where the metric breaks down
 stage-relevance: [8]
-last-verified: 2026-08-20
+last-verified: 2026-10-24
 sources:
   - https://www.apollotechnical.com/ai-share-of-voice-best-tools-and-how-to-measure-it/
-  - https://www.semrush.com/blog/how-to-measure-ai-share-of-voice/
-  - https://searchengineland.com/ai-share-of-voice-metrics-that-matter-more-479611
+  - https://www.semrush.com/blog/how-to-measure-ai-share-of-voice/ (2026-07-17)
+  - https://searchengineland.com/ai-share-of-voice-metrics-that-matter-more-479611 (2026-06-08)
+  - https://docs.peec.ai/understanding-your-performance (Peec cadence)
+  - https://docs.peec.ai/metrics-overview (Peec retrieved vs cited)
+  - https://www.tryprofound.com/blog/is-once-a-day-enough (Profound, 2026-07-08)
+  - https://ahrefs.com/blog/brand-radar-methodology/ (Ahrefs Brand Radar, updated 2026-02-26)
   - TopCited internal research (LLM-monitoring industry study, 2026-08 — unpublished): vendor methodology (Peec, Profound, Ahrefs Brand Radar), cross-engine citation overlap, variance decomposition
   - heuristic
 ---
@@ -43,27 +47,33 @@ Nearly every vendor uses the same base calculation:
   tracks share of voice **per platform** — ChatGPT, Google AI Mode,
   Perplexity, Gemini separately — because each builds answers differently.
   *(I)*
-- **Peec AI** runs prompts once per 24h per model, logged out, and reports
+- **Peec AI** runs prompts on a 24-hour cycle per model and reports
   **Visibility** (share of chats mentioning the brand), **Position**
-  (average rank of the mention within the response), and **Sentiment**,
-  with visibility smoothed over a **rolling 7-day window** to cut day-to-day
-  noise. Peec is also the vendor most transparent about splitting
-  "Sources" (URLs the model's tool-use accessed) from "Citations" (URLs
-  actually referenced in the visible text) as two distinct signals.
-  *(I — TopCited internal research)*
-- **Profound** captures via geo-distributed headless browsers, once per
-  day per platform/config, across ~11 surfaces. Its own variance experiment
-  found that sampling 10×/day vs. 1×/day changed measured visibility by
-  ≤2 percentage points, because **platform response drift dominates
+  (average rank of the mention within the response), and **Sentiment**.
+  Its dashboard defaults to a 7-day date range, but the docs describe no
+  smoothing — an earlier "rolling 7-day window" description of Peec's
+  method was a misreading. Peec is also the vendor most transparent about
+  splitting **Retrieved** (a URL appeared as a source the model accessed)
+  from **Cited** (cited inline in the visible answer) as two distinct
+  signals. *(I — vendor docs)*
+- **Profound** captures once per day per platform/config. Its published
+  variance experiment (753 prompts, 7 platforms, 14 days) found that
+  sampling 10×/day vs. 1×/day changed measured visibility by ~2 percentage
+  points (78.7% vs 80.4%), because **platform response drift dominates
   sampling noise** — resampling more within a day buys little; a broader
   prompt portfolio buys more stability than deeper sampling per prompt.
-  *(I — TopCited internal research)*
-- **Ahrefs Brand Radar** runs prompts **monthly** (not daily) through free
-  public web interfaces, ~14M queries/mo per chatbot, separately from its
-  continuous AI Overviews crawl (~282M/mo). Its prompt universe is
-  synthetic — derived from Ahrefs' own keyword database plus
-  People-Also-Ask harvesting plus semantic "Fanout" expansion — not
-  observed real user prompts. *(I — TopCited internal research)*
+  *(I — vendor experiment, disclosed method)* Its collection architecture
+  (reported elsewhere as geo-distributed headless browsers across ~11
+  surfaces) isn't described in that post. *(I — TopCited internal
+  research)*
+- **Ahrefs Brand Radar** refreshes chatbot data **monthly** (not daily;
+  90-day window) through free public web interfaces — roughly 13–15M
+  prompts/mo per chatbot (ChatGPT ~14.5M, Perplexity and Gemini ~14.6M,
+  Copilot ~13.3M, Grok ~13M) — while AI Mode (~24M/mo) and AI Overviews
+  (~282M/mo) update continuously. Its prompt universe is synthetic —
+  derived from Ahrefs' own keyword database plus People-Also-Ask harvesting
+  plus semantic "Fanout" expansion — not observed real user prompts.
+  *(I — vendor methodology page)*
 
 ### Why the metric is contested
 Search Engine Land's sharpest documented critique (Dan Taylor, 2026-06-08):
@@ -72,8 +82,9 @@ universe — legacy SEO had exactly that (a defined keyword list as
 denominator). AI prompts have no fixed universe; "the universe of possible
 AI prompts is effectively infinite," so every vendor's number is actually
 computed over a small, arbitrary, vendor-chosen subset of static prompts
-presented as if it measured the open web. Concrete example: when OpenAI
-shipped ChatGPT 5.0 (September 2025), platform-wide outbound-citation
+presented as if it measured the open web. Concrete example given in the
+article: when OpenAI rolled out GPT-5 in ChatGPT (launched 2025-08-07; the
+article dates it to September 2025), platform-wide outbound-citation
 volume dropped, and every vendor's visibility numbers cratered
 simultaneously — for reasons having nothing to do with any brand's actual
 standing, purely a UI change in how much the model links out. Proposed

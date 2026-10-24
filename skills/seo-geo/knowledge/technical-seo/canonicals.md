@@ -1,9 +1,11 @@
 ---
 topic: Canonical-tag pitfalls, how Google actually picks a canonical, and how to detect problems
 stage-relevance: [4, 5]
-last-verified: 2026-08-20
+last-verified: 2026-10-24
 sources:
-  - https://developers.google.com/search/docs/crawling-indexing/canonicalization-troubleshooting
+  - https://developers.google.com/search/docs/crawling-indexing/canonicalization-troubleshooting (updated 2026-08-21)
+  - https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls
+  - https://www.screamingfrog.co.uk/seo-spider/release-history/
   - https://www.digitalapplied.com/blog/google-canonicalization-fixes-two-weeks-2026
   - https://seonorth.ca/screaming-frog/audit-canonicalized-urls/
   - https://techsy.io/en/blog/screaming-frog-guide
@@ -26,15 +28,17 @@ it.
   quality of the content." It clusters near-duplicate pages and picks a
   representative URL using signals that include the `rel="canonical"`
   annotation, redirects, internal linking patterns, sitemap inclusion, and
-  HTTPS vs HTTP — not the tag alone.
+  HTTPS vs HTTP — not the tag alone. *(P)*
 - **Troubleshooting path Google documents**: use URL Inspection to see which
-  URL Google currently treats as canonical for a cluster; after a fix, allow
-  up to **two weeks** for re-evaluation; re-indexing requests are
-  quota-limited.
-- **Syndicated content is not a good `rel=canonical` use case** — Google is
-  explicit that syndicated copies are typically legitimately different pages,
-  not duplicates, so canonicalizing them back to the original suppresses
-  pages that should stand on their own.
+  URL Google currently treats as canonical for a cluster; after a fix,
+  "Google might hold pages in a duplicate cluster for up to **two weeks**";
+  re-indexing requests are quota-limited, so "reserve it for your most
+  important URLs." *(P)*
+- **Syndicated content is not a good `rel=canonical` use case** — Google says
+  the canonical element "is not recommended for those who want to avoid
+  duplication by syndication partners because the pages are often very
+  different," and that "the most effective solution is for partners to block
+  indexing of your content" (i.e. the partner `noindex`es its copy). *(P)*
 - **Common pitfalls, 2026 practitioner consensus** (heuristic):
   - Relative rather than absolute URLs in the `rel="canonical"` tag.
   - Multiple/conflicting canonical tags on one page — frequently a CMS-plugin
@@ -56,7 +60,8 @@ it.
     Canonicals tab surfaces missing canonicals on indexable pages, canonicals
     pointing at unrelated URLs (common post-migration), and canonical targets
     that are themselves non-indexable (404 or noindexed). Version 24.0
-    (May 2026) added an MCP server for natural-language crawl queries.
+    (2026-05-19) added an "SEO Spider MCP" server for natural-language crawl
+    queries; 24.3 (2026-06-29) is the latest release as of 2026-10. *(P)*
   - **Ahrefs Site Audit** trades per-page depth for automated weekly
     re-crawls with issue tracking and health scoring over time — better suited
     to ongoing monitoring than a one-off deep audit. (heuristic — comparative

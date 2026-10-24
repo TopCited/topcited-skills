@@ -1,14 +1,16 @@
 ---
 topic: Practical differences between SEO, AEO, and GEO — and where their tactics conflict
 stage-relevance: [1]
-last-verified: 2026-08-20
+last-verified: 2026-10-24
 sources:
   - https://firstlinesoftware.com/blog/aeo-vs-geo-vs-seo/ — representative SEO/AEO/GEO framing [industry/heuristic]
   - https://en.wikipedia.org/wiki/Generative_engine_optimization — notes no established consensus definition as of early 2026 [heuristic]
   - https://arxiv.org/abs/2311.09735 — Aggarwal et al., "GEO: Generative Engine Optimization," KDD 2024 [documented, peer-reviewed]
   - https://naturaily.com/blog/geo-vs-seo — keyword-density-vs-natural-language tension [industry/heuristic]
-  - https://searchengineland.com/chatgpt-retrieval-stack-index-cache-pages-485036 — evidence that SEO rank and GEO citation diverge (6.8–7.8% overlap) [industry]
-  - https://www.wislr.com/articles/gemini-vs-ai-overviews-vs-ai-mode — AI Overviews as the exception that keeps SEO load-bearing [industry, unverified against primary]
+  - https://arxiv.org/html/2610.15033v1 — ChatGPT retrieval vs Google/Bing rankings, Oct 2026 preprint [industry/academic, not peer-reviewed]
+  - https://developers.google.com/search/docs/appearance/ai-features — Google, AI Overviews / AI Mode are "rooted in our core Search ranking and quality systems" [documented]
+  - https://ahrefs.com/blog/ai-overview-citations-top-10/ — AI Overview citations vs top-10 rankings, 2026-03-02 update [industry, disclosed methodology]
+  - https://developers.google.com/search/docs/essentials/spam-policies — Google spam policies, incl. manipulating generative AI responses [documented]
 ---
 
 # SEO vs AEO vs GEO — practical differences and conflicts
@@ -81,30 +83,39 @@ things requiring completely different playbooks.
   rank page-one via technical SEO optimization while lacking the semantic
   depth AI models weight for citation — SEO ranking success does not
   transfer to GEO citation success. This has the clearest *evidence* behind
-  it in this file (not just heuristic): the finding that Bing top-3 rank
-  predicts ChatGPT citation only 6.8–7.8% of the time (industry, single
-  outlet, flagged for spot-check in the companion file
-  `how-llms-source-answers.md`).
+  it in this file (not just heuristic): an Oct 2026 preprint found 97% of
+  the pages ChatGPT retrieved were absent from Google's top 50 for the same
+  query, and 99% absent from Bing's top 30 (industry/academic preprint; see
+  the companion file `how-llms-source-answers.md`).
 
 ### Where they reinforce rather than conflict
 - Crawlability, indexability, and structural clarity (clean HTML, no
   JS-gated content, clear headings) are prerequisites for **both** SEO and
   GEO — no source found a case where good technical SEO hygiene hurt GEO.
-  Answer-first content, schema markup, FAQ sections, and freshness serve
-  classic AEO/snippet capture and GEO simultaneously. (heuristic, consistent
-  across sources)
+  Answer-first content, FAQ-style sections, and freshness serve classic
+  AEO/snippet capture and GEO simultaneously. (heuristic, consistent across
+  sources) Two cautions: Google retired FAQ rich results in May 2026, and
+  says no special markup is needed for its AI features (see
+  `../technical-seo/structured-data.md`); and Google's spam policy now
+  explicitly covers "attempting to manipulate generative AI responses in
+  Google Search" (documented) — GEO tactics that would count as spam in
+  classic SEO count as spam here too.
 
-### The exception that blurs the SEO/GEO line: Google AI Overviews
-- Because AI Overviews reportedly draws from the *same* organic ranking
-  pipeline (see `how-llms-source-answers.md`), classic SEO ranking success
-  is much more directly load-bearing for AI Overview inclusion than for
-  ChatGPT/Claude/Perplexity citation. In other words, the "SEO vs GEO
-  conflict" is not uniform across AI surfaces — it's sharpest for
-  Bing/OpenAI-backed and other index-partnership surfaces, and weakest for
-  Google's own AI Overviews, where good SEO is close to a precondition
-  rather than a weak predictor. (industry, unverified against a Google
-  primary source — synthesis point not stated directly in any single
-  source found)
+### The exception that blurs the SEO/GEO line: Google AI Overviews and AI Mode
+- Google says AI Overviews and AI Mode are "rooted in our core Search
+  ranking and quality systems" and use query fan-out across related
+  sub-questions (documented). So classic SEO — being indexed, snippet-
+  eligible, and well-ranked in Google — is more directly load-bearing for
+  Google's AI surfaces than for ChatGPT/Claude/Perplexity citation. But the
+  link to ranking for the *head* query has weakened: only ~38% of AI
+  Overview citations ranked in the top 10 for the original query in Ahrefs'
+  Mar 2026 data, down from 76% in 2025 (industry, disclosed methodology).
+  In other words, the "SEO vs GEO conflict" is not uniform across AI
+  surfaces — it's sharpest for engines with their own or third-party
+  indexes (ChatGPT, Perplexity, Claude), and weakest for Google's own AI
+  features, where good SEO *across a topic's sub-questions* is close to a
+  precondition rather than a weak predictor. (synthesis of the documented
+  and industry points above)
 
 ## How this shows up in the workflow
 Stage 1 (intake) uses this file to explain to the client, in plain terms,

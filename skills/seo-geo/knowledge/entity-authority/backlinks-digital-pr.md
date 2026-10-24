@@ -1,12 +1,14 @@
 ---
 topic: What makes backlinks valuable now, and why brand mentions outcorrelate them for AI citation
 stage-relevance: [5, 7]
-last-verified: 2026-08-20
+last-verified: 2026-10-24
 sources:
-  - https://developers.google.com/search/docs/advanced/guidelines/link-schemes
+  - https://developers.google.com/search/docs/essentials/spam-policies#link-spam (updated 2026-08-28; the old link-schemes URL redirects here)
   - https://colabdxb.ae/backlinks-in-2026-advanced-strategy-real-data-and-what-actually-works/ (heuristic, no traceable primary study)
-  - Ahrefs 75,000-brand study, Aug 2025 + Dec 2025 follow-up (not directly fetched — relying on consistent secondary reporting; flag for spot-check against ahrefs.com)
-  - Muck Rack, Dec 2025 analysis (secondary figures inconsistent across write-ups — flag for spot-check)
+  - https://ahrefs.com/blog/ai-overview-brand-correlation/ (Ahrefs 75,000-brand study, 2025-05-26)
+  - https://ahrefs.com/blog/ai-brand-visibility-correlations/ (Ahrefs follow-up across ChatGPT, AI Mode, AI Overviews, 2025-12-12)
+  - https://markets.financialcontent.com/wss/article/gnwcq-2025-12-2-earned-media-still-drives-generative-ai-citations-as-press-release-visibility-grows (Muck Rack "What is AI reading?", 2025-12-02, press-release mirror)
+  - https://www.globenewswire.com/news-release/2026/05/07/3290268/0/en/generative-pulse-earned-media-consistently-drives-ai-citations-holding-at-84.html (Muck Rack Generative Pulse, 2026-05-07)
   - https://arxiv.org/abs/2311.09735 (Aggarwal et al., "GEO: Generative Engine Optimization," KDD 2024)
   - https://cracklepr.com/insights/ai-optimized-pr-playbook (heuristic, agency marketing claim)
   - https://www.loopexdigital.com/digital-pr/digital-pr-for-ai-visibility (heuristic, agency marketing claim)
@@ -26,11 +28,16 @@ trustworthy.
 ## What practitioners need to know
 
 ### Backlinks: the documented rule, and the industry numbers around it
-- Google's link-spam policy is the primary source here: a link earns ranking
-  value only when the linking site included it "for editorial reasons," not
-  payment, reciprocity, or automation. "Google treats a backlink as a
-  recommendation" is an accurate industry paraphrase of that documented
-  intent.
+- Google's link-spam policy is the primary source here: "Link spam is the
+  practice of creating links to or from a site primarily for the purpose of
+  manipulating search rankings" — buying/selling links, excessive link
+  exchanges, automated link programs, and paid guest posts/advertorials
+  without `rel="sponsored"`/`nofollow` are its named examples. The
+  practical reading — a link counts when it's an editorial choice, not
+  something paid for, traded, or automated — is an industry paraphrase of
+  that policy, not Google's wording. Since 2026 the spam policy also covers
+  "attempting to manipulate generative AI responses in Google Search," so
+  manufactured mentions aimed at AI Overviews/AI Mode are in scope too.
 - Widely repeated industry figures — "the #1 ranking result has ~3.8x more
   backlinks than positions 2–10," and "links on topically-matched DR50+
   domains produce ~2.8x greater ranking improvement than lower-relevance
@@ -40,33 +47,33 @@ trustworthy.
   independently verified here.
 
 ### The core shift: brand mentions now outcorrelate backlinks for AI citation
-- **Ahrefs' 75,000-brand study** (first-party, methodology partially
-  disclosed via Ahrefs' own posts and corroborated across secondary
-  write-ups; original Aug 2025, Dec 2025 follow-up expanding to ChatGPT + AI
-  Mode + AI Overviews) reports: web brand mentions correlate with AI
-  Overview presence at **0.664**, versus backlinks at **0.218** — brand
-  mentions roughly 3x more predictive than backlinks. Other reported
-  correlations from the same study: brand anchor text 0.527, brand search
-  volume 0.392, and YouTube mentions ~0.737 (the single strongest individual
-  signal reported).
+- **Ahrefs' 75,000-brand study** (first-party, disclosed methodology;
+  original 2025-05-26 on AI Overviews, 2025-12-12 follow-up expanding to
+  ChatGPT + AI Mode + AI Overviews) reports: branded web mentions correlate
+  with AI Overview presence at **0.664**, versus backlinks at **0.218** —
+  brand mentions roughly 3x more predictive than backlinks. Other
+  correlations in the original: branded anchors 0.527, branded search
+  volume 0.392, Domain Rating 0.326, referring domains 0.295. The December
+  follow-up found branded web mentions at 0.664 (ChatGPT), 0.709 (AI Mode),
+  and 0.656 (AI Overviews), and **YouTube mentions ~0.737** — the single
+  strongest factor. Note the 0.664 and 0.737 figures come from two
+  different posts. *(I)*
   - **Caveat, stated explicitly by the study's own framing and worth
     repeating every time this stat is used**: this is correlation, not
     causation. A brand that's already well-known will naturally accumulate
     both mentions and AI citations regardless of which one "causes" the
     other — the study doesn't isolate mention-causes-citation from
     popularity-causes-both.
-  - The original Ahrefs post was not directly fetched for this track; the
-    figures rely on consistent secondary reporting (LinkedIn write-ups,
-    CiteFlow, Medium) — **flag for spot-check directly against ahrefs.com**
-    before treating these as final numbers.
-- **Muck Rack's Dec 2025 analysis** reports 94% of AI citations come from
-  non-paid, non-brand-owned sources — though alternate secondary write-ups of
-  what may be the same or an adjacent study cite 85% or 82% "earned media"
-  instead. **The exact percentage is inconsistent across sources and needs
-  primary-source reconciliation**; the qualitative conclusion — earned,
-  independent mentions outweigh paid or brand-owned content by a wide margin
-  — is consistent everywhere it appears, so treat the *direction* as solid
-  and the *specific number* as unverified.
+- **Muck Rack's "What is AI reading?" / Generative Pulse reports** (1M+
+  links from ChatGPT, Gemini, Claude, and Perplexity in Dec 2025; 25M+ links
+  across 17 industries in May 2026) consistently find citations dominated
+  by **earned media**: Dec 2025 — 94% of cited links non-paid, 82% earned;
+  May 2026 — ~84% earned, paid/advertorial ~0.3%, journalism ~27%. The
+  apparent inconsistency in earlier write-ups was two different metrics
+  (non-paid share vs earned share), not conflicting results. Caveat:
+  Muck Rack's "earned" bucket also includes academic, government,
+  encyclopedic, and third-party corporate sites — not just press coverage.
+  *(I)*
 
 ### Digital PR: the evidenced-adjacent case, and where the evidence stops
 - The case for digital PR over generic link-building rests on combining the
@@ -93,15 +100,11 @@ trustworthy.
   benchmark of diverse user queries... along with relevant web sources," and
   finds GEO methods "can boost visibility by up to 40% in generative engine
   responses," with efficacy varying by domain.
-  - Secondary agency blogs attribute specific per-tactic lifts to this
-    paper (e.g. "citing authoritative sources" and "adding statistics" each
-    independently boosting a metric by ~30-40%), but the abstract alone does
-    not confirm these per-tactic breakdowns, and several agency blogs repeat
-    near-identical tactic lists — a sign they may be citing one earlier
-    (possibly inaccurate) paraphrase rather than the paper directly. **Open
-    item**: per-tactic numbers should be verified against the full paper
-    text before being restated as fact; the content-strategy track owns this
-    paper in depth.
+  - Per-tactic numbers (quotations, statistics, cite-sources) have now been
+    checked against the full paper — see
+    `../content-strategy/ai-citation-signals.md`, which owns this paper in
+    depth. Agency blogs that round them to "each boosts visibility 30–40%"
+    overstate it: effects are metric-, engine-, and domain-specific.
   - Relevance here specifically: the paper's authoritative-sourcing tactics
     are content-layer, not backlink/directory-layer — they support the
     inference that being cited alongside authoritative sources correlates
@@ -119,8 +122,8 @@ trustworthy.
    a mentions-only placement in an authoritative outlet may matter more than
    a low-relevance backlink.
 4. Present the Ahrefs correlation numbers and Muck Rack's earned-media share
-   with their caveats intact (correlational; number inconsistent across
-   secondary sources) rather than as settled statistics.
+   with their caveats intact (correlational; Muck Rack's "earned" is a broad
+   bucket) rather than as settled statistics.
 5. Treat agency PR-firm claims about AI-citation tracking as marketing
    framing, not evidence, when deciding how much weight to give a pitch.
 
