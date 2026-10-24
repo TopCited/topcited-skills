@@ -1,6 +1,6 @@
 # Knowledge base index
 
-The full 29-file knowledge tree. Each file follows `_template.md` (topic,
+The full 30-file knowledge tree. Each file follows `_template.md` (topic,
 stage relevance, last-verified date, sources; a plain-words section and a
 practitioner-depth section).
 
@@ -16,6 +16,9 @@ are:
 | *(I)* | **Industry** — a named vendor, research firm, or study. Credible, but the methodology is usually not independently verifiable. |
 | heuristic | Practitioner consensus across blogs, with no primary source. Directional only — never state it to a user as settled fact. |
 
+Some older files use inline `(documented)` / `(industry)` labels instead of
+*(P)* / *(I)* — read them as the same two tiers.
+
 Every file also carries a `last-verified` date. This field moves fast: if a file
 is more than ~6 months old, flag that to the user when you rely on it.
 
@@ -26,6 +29,7 @@ is more than ~6 months old, flag that to the user when you rely on it.
 
 ## technical-seo/
 - [crawlability-and-indexing.md](technical-seo/crawlability-and-indexing.md) — robots rules, crawl budget, and getting pages indexed
+- [ai-crawler-access.md](technical-seo/ai-crawler-access.md) — AI crawler user agents, robots.txt controls, and the training-vs-search trade-off
 - [canonicals.md](technical-seo/canonicals.md) — canonical tags: correct usage and failure modes
 - [sitemaps-and-indexnow.md](technical-seo/sitemaps-and-indexnow.md) — XML sitemaps and IndexNow submission
 - [structured-data.md](technical-seo/structured-data.md) — JSON-LD schema types and what they unlock

@@ -31,6 +31,7 @@ feature, add one line to `gaps.md`.
 
 ## Knowledge
 - [technical-seo/crawlability-and-indexing.md](../../seo-geo/knowledge/technical-seo/crawlability-and-indexing.md)
+- [technical-seo/ai-crawler-access.md](../../seo-geo/knowledge/technical-seo/ai-crawler-access.md)
 - [technical-seo/canonicals.md](../../seo-geo/knowledge/technical-seo/canonicals.md)
 - [technical-seo/sitemaps-and-indexnow.md](../../seo-geo/knowledge/technical-seo/sitemaps-and-indexnow.md)
 - [technical-seo/structured-data.md](../../seo-geo/knowledge/technical-seo/structured-data.md)

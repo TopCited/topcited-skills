@@ -1,11 +1,13 @@
 ---
 topic: How prompt phrasing affects which brands and sources show up in AI answers
 stage-relevance: [2]
-last-verified: 2026-08-20
+last-verified: 2026-10-24
 sources:
-  - https://www.rankshift.ai/blog/impact-of-prompt-phrasing-on-ai-brand-visibility/ (accessed 2026-08-20)
-  - https://www.searchenginejournal.com/ai-prompt-intent-keywords-peec-spa/576201/ (accessed 2026-08-20)
-  - TopCited internal research (LLM-monitoring industry study, 2026-08 — unpublished): variance decomposition, ChatGPT vs. Perplexity fan-out
+  - https://www.rankshift.ai/blog/impact-of-prompt-phrasing-on-ai-brand-visibility/ (2026-03-20, accessed 2026-10-24)
+  - https://www.searchenginejournal.com/ai-prompt-intent-keywords-peec-spa/576201/ (Peec, sponsored, 2026-06-15, accessed 2026-10-24)
+  - https://arxiv.org/abs/2605.27440 ("Paraphrase Brittleness in Production Retrieval-Augmented Commercial Recommendation", 2026-05; accessed via search summary)
+  - https://arxiv.org/abs/2607.13304 (Żatuchin, "Where Does the Noise Come From? A Variance-Components Decomposition of Non-Determinism in LLM Brand Answers", 2026-07-14)
+  - TopCited internal research (LLM-monitoring industry study, 2026-08 — unpublished): ChatGPT vs. Perplexity fan-out
   - heuristic
 ---
 
@@ -21,10 +23,10 @@ number is not, and treating a single prompt's citations as ground truth about
 
 ## What practitioners need to know
 
-**Brand ranking is sticky; cited domains are not.** A 2026 report (heuristic-
-leaning-industry, single named study, methodology not independently verified)
-tested seven semantically similar prompts about "CRM software for SMBs," varying
-only the qualifying adjective and product noun. Findings:
+**Brand ranking is sticky; cited domains are not.** A Mar 2026 Rankshift report
+(industry, single named study) tested seven semantically similar prompts about
+"CRM software for SMBs" — 1,176 runs each — varying only the qualifying
+adjective and product noun. Findings:
 - The brand ranking hierarchy stayed **near-rigid** across all seven phrasing
   variants.
 - Absolute visibility percentages for **mid-tier** brands moved meaningfully with
@@ -35,23 +37,31 @@ only the qualifying adjective and product noun. Findings:
   This is the single most actionable finding here — cited *domains* churn much
   more than cited *brands* under paraphrase.
 
-**Phrasing style has a measurable effect on visibility, per single-source
-heuristic figures** (not corroborated elsewhere, treat as directional):
-concise keyword-style prompts (e.g., "best CRM small business 2026") drove up to
-**+25%** average visibility vs. conversational phrasing; prompts framed as an
-explicit ranking request ("what are the top 5...") drove **+20%** average
-visibility vs. open-ended framing.
+**Phrasing style has a measurable effect on visibility** — per a Peec study
+published as sponsored content in SEJ (2026-06-15; 37,804 responses, 1,754
+prompts, 5 engines; industry, vendor-run): concise keyword-style prompts (e.g.,
+"best CRM small business 2026") drove up to **+25%** average visibility vs.
+conversational phrasing; prompts framed as an explicit ranking request ("what
+are the top 5...") drove **+20%** average visibility vs. open-ended framing.
+Treat as directional.
 
 **Even cosmetic rewording produces far less consistency than a literal rerun.** A
-May 2026 study (heuristic — could not trace to a named primary source) reported
-recommendation-set Jaccard similarity of **0.288** for cosmetic paraphrases and
-**0.135** for constraint-changing variants (e.g., "SMB" → "enterprise"), compared
-with **0.50–0.61** for exact-repeat reruns of the identical prompt. This
-corroborates — from an independent source — TopCited's own internal variance
-decomposition: **within-prompt resampling is
-34.8%** of total variance, **prompt phrasing/language ~26.5%**, and **brand
-identity only 1.5%**. Two independent sources now agree that phrasing accounts for
-far more measured variance than which brand is actually being asked about.
+May 2026 preprint on paraphrase brittleness (arXiv:2605.27440, testing OpenAI and
+Anthropic models) reported recommendation-set Jaccard similarity of **0.288** for
+cosmetic paraphrases and **0.135** for constraint-changing variants (e.g., "SMB"
+→ "enterprise"), compared with **0.50–0.61** for exact-repeat reruns of the
+identical prompt. (academic preprint, accessed via summary)
+
+**Where the noise comes from — read this study carefully before quoting it.** A
+Jul 2026 variance-components study (arXiv:2607.13304; 12,933 responses about 20
+Central/Eastern European brands, 8 query languages) attributed **34.8%** of
+variance to within-prompt resampling, **26.5% to query language**, and only
+**1.5%** to brand identity. Two caveats that earlier summaries (including a
+previous version of this file) dropped: the outcome measured is **sentiment
+polarity**, not visibility or mention rate, and the 26.5% is **language**, not
+phrasing within one language. It supports the general point — run-to-run
+randomness is large relative to brand differences — but it is not evidence about
+paraphrase effects on visibility; the Jaccard study above is.
 
 **Per-assistant sensitivity to phrasing differs sharply.** Per TopCited internal
 research: ChatGPT fans out to **91%** unique retrieval sub-queries
@@ -64,8 +74,9 @@ Gemini, Claude, Grok, or Copilot — treat their phrasing sensitivity as unknown
 source): a monitored prompt set should (a) hold prompt phrasing **frozen**
 period-over-period for valid comparison — do not silently reword tracked prompts;
 (b) deliberately include a small number of phrasing variants per underlying
-intent, to average out the ~26.5% phrasing-driven variance rather than treating
-one phrasing as ground truth; (c) expect *cited-domain* volatility to be
+intent, to average out paraphrase sensitivity rather than treating one phrasing
+as ground truth (and track each language separately — language is a large
+variance source in its own right); (c) expect *cited-domain* volatility to be
 structurally higher than *cited-brand* volatility — a brand-visibility metric is
 inherently more stable than a source/domain-tracking metric, and a product
 promising domain-level stability is promising something the data can't support.

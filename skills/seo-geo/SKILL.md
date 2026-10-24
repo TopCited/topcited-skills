@@ -13,7 +13,7 @@ prefer recent files, and flag it to the user when a file you relied on is stale
 | Question is about… | Read |
 |---|---|
 | How ranking / AI citation works at all | knowledge/foundations/ |
-| Crawling, indexing, canonicals, sitemaps, structured data, llms.txt, speed | knowledge/technical-seo/ |
+| Crawling, indexing, AI crawler access (robots.txt), canonicals, sitemaps, structured data, llms.txt, speed | knowledge/technical-seo/ |
 | Brand entity, profiles, directories, backlinks, digital PR | knowledge/entity-authority/ |
 | Keywords, intent, pillar/cluster, E-E-A-T, what AI cites | knowledge/content-strategy/ |
 | A specific assistant's behavior, citation optimization, prompt visibility | knowledge/geo/ |

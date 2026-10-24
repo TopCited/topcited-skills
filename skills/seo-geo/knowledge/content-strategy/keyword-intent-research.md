@@ -1,12 +1,17 @@
 ---
 topic: Keyword and search-intent research without enterprise tools (free-tool stack for small brands)
 stage-relevance: [3, 6]
-last-verified: 2026-08-20
+last-verified: 2026-10-24
 sources:
   - https://www.20minutemarketing.com.au/blog/how-to-do-keyword-research-for-free-in-2026 (accessed 2026-08-20) [heuristic]
   - https://embertribe.com/blog/keyword-research (accessed 2026-08-20) [heuristic]
   - https://robizsolutions.com/how-to-do-keyword-research-2026-intent-first/ (accessed 2026-08-20) [heuristic]
   - https://www.jigsawkraft.com/post/how-to-do-keyword-research-step-by-step-guide-for-beginners-2026 (accessed 2026-08-20) [heuristic]
+  - https://support.google.com/google-ads/answer/7337243 (Keyword Planner access requirements, accessed 2026-10-24) [primary]
+  - https://sparktoro.com/blog/in-2026-less-than-one-third-of-google-searches-still-send-a-click/ (2026-06-09) [industry, disclosed methodology]
+  - https://sparktoro.com/blog/2024-zero-click-search-study-for-every-1000-us-google-searches-only-374-clicks-go-to-the-open-web-in-the-eu-its-360/ (2024-07-02) [industry, disclosed methodology]
+  - https://ahrefs.com/blog/ai-overviews-reduce-clicks-update/ (2026-02-04) [industry, disclosed methodology]
+  - https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/ (2025-07-22) [industry, disclosed methodology]
 ---
 
 # Keyword and intent research on a free-tool budget
@@ -35,10 +40,12 @@ you have a workable keyword list without paying for anything.
    free source because it's your own real traffic, not a modeled estimate.
    *(heuristic, but structurally the strongest source in the stack — it's
    ground truth, not an inference)*
-5. **Google Keyword Planner** (free with a Google Ads account, no ad spend
-   required) — Google buckets exact search volume behind an ad-spend
-   threshold, but the free tier still returns usable relative-volume bands.
-   *(heuristic)*
+5. **Google Keyword Planner** (free with a Google Ads account; Google
+   requires completing account setup with billing information, but no
+   active ad spend) — accounts without meaningful spend see volume as
+   ranges (e.g. 100–1K, 1K–10K) rather than exact numbers, which is still a
+   usable relative-volume signal. *(primary for access; heuristic for the
+   range behavior)*
 
 ### Classifying intent without a tool
 Bucket every harvested query by what the searcher wants to *do* next, not
@@ -53,15 +60,22 @@ dominant in 2026 guides)*
 ### Check for zero-click SERP features before committing content budget
 Before investing in a full article for a query, check whether it already
 triggers an AI Overview or featured snippet — those clicks are structurally
-reduced regardless of ranking position. One source attributes ~58.5% of
-searches ending without a click to SparkToro (2026) and ~34.5% CTR loss on
-head terms (10K+ monthly searches) when an AI Overview appears, attributing
-the latter to a "Rand Fishkin 2026 zero-click report" — **these specific
-percentages could not be independently verified against a primary source in
-this research pass; treat them as heuristic/unverified attribution.** The
-directional claim itself (AI Overviews suppress organic CTR on head terms)
-is consistent with widely reported industry data through 2025–2026 and is
-safe to state directionally without citing the precise numbers.
+reduced regardless of ranking position. The sourced numbers *(industry,
+disclosed methodology)*:
+- **Zero-click share**: SparkToro (Rand Fishkin, 2026-06-09, Similarweb
+  panel) found **68.01%** of US Google searches ended without a click to
+  the open web in Jan–Apr 2026, up from 60.45% on the same panel in 2024.
+  (An often-repeated "58.5%" figure is SparkToro/Datos's *2024* study, not
+  2026.)
+- **CTR loss when an AI Overview appears**: Ahrefs' 2026-02-04 update (300K
+  keywords, Search Console data, Dec 2023 vs Dec 2025) found position-1 CTR
+  **58% lower** on queries with an AI Overview; its Apr 2025 study had put
+  the drop at 34.5% (the "34.5%" figure is Ahrefs', not a Fishkin report).
+  Seer Interactive measured ~61% lower organic CTR on AI Overview queries
+  (Sept 2025).
+- **Behavioral data**: Pew (2025-07-22, 900 US adults' browsing) found users
+  clicked a traditional result on 8% of visits with an AI summary vs 15%
+  without, and clicked a link inside the summary only 1% of the time.
 
 ### End-to-end workflow (synthesized from multiple convergent 2026 guides)
 1. Brainstorm seed topics from the brand's actual products, services, and

@@ -1,12 +1,15 @@
 ---
 topic: Community channels (Reddit, Hacker News, Discord/Slack, forums) — value-first participation without getting flagged as spam
 stage-relevance: [7]
-last-verified: 2026-08-20
+last-verified: 2026-10-24
 sources:
   - internal TopCited content-distribution playbook (2026-06-14, generalized)
   - internal TopCited generated Reddit/Hacker News drafts (2026-06-14, generalized as pattern examples)
-  - [primary] Hacker News guidelines (news.ycombinator.com/newsguidelines.html, accessed 2026-08-20)
-  - [industry/heuristic] Reddit self-promotion norms — Reddit's own spam-policy page blocked automated fetch (HTTP 403), so these are secondary-sourced, not primary (redship.io, soar.sh, gofindevo.com, oneup.today, accessed 2026-08-20)
+  - [primary] Hacker News guidelines (news.ycombinator.com/newsguidelines.html, accessed 2026-10-24)
+  - [primary] Show HN guidelines (news.ycombinator.com/showhn.html, accessed 2026-10-24)
+  - [primary] Reddit Rules (redditinc.com/policies/reddit-rules, accessed 2026-10-24)
+  - [primary] Reddit Help, "What constitutes spam?" (support.reddithelp.com/hc/en-us/articles/360043504051 — live page blocks automated fetch; read via the 2026-02-11 Wayback Machine snapshot)
+  - [industry/heuristic] Reddit self-promotion norms (redship.io, soar.sh, gofindevo.com, oneup.today, accessed 2026-08-20)
   - [heuristic] Discord/Slack community norms (soar.sh, letstalkshop.com, accessed 2026-08-20)
   - heuristic
 ---
@@ -44,11 +47,16 @@ the point of the post.
   posting.** Rules vary a lot by community — some forums require a
   disclosure flair, some cap self-promo to a fixed ratio of total posts, some
   ban it outright. Checking first avoids a post being removed on a
-  technicality that had nothing to do with its quality. Reddit's informal
-  sitewide norm (not literal policy text — a community-converged number) is
-  the **90/10 rule**: roughly 90% non-promotional participation to at most
-  10% self-promotion *(heuristic, widely repeated across practitioner
-  sources)*. A concrete, checkable example of a per-community rule:
+  technicality that had nothing to do with its quality. Reddit's sitewide
+  rule is qualitative: "Participate authentically in communities where you
+  have a personal interest, and do not spam," and its spam help page asks
+  anyone whose contributions "consist primarily of links to a business that
+  you run, own, or otherwise benefit from" to "be thoughtful about the
+  frequency of posting, or consider advertising opportunities" — no ratio,
+  and moderators decide what counts as spam [primary]. The often-quoted
+  **90/10 rule** (≤10% self-promotion) comes from a legacy Reddit guideline
+  that has since been removed; some moderators still cite it, so it's a
+  reasonable ceiling, not current policy *(heuristic)*. A concrete, checkable example of a per-community rule:
   **r/indiehackers** permits exactly **one self-promotion post per product**,
   tagged "SHOW IH" and framed for feedback rather than advertisement;
   repeat promo posts get removed *(heuristic/community-reported)*.
@@ -87,9 +95,16 @@ the point of the post.
   but the primary use of the site should be for curiosity,"** and
   **"Don't solicit upvotes, comments, or submissions"** — booster comments
   from friends/colleagues in a thread are treated by the community as a form
-  of spamming. **Show HN specifically requires something people can try**
-  (use, read, watch) — a "coming soon" landing page is explicitly
-  disqualified as a Show HN post [primary].
+  of spamming ("Please don't ask friends to upvote or comment"). **Show HN
+  specifically requires something people can try** — "Don't post landing
+  pages or fundraisers," and "if your work isn't ready for users to try
+  out, please don't do a Show HN"; it "must be something you've worked on
+  personally," and quickly-generated one-offs are out [primary].
+- **AI-generated text is explicitly banned on HN.** The guidelines now say
+  "Don't post generated text or AI-edited text" and ask users not to
+  automate posting [primary]. Any drafted post or comment for HN must be
+  rewritten in the poster's own words before it goes out — an agent can
+  help outline, but must not supply the final text.
 
 ### Discord and Slack communities
 Common B2B/SaaS distribution channels, and the same value-first logic
@@ -120,4 +135,5 @@ Stage 7 (distribution) uses this file to decide what NOT to post as much as
 what to post: before drafting community content, check that the piece leads
 with a real finding/story that would stand on its own, and that the posting
 cadence isn't bunching multiple communities' posts into the same short
-window.
+window. For Hacker News, any agent-drafted material is an outline for the
+poster to rewrite in their own words — HN bans generated and AI-edited text.

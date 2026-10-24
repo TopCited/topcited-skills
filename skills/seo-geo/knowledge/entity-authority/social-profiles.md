@@ -1,9 +1,10 @@
 ---
 topic: Social profiles as corroborating entity signals — which to claim and how consistency is supposed to help
 stage-relevance: [5]
-last-verified: 2026-08-20
+last-verified: 2026-10-24
 sources:
-  - https://developers.google.com/search/docs/appearance/structured-data/organization
+  - https://developers.google.com/search/docs/appearance/structured-data/organization (updated 2026-09-08)
+  - https://ahrefs.com/blog/ai-brand-visibility-correlations/ (YouTube-mention correlation, 2025-12-12)
   - https://schema.org/sameAs
   - https://jottler.co/blog/knowledge-graph-seo (heuristic)
   - https://www.verlua.com/blog/entity-seo-brand-entity-strength-ai-search (heuristic)
@@ -29,7 +30,7 @@ ranking or citation payoff.
   site" as a legitimate `sameAs` target, and allows multiple `sameAs` URLs —
   social profiles are one of the sanctioned identity-hint types, alongside
   Wikipedia/Wikidata (see `brand-entity-sameas.md` for what `sameAs` is and
-  isn't confirmed to do).
+  isn't confirmed to do). *(P)*
 - In the three-part "entity establishment" model that recurs across 2026
   GEO-agency posts *(heuristic — practitioner consensus, not a documented
   algorithm)*, social platforms are named as one leg of signal #2:

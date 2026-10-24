@@ -1,10 +1,12 @@
 ---
 topic: E-E-A-T (Experience, Expertise, Authoritativeness, Trust) — what a small brand can actually do about it
 stage-relevance: [6]
-last-verified: 2026-08-20
+last-verified: 2026-10-24
 sources:
-  - https://developers.google.com/search/docs/fundamentals/creating-helpful-content (accessed 2026-08-20) [primary]
-  - https://developers.google.com/search/blog/2022/12/google-raters-guidelines-e-e-a-t (accessed 2026-08-20) [primary]
+  - https://developers.google.com/search/docs/fundamentals/creating-helpful-content (updated 2026-10-05, accessed 2026-10-24) [primary]
+  - https://developers.google.com/search/blog/2022/12/google-raters-guidelines-e-e-a-t (2022-12-15, accessed 2026-10-24) [primary]
+  - https://guidelines.raterhub.com/searchqualityevaluatorguidelines.pdf (Search Quality Rater Guidelines, 2025-09-11 revision) [primary]
+  - https://developers.google.com/search/docs/appearance/ai-features (accessed 2026-10-24) [primary]
   - https://sproutsagesolutions.com/eeat-for-small-business-seo/ (accessed 2026-08-20) [heuristic]
   - https://heroicrankings.com/seo/content-creation/google-eeat-and-seo-in-2026/ (accessed 2026-08-20) [heuristic]
 ---
@@ -27,11 +29,15 @@ about, keep it accurate, and keep it current.
 ### Google's own framing (primary)
 Google Search Central, "Creating Helpful, Reliable, People-First Content":
 **"people-first content means content that's created primarily for people,
-and not to manipulate search engine rankings."** Google explicitly states
-that rater assessments (including E-E-A-T judgments) are not a direct
-ranking signal applied per-page — they train and validate the ranking
-systems. E-E-A-T is Google's explanation of what its systems approximate,
-not a score computed and applied to your page directly.
+and not to manipulate search engine rankings."** Google states that
+"rater data is not used directly in our ranking algorithms" — raters help
+Google check its systems are working — and that "while E-E-A-T itself isn't
+a specific ranking factor," its systems use a mix of signals that align
+with it, with trust the most important. E-E-A-T is Google's explanation of
+what its systems approximate, not a score computed and applied to your page
+directly. The rater guidelines' latest revision is 2025-09-11 (YMYL
+definition updates and AI Overview examples; Google said there was no
+change to its rating guidance); no 2026 revision has been published.
 
 Google publishes self-assessment questions for **people-first content**:
 - Do you have an existing audience that would find the content useful
@@ -41,7 +47,8 @@ Google publishes self-assessment questions for **people-first content**:
 - Will readers feel they've learned enough to achieve their goal?
 - Will readers have a satisfying experience?
 
-And for **E-E-A-T specifically**:
+And under the page's **"Expertise questions"** heading (the E-E-A-T-adjacent
+ones):
 - Is authorship clear, with bylines leading to author background
   information?
 - Would research into the site reveal it as trusted/authoritative on the
@@ -53,7 +60,8 @@ Google also names explicit **red flags** (search-engine-first content):
 content created primarily to attract search visits; extensive automation to
 produce content across many topics; mass-summarizing others' work without
 adding value; writing about trending topics without genuine subject-matter
-expertise; artificially altering publish dates to appear fresh.
+expertise; changing the dates of pages to make them seem fresh when the
+content hasn't substantially changed.
 
 The 4th "E" (Experience) was added in December 2022 specifically to capture
 first-hand-use signals — e.g., a product review written by someone who
@@ -85,10 +93,11 @@ No AI assistant (OpenAI, Anthropic, Google, Perplexity) publishes an
 "E-E-A-T"-named framework of its own — the acronym is Google-Search-specific
 terminology. The underlying signals (clear authorship, verifiable facts,
 evidence of real expertise) plausibly matter to AI citation indirectly:
-Google's AI Overviews are built on the same Search index E-E-A-T informs,
-and independently-sourced AI-citation data shows citation is heavily
-correlated with traditional search ranking (see `ai-citation-signals.md`,
-the 76% top-10 overlap finding). So E-E-A-T's practical relevance to GEO
+Google says its AI Overviews and AI Mode are "rooted in our core Search
+ranking and quality systems" — the same systems E-E-A-T describes — and
+independently-sourced AI-citation data shows Google's AI citations still
+come largely from pages that rank for the query or its sub-questions (see
+`ai-citation-signals.md`). So E-E-A-T's practical relevance to GEO
 runs primarily *through* its effect on traditional rankability, not as a
 separately-modeled AI-assistant signal. No primary documentation from any AI
 vendor names E-E-A-T or an equivalent framework directly — do not imply one

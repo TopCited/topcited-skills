@@ -1,7 +1,7 @@
 ---
 topic: Setting an SEO/GEO visibility baseline and choosing the right KPIs
 stage-relevance: [2, 8]
-last-verified: 2026-08-20
+last-verified: 2026-10-24
 sources:
   - https://www.trysight.ai/blog/ai-visibility-audit-template
   - https://skyscale.com.au/blogs/prompt-testing-ai-visibility-diy
@@ -9,16 +9,24 @@ sources:
   - https://www.fratzkemedia.com/insights/ai-visibility-audit
   - https://tajo.io/blog/the-6-best-seo-audit-tools/
   - https://seeklab.io/blog/best-free-seo-audit-tools-for-small-business-in-2026-tested-and-compared/
+  - https://support.google.com/analytics/answer/9164320 (GA4 release notes, 2026-05-13 "New AI Assistant traffic measurement")
+  - https://support.google.com/analytics/answer/9756891 (GA4 default channel group definitions)
   - https://www.searchenginejournal.com/google-analytics-adds-ai-assistant-as-default-channel-group/574974/
-  - https://www.digitalapplied.com/blog/ga4-ai-assistant-channel-2026-measure-ai-traffic-playbook
-  - https://www.tryaivo.com/blog/ga4-ai-assistant-channel
   - https://weekerp.com/en/blog/ga4-ai-assistant-channel-what-it-tracks-and-misses
+  - https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports (Search Console generative AI performance reports, 2026-06)
+  - https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview
+  - https://clarity.microsoft.com/blog/citations-now-generally-available/ (Microsoft Clarity AI Citations, GA 2026-05-13)
+  - https://ahrefs.com/benchmarks/ai-vs-search (AI share of web traffic, updated 2026-10-22)
+  - https://seranking.com/blog/ai-traffic-research-study/ (AI referral traffic share by assistant, 2026-06-18)
   - https://writesonic.com/blog/geo-kpis-every-brand-should-track
   - https://analyticahouse.com/blogs/how-to-generative-engine-optimization-geo-kpi-reporting-model-for-ai-visibility
   - https://www.similarweb.com/blog/marketing/geo/what-is-geo/
   - https://www.searchpilot.com/resources/blog/what-is-seo-split-testing
   - https://www.searchpilot.com/resources/blog/the-math-behind-searchpilot-how-seo-a/b-testing-actually-works
-  - TopCited internal research (LLM-monitoring industry study, 2026-08 — unpublished), itself citing petralabs.com and arXiv:2603.08924 / 2604.07585
+  - https://arxiv.org/abs/2603.08924 (Sielinski, "Quantifying Uncertainty in AI Visibility", v3 2026-08-26)
+  - https://arxiv.org/abs/2604.07585 (Schulte, Bleeker, Kaufmann, "Don't Measure Once: Measuring Visibility in AI Search", 2026-04-08)
+  - https://arxiv.org/abs/2607.13304 (Żatuchin, variance-components decomposition of LLM brand answers, 2026-07-14)
+  - TopCited internal research (LLM-monitoring industry study, 2026-08 — unpublished), itself citing petralabs.com (no public URL found for the specific figures)
   - heuristic
 ---
 
@@ -66,17 +74,34 @@ GSC-verified ownership) for backlink/site-health visibility, and
 **GEO via first-party analytics (GA4):** GA4 added a native **"AI
 Assistant" default channel group** on 2026-05-13 — sessions with a referrer
 matching a recognized AI assistant are auto-tagged `medium = ai-assistant`
-with no setup required. *(P)* Treat the exact recognized-assistant list
-with caution: secondary reporting on the live 2026-06 documentation lists
-ChatGPT, Gemini, DeepSeek, Copilot, and Grok, while the original 2026-05-13
-launch post named only ChatGPT/Gemini/Claude — Claude's presence is
-unconfirmed in this pass and should be checked against Google's own
-changelog before stating it as fact. **Important limitation for honest
-baselining:** GA4 only captures traffic with a matching referrer header —
+with no setup required. *(P)* Google's release note names "chatbots like
+ChatGPT, Gemini, and Claude," and the channel-definition doc gives
+"ChatGPT, Gemini, Deepseek, Copilot, or Grok" as examples — both are
+examples, not a full list. *(P)* The same doc says the channel **excludes
+Google's AI Overviews and AI Mode** — those clicks stay in Organic Search.
+*(P)* **Important limitation for honest baselining:** GA4 only captures
+traffic with a matching referrer header —
 in-app AI browsers, copy-pasted links, and zero-click answers (the majority
 of GEO's value) land in Direct or don't appear at all. It also processes
 **forward-only**: AI traffic from before 2026-05-13 stays misclassified, so
 GA4 cannot retroactively establish a historical AI-traffic baseline. *(I)*
+For scale: AI assistants sent **~0.3–0.4%** of total web traffic in 2026
+(Ahrefs: 0.43% across 115K sites in Sept 2026; SE Ranking: 0.32% across 101K
+sites in Jan–Apr 2026), with ChatGPT ~75–81% of it. *(I)* A small AI-referral
+number is normal, not a tracking failure.
+
+**First-party AI-visibility data from the platforms themselves** *(P)*:
+- **Google Search Console — generative AI performance reports** (all sites
+  worldwide since 2026-08-31): impressions in AI Overviews, AI Mode, and
+  Discover's AI features, by page, country, device, and date — no clicks or
+  queries.
+- **Bing Webmaster Tools — AI Performance** (preview 2026-02, expanded
+  2026-06 and 2026-10): citations, cited pages, a sample of grounding
+  queries, and topic clusters for Copilot and Bing's AI summaries.
+- **Microsoft Clarity — AI Citations** (GA 2026-05-13): page citations and
+  grounding queries alongside AI referral traffic, Copilot/Bing only.
+No equivalent first-party report exists for ChatGPT, Perplexity, Claude, or
+the Gemini app — for those, prompt-based monitoring is the only option.
 
 ### KPIs — SEO vs. GEO
 **SEO KPIs** are established and unchanged by AI-search disruption: organic
@@ -94,16 +119,17 @@ prompt-level visibility (granular, not aggregated), and AI referral traffic
 + conversions. A tighter core set often used: citation rate, share of voice,
 AI referral traffic, and conversion value from AI-sourced visitors. *(I)*
 
-**The structural measurement gap:** one 2026 industry survey frames it as
-**"54% plan vs. 23% measurement"** — over half of marketers say GEO is part
-of their strategy, but fewer than a quarter say they can actually measure
-its impact. Two structural reasons: most AI answers are zero-click (no
-referral session to attribute), and the most valuable AI influence —
+**The structural measurement gap:** an often-quoted "54% plan vs. 23%
+measure" framing actually splices two different 2026 sources (a vendor
+survey on GEO plans and an eMarketer figure on measurement investment), so
+don't cite it as one survey — but the direction is consistent: far more
+marketers say GEO is part of their strategy than say they can measure its
+impact. (heuristic) Two structural reasons: most AI answers are zero-click
+(no referral session to attribute), and the most valuable AI influence —
 landing on a shortlist a user later acts on outside the chat — happens
-*before* any trackable touchpoint exists. *(I)* This matches TopCited's own
-internal monitoring research, which independently found that Bing Webmaster
-Tools' "grounding queries" report is the only first-party ground truth GEO has
-today, and only for Copilot/Bing-grounded answers.
+*before* any trackable touchpoint exists. The platform reports above give
+impressions and citations for Google's and Microsoft's AI surfaces, but none
+reports the query-level, conversion-level picture SEO is used to.
 
 **Recommendation:** state GEO KPIs as *leading/directional* indicators
 (visibility, share of voice, citation rate), not *outcome* metrics — the
@@ -129,12 +155,17 @@ same window) — never a bare "traffic went up X%" claim. *(heuristic)*
 
 **GEO:** honest attribution is currently unsolved industry-wide, not a
 TopCited gap. A genuine 5-point visibility shift is detected only ~11% of
-the time at 100 runs (Petra Labs, 7,200 trials); rank ordering stabilizes
-~8x faster than magnitudes (~80 runs for Spearman ≥0.90); within-prompt
-resampling variance (34.8%) and prompt-phrasing variance (26.5%) dwarf
-brand-identity variance (1.5%) — most of the "signal" in a before/after
-comparison is noise from the prompt portfolio, not the brand's actual
-standing. *(I — TopCited internal research)* Never attribute a single-period visibility
+the time at 100 runs, and rank ordering stabilizes ~8x faster than
+magnitudes (~80 runs for Spearman ≥0.90) *(I — TopCited internal research,
+citing Petra Labs; no public URL for these figures)*. Public preprints make
+the same point — single measurements of AI visibility carry wide
+uncertainty and unstable ranks, so visibility should be measured repeatedly
+with confidence intervals (arXiv:2603.08924, 2604.07585). One
+variance-components study found within-prompt resampling (34.8%) and query
+language (26.5%) dwarf brand identity (1.5%) — though it measured
+*sentiment*, not visibility (arXiv:2607.13304). *(I)* Most of the "signal"
+in a single before/after comparison is noise, not the brand's actual
+standing. Never attribute a single-period visibility
 delta to a specific content change without (a) a frozen, versioned prompt
 set for both periods, (b) a stated sample size, and (c) a stated noise
 floor below which deltas are suppressed. No major vendor publishes a causal

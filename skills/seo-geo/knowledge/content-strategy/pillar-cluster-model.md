@@ -1,10 +1,11 @@
 ---
 topic: Pillar-cluster content model — what's actually evidenced vs. marketing-meme statistics
 stage-relevance: [6]
-last-verified: 2026-08-20
+last-verified: 2026-10-24
 sources:
-  - https://blog.hubspot.com/marketing/topic-clusters-seo (accessed 2026-08-20) [industry]
-  - https://ahrefs.com/blog/search-rankings-ai-citations/ (accessed 2026-08-20) [industry, disclosed methodology]
+  - https://blog.hubspot.com/marketing/topic-clusters-seo (updated 2026-06-17, accessed 2026-10-24) [industry]
+  - https://ahrefs.com/blog/ai-overview-citations-top-10/ (2026-03-02, accessed 2026-10-24) [industry, disclosed methodology]
+  - https://developers.google.com/search/docs/appearance/ai-features (accessed 2026-10-24) [primary]
   - heuristic
 ---
 
@@ -56,14 +57,16 @@ mechanism instead (below).
 
 ### What's actually defensible
 - **Internal linking mechanically matters for discoverability by both
-  search and AI crawlers.** A page cited by an AI assistant is virtually
-  always a page that's already well-linked and well-ranked in traditional
-  search first — Ahrefs' disclosed-methodology data (1.9M citations, 1M AI
-  Overviews) found 76.10% of AI-Overview-cited pages rank in Google's
-  traditional top 10 (see `ai-citation-signals.md` for the full figure).
-  That means cluster architecture's value for AI citation is best framed as
-  "helps you rank well traditionally, which is the primary predictor of AI
-  citation" — not as a distinct AI-citation lever with its own multiplier.
+  search and AI crawlers.** And clusters fit how Google's AI features
+  retrieve: Google says AI Overviews and AI Mode use "query fan-out" —
+  related searches across subtopics — and Ahrefs' Mar 2026 data found only
+  37.9% of AI Overview citations rank in the top 10 for the original query,
+  with the rest coming from pages ranking for related sub-queries (see
+  `ai-citation-signals.md`). A cluster that covers a topic's sub-questions
+  is exactly the shape that wins those fan-out searches. Frame its AI value
+  as "helps you rank across the topic, which is what Google's AI cites" —
+  not as a distinct AI-citation lever with its own multiplier. (primary for
+  fan-out; industry for the data; the cluster inference is heuristic)
 - **The real, older empirical basis for the linking rule**: a 2015 internal
   HubSpot study (Hussain & Davies), cited within HubSpot's own topic-cluster
   guide, found a positive correlation between a page's internal-link count
