@@ -1,0 +1,76 @@
+name: skills-drift
+
+# Weekly check that the skills still match the product: the public API spec,
+# the CLI's command list, and the age of the seo-geo knowledge files.
+# On drift it opens (or updates in place) one issue labelled `skills-drift`;
+# when drift clears it closes that issue. Deterministic report, no AI rewrite,
+# no API keys. See scripts/drift_check.py.
+
+on:
+  schedule:
+    - cron: "17 6 * * 1" # Mondays 06:17 UTC
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run: write the report to the job summary only; don't touch issues"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: skills-drift
+  cancel-in-progress: false
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+    env:
+      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check for drift
+        id: check
+        env:
+          # Optional read-only token for the CLI repo while it is private;
+          # without it that source is reported as unavailable, not as drift.
+          GH_TOKEN: ${{ secrets.CLI_REPO_READ_TOKEN || github.token }}
+        run: python3 scripts/drift_check.py --report drift-report.md
+
+      - name: Job summary
+        run: cat drift-report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Open or update the drift issue
+        if: steps.check.outputs.drift == 'true' && env.DRY_RUN != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh label create skills-drift --color D93F0B \
+            --description "Skills out of sync with the product (scripts/drift_check.py)" 2>/dev/null || true
+          number=$(gh issue list --label skills-drift --state open --json number --jq '.[0].number // empty')
+          if [ -n "$number" ]; then
+            gh issue edit "$number" --body-file drift-report.md
+            echo "Updated #$number"
+          else
+            gh issue create --title "Skills drift report" --label skills-drift --body-file drift-report.md
+          fi
+
+      - name: Close the drift issue when drift has cleared
+        if: steps.check.outputs.drift == 'false' && env.DRY_RUN != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          number=$(gh issue list --label skills-drift --state open --json number --jq '.[0].number // empty')
+          if [ -n "$number" ]; then
+            gh issue close "$number" --comment "No drift as of $(date -u +%F)."
+          fi

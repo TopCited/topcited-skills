@@ -1,0 +1,214 @@
+[
+  {
+    "op": "DELETE /monitoring/queries/{}",
+    "operationId": "deleteQuery"
+  },
+  {
+    "op": "GET /brands",
+    "operationId": "listBrands"
+  },
+  {
+    "op": "GET /brands/limits",
+    "operationId": "getBrandLimits"
+  },
+  {
+    "op": "GET /brands/{}/competitors",
+    "operationId": "listCompetitors"
+  },
+  {
+    "op": "GET /brands/{}/content-sentence-runs/latest",
+    "operationId": "getLatestContentSentenceRun"
+  },
+  {
+    "op": "GET /brands/{}/content-sentences",
+    "operationId": "listContentSentences"
+  },
+  {
+    "op": "GET /brands/{}/keyword-recommendation-runs/latest",
+    "operationId": "getLatestKeywordRecommendationRun"
+  },
+  {
+    "op": "GET /brands/{}/keywords",
+    "operationId": "listKeywords"
+  },
+  {
+    "op": "GET /brands/{}/prompt-recommendation-runs/latest",
+    "operationId": "getLatestPromptRecommendationRun"
+  },
+  {
+    "op": "GET /brands/{}/prompts",
+    "operationId": "listPrompts"
+  },
+  {
+    "op": "GET /competitors/{}",
+    "operationId": "getCompetitor"
+  },
+  {
+    "op": "GET /monitoring/credit-forecast",
+    "operationId": "getCreditForecast"
+  },
+  {
+    "op": "GET /monitoring/gaps",
+    "operationId": "listGaps"
+  },
+  {
+    "op": "GET /monitoring/mentions",
+    "operationId": "listMentions"
+  },
+  {
+    "op": "GET /monitoring/metrics/per-query",
+    "operationId": "getPerQueryMetrics"
+  },
+  {
+    "op": "GET /monitoring/metrics/summary",
+    "operationId": "getMetricsSummary"
+  },
+  {
+    "op": "GET /monitoring/metrics/visibility",
+    "operationId": "getVisibilityMetrics"
+  },
+  {
+    "op": "GET /monitoring/query-sets",
+    "operationId": "listQuerySets"
+  },
+  {
+    "op": "GET /monitoring/query-sets/{}",
+    "operationId": "getQuerySet"
+  },
+  {
+    "op": "GET /monitoring/runs",
+    "operationId": "listRuns"
+  },
+  {
+    "op": "GET /monitoring/share-of-voice",
+    "operationId": "getShareOfVoice"
+  },
+  {
+    "op": "GET /optimization/strategies",
+    "operationId": "listOptimizationStrategies"
+  },
+  {
+    "op": "GET /optimization/submissions",
+    "operationId": "listOptimizationSubmissions"
+  },
+  {
+    "op": "GET /optimization/submissions/{}",
+    "operationId": "getOptimizationSubmission"
+  },
+  {
+    "op": "GET /reports",
+    "operationId": "listReports"
+  },
+  {
+    "op": "GET /reports/{}",
+    "operationId": "getReport"
+  },
+  {
+    "op": "GET /reports/{}/download/html",
+    "operationId": "downloadReportHtml"
+  },
+  {
+    "op": "GET /reports/{}/download/pdf",
+    "operationId": "downloadReportPdf"
+  },
+  {
+    "op": "GET /seo/sites",
+    "operationId": "listSites"
+  },
+  {
+    "op": "GET /seo/sites/{}",
+    "operationId": "getSite"
+  },
+  {
+    "op": "GET /seo/sites/{}/audit-runs",
+    "operationId": "listAuditRuns"
+  },
+  {
+    "op": "GET /seo/sites/{}/audit-runs/{}",
+    "operationId": "getAuditRun"
+  },
+  {
+    "op": "GET /seo/sites/{}/audit-runs/{}/issues",
+    "operationId": "listAuditIssues"
+  },
+  {
+    "op": "GET /tasks",
+    "operationId": "listTasks"
+  },
+  {
+    "op": "GET /tasks/{}",
+    "operationId": "getTask"
+  },
+  {
+    "op": "GET /users/me",
+    "operationId": "getMe"
+  },
+  {
+    "op": "GET /users/me/api-keys",
+    "operationId": "listApiKeys"
+  },
+  {
+    "op": "GET /users/me/coin-balance",
+    "operationId": "getCoinBalance"
+  },
+  {
+    "op": "GET /users/me/usage",
+    "operationId": "getUsage"
+  },
+  {
+    "op": "PATCH /brands/{}",
+    "operationId": "updateBrand"
+  },
+  {
+    "op": "PATCH /monitoring/query-sets/{}",
+    "operationId": "updateQuerySet"
+  },
+  {
+    "op": "POST /brands",
+    "operationId": "createBrand"
+  },
+  {
+    "op": "POST /brands/{}/competitors",
+    "operationId": "createCompetitor"
+  },
+  {
+    "op": "POST /brands/{}/content-sentences:recommend",
+    "operationId": "recommendContentSentences"
+  },
+  {
+    "op": "POST /brands/{}/keywords:recommend",
+    "operationId": "recommendKeywords"
+  },
+  {
+    "op": "POST /brands/{}/prompts:recommend",
+    "operationId": "recommendPrompts"
+  },
+  {
+    "op": "POST /monitoring/query-sets",
+    "operationId": "createQuerySet"
+  },
+  {
+    "op": "POST /monitoring/query-sets/{}/queries",
+    "operationId": "addQueries"
+  },
+  {
+    "op": "POST /monitoring/query-sets/{}/run",
+    "operationId": "runQuerySet"
+  },
+  {
+    "op": "POST /optimization/submissions",
+    "operationId": "createOptimizationSubmission"
+  },
+  {
+    "op": "POST /reports/generate",
+    "operationId": "generateReport"
+  },
+  {
+    "op": "POST /seo/sites",
+    "operationId": "createSite"
+  },
+  {
+    "op": "POST /seo/sites/{}/audit-runs",
+    "operationId": "runSiteAudit"
+  }
+]

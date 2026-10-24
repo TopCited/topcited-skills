@@ -22,7 +22,7 @@ optimizer and submissions rewrite existing pages (compare
 | Estimate, then audit a site | `topcited audit run example.com --dry-run` → `topcited audit run https://example.com --wait --yes` |
 | Show a run's summary and issues | `topcited audit show <run-id> [--site example.com]` |
 | List audit runs | `topcited audit list [--site example.com]` |
-| Raw issues / site records | `topcited api /seo/sites/<site_id>/audit-runs/<run_id>/issues` · `topcited api /seo/sites` |
+| Raw issues / site records | `topcited api /seo/sites/<site_id>/audit-runs/<run_id>/issues` · `topcited api /seo/sites` · `topcited api /seo/sites/<site_id>` |
 
 `audit run` registers the site on first use and reuses it after that.
 
@@ -74,7 +74,7 @@ In the public spec, via `topcited api`:
 |---|---|
 | List strategies | `topcited api /optimization/strategies` |
 | Submit content | `topcited api -X POST /optimization/submissions -d '{"input_content": "…", "output_mode": "…", "strategy_id": "…"}'` |
-| List / get submissions | `topcited api /optimization/submissions` · `/optimization/submissions/<id>` |
+| List / get submissions | `topcited api /optimization/submissions` · `topcited api /optimization/submissions/<id>` |
 
 Small submissions (≤2,000 words) come back processed; larger ones run async —
 poll the submission. The result is in the submission's `output_data` (there is no

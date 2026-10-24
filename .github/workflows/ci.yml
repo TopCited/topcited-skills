@@ -12,6 +12,13 @@ jobs:
       - name: Validate skill frontmatter and relative links
         run: python3 scripts/validate_skills.py
 
+  drift-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unit tests for the drift check
+        run: python3 -m unittest discover -s tests -v
+
   shell:
     runs-on: ubuntu-latest
     steps:

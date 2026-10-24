@@ -1,0 +1,32 @@
+{
+  "_comment": "Public operations each topcited CLI verb calls (from the CLI source). An operation listed here counts as covered by the skill when the skill documents the verb. Refresh when a CLI release changes what a verb calls.",
+  "auth login": ["GET /users/me", "GET /users/me/api-keys"],
+  "auth status": ["GET /users/me", "GET /users/me/api-keys"],
+  "brand list": ["GET /brands"],
+  "brand show": ["GET /brands", "GET /brands/{}/competitors", "GET /monitoring/query-sets"],
+  "monitor sets list": ["GET /monitoring/query-sets"],
+  "monitor sets create": ["POST /monitoring/query-sets"],
+  "monitor sets show": ["GET /monitoring/query-sets/{}"],
+  "monitor queries add": ["POST /monitoring/query-sets/{}/queries"],
+  "monitor queries rm": ["DELETE /monitoring/queries/{}"],
+  "monitor run": ["POST /monitoring/query-sets/{}/run", "GET /monitoring/credit-forecast", "GET /monitoring/runs"],
+  "monitor results": ["GET /monitoring/metrics/summary", "GET /monitoring/gaps", "GET /monitoring/share-of-voice"],
+  "audit run": ["GET /seo/sites", "POST /seo/sites", "POST /seo/sites/{}/audit-runs", "GET /seo/sites/{}/audit-runs/{}"],
+  "audit show": ["GET /seo/sites/{}/audit-runs/{}", "GET /seo/sites/{}/audit-runs/{}/issues"],
+  "audit list": ["GET /seo/sites", "GET /seo/sites/{}/audit-runs"],
+  "recommend": [
+    "POST /brands/{}/keywords:recommend", "POST /brands/{}/prompts:recommend", "POST /brands/{}/content-sentences:recommend",
+    "GET /brands/{}/keywords", "GET /brands/{}/prompts", "GET /brands/{}/content-sentences",
+    "GET /brands/{}/keyword-recommendation-runs/latest", "GET /brands/{}/prompt-recommendation-runs/latest",
+    "GET /brands/{}/content-sentence-runs/latest"
+  ],
+  "report generate": ["POST /reports/generate", "GET /reports/{}"],
+  "report list": ["GET /reports"],
+  "report show": ["GET /reports/{}"],
+  "report download": ["GET /reports/{}/download/html", "GET /reports/{}/download/pdf"],
+  "competitors list": ["GET /brands/{}/competitors"],
+  "competitors add": ["POST /brands/{}/competitors"],
+  "tasks list": ["GET /tasks"],
+  "tasks show": ["GET /tasks/{}"],
+  "usage": ["GET /users/me", "GET /users/me/coin-balance", "GET /users/me/usage", "GET /monitoring/credit-forecast"]
+}
