@@ -7,88 +7,69 @@ audits, content, monitoring) hangs off your brand, so we set this up first.
 
 ## When the workflow uses it
 Stage 1 (Intake): create or select the brand right after getting the website URL.
-Later stages read the brand id from the session's brand brief.
+Later stages read the brand from the session's brand brief and act on it as the
+active brand.
 
-## Operations
-| I want to… | Call | Reference |
-|---|---|---|
-| Create the brand | `POST /api/v1/brands` | [endpoints/brands.md](endpoints/brands.md) |
-| List existing brands | `GET /api/v1/brands` | [endpoints/brands.md](endpoints/brands.md) |
-| Check brand count against the plan cap | `GET /api/v1/brands/limits` | [endpoints/brands.md](endpoints/brands.md) |
-| Update brand name/website | `PATCH /api/v1/brands/{brand_id}` | [endpoints/brands.md](endpoints/brands.md) |
-| Delete a brand | `DELETE /api/v1/brands/{brand_id}` | [endpoints/brands.md](endpoints/brands.md) |
-| Get the brand's competitor-keyword dashboard (Stage 3) | `GET /api/v1/brands/{brand_id}/competitor-keywords/dashboard` | [endpoints/brands.md](endpoints/brands.md) |
-| Get keyword overlap across the brand's competitors (Stage 3) | `GET /api/v1/brands/{brand_id}/competitor-keywords/overlap` | [endpoints/brands.md](endpoints/brands.md) |
-| Scan keywords for every eligible competitor at once (Stage 3) | `POST /api/v1/brands/{brand_id}/competitor-keywords/scan-all` | [endpoints/brands.md](endpoints/brands.md) |
+## Commands
+| I want to… | Command |
+|---|---|
+| List brands | `topcited brand list` |
+| Pick the brand later commands act on | `topcited brand use <name\|id>` (or `--brand` / `TOPCITED_BRAND` per command) |
+| Show the active brand (incl. its id) | `topcited brand show [brand]` |
+| Create a brand | `topcited api -X POST /brands -d '{"name": "Acme Coffee", "website": "https://acmecoffee.com"}'` |
+| Check brand count against the plan cap | `topcited api /brands/limits` |
+| Rename / change website | `topcited api -X PATCH /brands/<id> -d '{"website": "https://…"}'` |
 
-The last three are the brand-scoped half of the "analyze competitor keywords"
-feature — see [competitors.md](competitors.md) for the per-competitor half
-(list one competitor's keywords, trigger/read a single scan).
+*Internal* (works via `topcited api`, not in the public spec, may change):
+competitor-keyword views for Stage 3 — `GET /brands/<id>/competitor-keywords/dashboard`,
+`GET /brands/<id>/competitor-keywords/overlap`, and
+`POST /brands/<id>/competitor-keywords/scan-all` (scan every eligible competitor
+at once — see [competitors.md](competitors.md) for the per-competitor half);
+`DELETE /brands/<id>`.
 
-## Example
-```bash
-scripts/tc-api.sh POST /api/v1/brands -d '{"name": "Acme Coffee", "website": "https://acmecoffee.com"}'
-```
-Returns the brand object with its `id` — record it in the brand brief; every later
-stage needs it. If the user has no active brand yet, this new brand becomes active
-automatically.
+## Choosing the active brand
+A brand reference is an exact id, a 6+ character id prefix, or the name
+(case-insensitive). The CLI resolves the active brand as `--brand` /
+`TOPCITED_BRAND` → `topcited brand use` (stored per API host) → the account's
+server-side active brand → the only brand. With several brands and none
+selected, commands exit 2 — run `brand use` first.
+
+`monitor sets create` and `report generate` always use the **server-side**
+active brand, which the CLI can't change. If it differs from the brand the CLI
+points at, they refuse with `brand_mismatch`; switch brands in the web app's
+brand switcher, or run with the `--brand` the hint names. A newly created brand
+becomes the server-side active brand only if the user had none.
 
 ## UI links
-- `{TOPCITED_UI_URL}/onboarding` — where a signed-in user with no brand starts brand
-  creation (matches `POST /api/v1/brands`).
-- `{TOPCITED_UI_URL}/onboarding/setup` — the setup wizard that runs right after brand
-  creation.
-- `{TOPCITED_UI_URL}/dashboard` — brand switching, renaming, and deleting all happen
-  from the brand switcher's dropdown in the console header, present on every
-  console page, not a dedicated brand-settings route. `GET /brands/limits` backs
-  the client-side gate on the switcher's "Add brand" action.
-- `{TOPCITED_UI_URL}/competitor-keywords` — the competitor-keywords dashboard/overlap
-  page. It reads the active brand from client-side brand context like `/competitors`
-  below, so there is no `{brand_id}` segment in the route.
+- `{TOPCITED_UI_URL}/onboarding` — brand creation for a signed-in user with no
+  brand; `{TOPCITED_UI_URL}/onboarding/setup` is the wizard right after it.
+- `{TOPCITED_UI_URL}/dashboard` — brand switching, renaming and deleting all
+  happen from the brand switcher in the console header (on every console page),
+  not a dedicated settings route.
+- `{TOPCITED_UI_URL}/competitor-keywords` — the competitor-keyword dashboard and
+  overlap views. It reads the active brand from the app, so there's no brand id
+  in the URL.
 
-Default locale (`en`) is unprefixed, so these bare paths resolve directly — don't
-add `/en/`. Other locales (e.g. `pl`) would use `/pl/onboarding`.
+Default locale (`en`) is unprefixed — don't add `/en/`.
 
 ## Cost & quota
-Creating a brand does **not** spend a credit, but the number of brands you
-may hold is capped by plan, checked before insert (a 402 when you are over).
-`GET /brands/limits` is a free read of that same cap — call it before
-offering to create a brand.
-Updating a brand's name/website does not meter anything — it only fails on an
-unparseable URL (400), a duplicate name (409), or a brand you don't own (404).
-Deleting a brand does not meter anything either. It cascades competitors
-(DB-level `ON DELETE CASCADE`) and detaches (sets `brand_id = NULL` on) query
-sets, reports, SEO sites/analyses, content submissions, and pipeline tasks —
-none of that data is destroyed.
-`GET .../competitor-keywords/dashboard` and `.../overlap` are free reads — the
-dashboard attaches cached keyword-difficulty data only (no DataForSEO fetch,
-no LLM call) from a single batched cache lookup.
-`POST .../competitor-keywords/scan-all` is a **partial-fulfillment** operation,
-not all-or-nothing: it walks the brand's competitors, silently skips ones with
-no website or an already-in-progress scan, then spends one
-`competitor_keyword_scans` quota unit per remaining competitor via
-the plan's `competitor_keyword_scans` allowance until it is exhausted — the
-competitors it already started are still dispatched as background scans, the
-rest count toward `skipped` in the response. It never 402s; check
-`started`/`skipped` in the response body instead.
-The per-plan `competitor_keyword_scans` allowance varies by plan; read the
-user's live numbers from `GET /api/v1/users/me/usage` rather than assuming.
+Creating, updating and listing brands spends nothing, but the number of brands
+is capped by plan (exit 4 when over) — check `/brands/limits` before offering to
+create one. The competitor-keyword dashboard and overlap reads are free;
+`scan-all` spends one `competitor_keyword_scans` unit per competitor it starts
+(see [competitors.md](competitors.md)).
 
 ## Failure modes
-- 402 on create → plan's brand-count cap reached; explain in plain language, do not
-  retry, and point the user at the billing/upgrade page.
-- 400 on create/update → the `website` value couldn't be parsed as a URL; ask the
-  user to re-enter it (e.g. missing scheme).
-- 409 on create/update → the name collides with another of the user's brands.
-- 404 on update/delete → wrong or stale `brand_id`; call `GET /api/v1/brands` again
-  to refresh the id before retrying.
-- 400 on delete → the brand is the user's only remaining brand; brands can't go to
-  zero. Tell the user to create a replacement brand first if they really want to
-  retire this one.
-- Deleting the active brand silently reassigns `active_brand_id` to the newest
-  remaining brand — re-fetch `GET /api/v1/brands` (or the user object) after a
-  delete rather than assuming the old active brand id is still valid.
-- `scan-all` returning `started: 0, skipped: N` is not an error — it means every
+- Exit 4 on create → the plan's brand cap is reached; explain, don't retry, point
+  at billing.
+- HTTP 400 on create/update → the `website` couldn't be parsed as a URL (e.g. no
+  scheme); ask the user to re-enter it.
+- Exit 6 on create/update → the name collides with another of the user's brands.
+- Exit 5 → wrong or stale brand; `topcited brand list` to refresh.
+- Deleting the user's only brand is refused (brands can't go to zero), and
+  deleting the active brand silently makes the newest remaining brand active —
+  re-list afterwards rather than assuming. Deleting cascades competitors and
+  detaches (doesn't destroy) query sets, reports, SEO sites and content.
+- `scan-all` returning `started: 0, skipped: N` isn't an error — every
   competitor was ineligible (no website / scan already running) or the quota was
-  already exhausted before this call; don't retry blindly, inspect why via
-  `GET .../competitor-keywords/dashboard`.
+  already used up; check the dashboard rather than retrying blindly.

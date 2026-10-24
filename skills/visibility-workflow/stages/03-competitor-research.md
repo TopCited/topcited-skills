@@ -13,7 +13,8 @@ search."
   (brand-scoped dashboard/overlap, since those endpoints hang off the brand)
 
 ## Flow
-1. Seed the competitor list from rivals the user named in the brand brief.
+1. Seed the competitor list from rivals the user named in the brand brief
+   (`topcited competitors list` first, then `topcited competitors add`).
 2. Ask TopCited to discover more (`:suggest`) — this is an LLM call and spends
    a `suggestions` credit; mention that before calling it.
 3. **Suggest-and-approve:** show the discovered candidates alongside the

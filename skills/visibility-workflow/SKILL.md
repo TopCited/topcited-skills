@@ -12,18 +12,25 @@ everything in plain language.
 
 ## Session setup
 
-1. `TOPCITED_API_KEY` must be set. If it isn't, stop and tell the user how to get
-   one: **Settings → Profile → API keys → Create key** in the TopCited app. `TOPCITED_BASE_URL`
-   (API) defaults to `https://api.topcited.ai` and `TOPCITED_UI_URL` (UI links)
-   to `https://topcited.ai`.
+1. The `topcited` CLI must be installed and signed in. If `topcited` isn't on the
+   PATH, install it (`curl -fsSL https://topcited.ai/install.sh | sh`, or
+   `npx @topcited/cli`) after telling the user what you're installing. If
+   `topcited auth status` exits 3, run `topcited auth login --no-wait`, show the
+   user the URL and code to approve, then `topcited auth login --continue` — or
+   use a `TOPCITED_API_KEY` they give you (**Settings → Profile → API keys**).
+   `TOPCITED_BASE_URL` (API) defaults to `https://api.topcited.ai` and
+   `TOPCITED_UI_URL` (UI links) to `https://topcited.ai`.
 2. **Env-pairing check:** the API base and the UI base are two different hosts, so
    one cannot be derived from the other. If either is overridden, both must be set
    and must point at the same environment. On a mismatch, or on one set and the
    other left at its default, stop and ask the user to confirm both before any
    Show step — a mismatched pair silently shows them links into the wrong place.
-3. Smoke-test: `GET /api/v1/users/me` (see the `topcited-api` skill).
-4. All TopCited calls follow the `topcited-api` skill — read its `SKILL.md` first,
-   then the feature guide under its `references/` before calling that feature.
+3. Smoke-test: `topcited auth status` and `topcited usage` (see the
+   `topcited-api` skill). Once the brand exists (Stage 1), pin it for the
+   session with `topcited brand use <brand>`.
+4. All TopCited calls follow the `topcited-api` skill — read its `SKILL.md` first
+   (the agent contract: JSON output, exit codes, `--wait`, `--dry-run` / `--yes`),
+   then the feature guide under its `references/` before using that feature.
 5. Session state: `sessions/<brand-slug>/` under the working directory (brand slug =
    brand name lowercased, spaces and
    punctuation replaced with hyphens; e.g. "Acme Coffee Co." → `acme-coffee-co`).
@@ -39,7 +46,8 @@ everything in plain language.
    (say "the file that tells Google which pages you have", not "sitemap XML").
 2. **Confirm** — explicit yes before anything that creates, changes, posts, sends,
    or costs. Read-only lookups are exempt. When a step consumes TopCited credits
-   (the guide's Cost section says so), state that before asking.
+   (the guide's Cost section says so), run it with `--dry-run` first, state the
+   cost, and only then run it with `--yes` — the CLI never asks for you.
 3. **Act** — do it.
 4. **Show** — what happened, in plain language, plus the TopCited UI link (guide's
    UI-links pattern on `TOPCITED_UI_URL`) so they can see it themselves.
@@ -53,7 +61,7 @@ End every stage with one bounded "anything else you'd like to tell me before we 
 Your unit of work is the **improvement**, not the TopCited feature. Route every
 improvement you identify:
 
-1. **TopCited route** — a feature covers it → call the API per its guide. Preferred.
+1. **TopCited route** — a feature covers it → use the CLI per its guide. Preferred.
 2. **Agent-direct route** — no feature, but you can do it → best effort with your
    own tools: generate structured data / llms.txt / sitemap / robots content; if the
    user granted repo or CMS access, implement fixes as reviewable patches or PRs

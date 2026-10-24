@@ -12,18 +12,18 @@ list in plain language."
   look — [topcited-api/references/seo-geo-analysis.md](../../topcited-api/references/seo-geo-analysis.md)
   (URL analysis)
 - Manipulation/trust check on a page that looks artificially gamed —
-  [topcited-api/references/audit.md](../../topcited-api/references/audit.md) (sci-defense analyze)
+  [topcited-api/references/ai-usage-detection.md](../../topcited-api/references/ai-usage-detection.md) (sci-defense analyze)
 - Where a finding is really a content-rewrite problem, the GEO optimizer and
   optimization submissions can illustrate the fix inline —
   [topcited-api/references/seo-geo-analysis.md](../../topcited-api/references/seo-geo-analysis.md)
 
 ## Flow
-1. Register the site, trigger an audit run, and poll until it's terminal —
-   this costs 9 T-coins; state that before triggering.
-2. List the issues the crawl found.
+1. Audit the site (`topcited audit run <url> --wait --yes`, which registers it
+   on first use) — this costs 9 T-coins; state that before triggering.
+2. List the issues the crawl found (`topcited audit show <run>`).
 3. For pages that look suspicious or heavily AI-generated, run a manipulation
    check (`sci-defense/analyze`) to get a concrete verdict rather than a
-   guess — this costs 2 T-coins per check; state that before triggering.
+   guess — this costs 5 T-coins per check; state that before triggering.
 4. End the stage by instantiating `improvement-plan.md`: turn every finding
    into a row with a plain-language "why it matters," a route
    (topcited/agent/user), and get the user's approval item by item — don't
@@ -53,4 +53,4 @@ structured data on their own product page).
 ## Show
 The audit run's issue list and, for any page checked individually, its
 analysis (UI-links pattern in the topcited-api skill, references/seo-geo-analysis.md); the manipulation-check
-result page (UI-links pattern in the topcited-api skill, references/audit.md) for any page run through it.
+result page (UI-links pattern in the topcited-api skill, references/ai-usage-detection.md) for any page run through it.

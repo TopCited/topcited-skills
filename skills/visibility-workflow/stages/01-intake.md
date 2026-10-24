@@ -11,7 +11,8 @@ you're not sure, I'll suggest options and you pick."
 ## Flow
 1. Ask for the website URL. Fetch the homepage yourself and skim it — your
    suggestions below come from this.
-2. Confirm, then create the brand (or reuse an existing one — list first).
+2. Confirm, then create the brand (or reuse an existing one — `topcited brand list`
+   first), and pin it for the session with `topcited brand use <brand>`.
 3. Guided interview, one question at a time:
    - What do you sell or offer?
    - Who buys it? (audience)

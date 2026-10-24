@@ -16,8 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Lint the API helper script
-        run: shellcheck skills/topcited-api/scripts/tc-api.sh
+      - name: Lint shell scripts
+        run: shellcheck scripts/*.sh
 
   no-internal-references:
     runs-on: ubuntu-latest

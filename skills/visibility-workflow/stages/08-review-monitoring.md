@@ -11,13 +11,16 @@ track going forward, and set a routine so this keeps improving."
   brand's visibility now — [topcited-api/references/reports.md](../../topcited-api/references/reports.md)
 
 ## Flow
-1. Compare current monitoring numbers against the Stage 2 baseline in plain
-   language — what improved, what didn't move yet. Be honest about
+1. Compare current monitoring numbers (`topcited monitor results --since
+   <baseline date>`) against the Stage 2 baseline in plain language — what
+   improved, what didn't move yet. Be honest about
    timelines: indexing and AI-citation changes take weeks, not days.
 2. Add any queries learned since the baseline (competitor gaps from Stage 3,
-   new topics from Stage 6, channels from Stage 7) to the query set.
+   new topics from Stage 6, channels from Stage 7) to the query set
+   (`topcited monitor queries add`).
 3. Offer to generate a report — a shareable snapshot the user can save or
-   hand to someone else — 10 T-coins; mention that before generating.
+   hand to someone else — 10 T-coins; mention that before generating
+   (`topcited report generate --wait --yes`, then `topcited report download`).
 4. Close out remaining `progress.md` checklist items, or carry open ones over
    with a clear next step.
 5. Agree a check-in cadence (e.g. monthly) for future sessions.
