@@ -16,15 +16,16 @@ real expertise."
 ## Flow
 1. Optionally run keyword and content-sentence recommendations first — they
    turn the Stage 3 competitor research and the brand brief into concrete
-   candidates instead of the user inventing topics from scratch. Each run
-   spends 3 T-coins; mention that before calling it, and let the user accept
-   only the suggestions they want.
+   candidates instead of the user inventing topics from scratch
+   (`topcited recommend keywords --wait --yes`, `topcited recommend content
+   --topic … --wait --yes`). Each run spends 3 T-coins; mention that before
+   calling it, and let the user accept only the suggestions they want.
 2. Propose a pillar topic and its clusters, drawing on the brand brief, the
    Stage 3 competitor/keyword summary, and any accepted recommendations.
    **Suggest-and-approve.**
 3. Before starting the run, warn the user this is the most credit-hungry step
    in the whole workflow, and that its cost scales with the number of pages
-   requested. Check their balance and compute the actual figure for the page
+   requested. Check their balance (`topcited usage`) and compute the actual figure for the page
    count you are proposing (see the `topcited-api` skill's
    `references/content-pillar-cluster.md`) — quote that number, not a
    remembered one.

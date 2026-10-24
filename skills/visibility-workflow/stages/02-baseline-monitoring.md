@@ -15,13 +15,20 @@ ChatGPT. In a few weeks you'll see exactly how much this improved."
    AI-assistant prompt.
 2. **Suggest-and-approve:** show the user the list, plain language, let them
    add, edit, or drop entries before anything is created.
-3. Create the query set (Topic) and add the approved queries.
+3. Create the query set (Topic) and add the approved queries
+   (`topcited monitor sets create … -p …`, `topcited monitor queries add …`).
+   Mention that the set then runs automatically once a day, each run costing
+   the same as the first — offer `--manual` if they'd rather trigger runs
+   themselves.
 4. Before triggering the first run, warn about cost: every run charges 1 T-coin
    per query per engine, so a 15-query set on 2 engines can cost up to 30
-   T-coins. Check the user's remaining balance first and state a concrete
-   number, not just "it costs credits."
-5. Trigger the run. Runs are asynchronous — tell the user results trickle in
-   over the next few minutes, not instantly.
+   T-coins. Get the real figure from `topcited monitor run <set> --dry-run`
+   and the balance from `topcited usage`, and state concrete numbers, not just
+   "it costs credits."
+5. Trigger the run (`topcited monitor run <set> --wait --yes`). Runs are
+   asynchronous — tell the user results trickle in over the next few minutes;
+   if `--wait` times out (exit 7), resume with `topcited wait <job>`. Read the
+   baseline with `topcited monitor results --set <set>`.
 
 Routed actions: none — this stage is entirely a TopCited-route stage.
 
