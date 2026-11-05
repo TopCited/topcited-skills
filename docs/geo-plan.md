@@ -309,7 +309,7 @@ Anything that publishes, posts or submits needs your explicit approval first, on
 | 5 | 5 | Update topcited.ai llms.txt (benchmark, methodology, free tools, Claude in blurb) | G3, G11, G12 | L / L | Code | Not started | **Down.** No measured citation lift `[AHR-LLMS][SER-LLMS][GOOG]`; `/llms-full.txt` dropped |
 | 6 | 6 | Visible named authors with real sameAs, honest last-updated dates; **drop FAQPage markup as a citation tactic** | G5 | M / L | Code | Not started | **Down/reframed.** FAQ and schema null `[AHR-SCHEMA][MD]`; freshness and authorship kept `[SPRK][GOOG]` |
 | 7 | 7 | Consistent "TopCited.ai" naming + sameAs | G14 | M / L | Code + account | Not started | Kept |
-| 8 | new | Answer-first rewrite of home, /features, pricing-faq and top blog posts by the page rules in §6 (first 40 words, query phrasing, sourced stats, dates) | G1-G5 | H / M | Code + account (copy) | Not started | **New** `[MD][SPRK][GEO24]` |
+| 8 | new | Answer-first rewrite of home, /features, pricing-faq and top blog posts by the page rules in section 6 (first 40 words, query phrasing, sourced stats, dates) | G1-G5 | H / M | Code + account (copy) | Not started | **New** `[MD][SPRK][GEO24]` |
 
 ### P1: pages and data that target the query groups
 
