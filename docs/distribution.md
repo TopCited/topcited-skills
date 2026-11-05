@@ -23,3 +23,23 @@ specific submission.
 
 Commit-level hygiene before any submission: tagged release, README install block at the top,
 `claude plugin validate .` clean.
+
+## GEO for TopCited: listing and source targets
+
+Why these: see [geo-plan.md](geo-plan.md). Facts below come from each site's own docs or
+page on 2026-11-05 unless marked **[unverified]**. Every submission still needs explicit
+approval, one at a time; nothing has been submitted.
+
+| Target | Mechanism | Notes |
+|---|---|---|
+| skills.sh | Automatic from `npx skills add TopCited/topcited-skills` telemetry; no form | Installs are the lever |
+| claudemarketplaces.com | Crawled plus editorial review; has a `/submit` page | Independent of Anthropic |
+| Anthropic directory | claude.ai/directory/manage; MCP connector + plugin bundle | See table above; paid plan, public repo |
+| Cursor marketplace | cursor.com/marketplace/publish | Reviewed |
+| MCP Registry | `mcp-publisher`; `server.json` is ready | Also what PulseMCP now ingests (its own form is paused) |
+| mcp.so, Glama, Smithery | Submit forms / add-server flows | Mechanisms partly **[unverified]** |
+| awesome-claude-code, VoltAgent/awesome-agent-skills, ComposioHQ/awesome-claude-skills | PR or issue; read each CONTRIBUTING first | Prefer real-usage evidence over self-promotion |
+| ClawHub | `clawhub skill publish` | OpenClaw ecosystem |
+| Capterra, G2, AlternativeTo | Vendor profile + customer reviews | Capterra listing exists, 0 reviews |
+| Product Hunt, Hacker News (Show HN), Reddit, dev.to, Hashnode, YouTube | Own posts | Disclose affiliation; follow community rules |
+| Third-party "best AI visibility tools" and "alternatives" pages | Outreach to authors | Honest pitch, no paid placement |

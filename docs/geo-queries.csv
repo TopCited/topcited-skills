@@ -1,0 +1,78 @@
+id,group,intent,query,persona,should_win
+Q01,G1,problem-first,why doesn't ChatGPT mention my brand,founder,topcited.ai
+Q02,G1,problem-first,how to track my brand in AI answers,marketer,topcited.ai
+Q03,G1,problem-first,how to check if ChatGPT recommends my product,founder,topcited.ai
+Q04,G1,problem-first,how often does Perplexity cite my website,SEO,topcited.ai
+Q05,G1,problem-first,how to monitor brand mentions in ChatGPT Gemini and Claude,brand manager,topcited.ai
+Q06,G1,tool-seeking,best AI visibility tracker,marketer,topcited.ai
+Q07,G1,tool-seeking,best tool to track brand mentions in LLM answers,brand manager,topcited.ai
+Q08,G1,tool-seeking,AI search visibility tool for small business,founder,topcited.ai
+Q09,G1,tool-seeking,cheap alternative to Profound for AI visibility,founder,topcited.ai
+Q10,G1,tool-seeking,Otterly AI alternative,SEO,topcited.ai
+Q11,G1,tool-seeking,Peec AI alternative,agency,topcited.ai
+Q12,G1,tool-seeking,TopCited vs Profound,SEO,topcited.ai
+Q13,G1,agent-skill,MCP server to track brand visibility in AI search,developer,both
+Q14,G2,problem-first,how to measure share of voice in AI search,marketer,topcited.ai
+Q15,G2,problem-first,why does ChatGPT recommend my competitor instead of me,founder,topcited.ai
+Q16,G2,problem-first,how to see which competitors AI engines cite for my keywords,SEO,topcited.ai
+Q17,G2,tool-seeking,AI competitor benchmarking tool,brand manager,topcited.ai
+Q18,G2,research / definition,what is LLM share of voice,marketer,both
+Q19,G3,problem-first,how to optimize my website for AI search,founder,both
+Q20,G3,problem-first,how to make my site visible to ChatGPT crawlers,developer,both
+Q21,G3,problem-first,does robots.txt block GPTBot and ClaudeBot,developer,topcited-skills
+Q22,G3,problem-first,how to add llms.txt to my website,developer,topcited-skills
+Q23,G3,problem-first,what schema markup helps AI search citations,SEO,both
+Q24,G3,tool-seeking,free GEO audit tool,founder,both
+Q25,G3,tool-seeking,free AI SEO checker for my website,founder,both
+Q26,G3,agent-skill,SEO audit skill for Claude Code,developer,topcited-skills
+Q27,G3,agent-skill,optimize my website with Claude Code,developer,topcited-skills
+Q28,G4,problem-first,how to rewrite content so AI cites it,content marketer,both
+Q29,G4,problem-first,how to get cited by ChatGPT and Perplexity,marketer,both
+Q30,G4,problem-first,how to rank product pages in ChatGPT shopping recommendations,ecommerce,topcited.ai
+Q31,G4,problem-first,what content format do LLMs cite most,SEO,both
+Q32,G4,tool-seeking,best tool to optimize content for generative engines,marketer,topcited.ai
+Q33,G4,tool-seeking,AI tool to rewrite product descriptions for ChatGPT recommendations,ecommerce,topcited.ai
+Q34,G4,research / definition,what is the CORE method for generative engine optimization,researcher,livegeobench.com / papers
+Q35,G4,research / definition,GEO optimization methods compared (E-GEO AgenticGEO CORE),researcher,livegeobench.com / papers
+Q36,G5,research / definition,what is generative engine optimization,marketer,both
+Q37,G5,research / definition,GEO vs SEO difference,marketer,both
+Q38,G5,research / definition,what is answer engine optimization,marketer,both
+Q39,G5,research / definition,GEO ranking factors,SEO,both
+Q40,G5,research / definition,does schema markup help ChatGPT cite you,SEO,both
+Q41,G5,research / definition,how long does GEO take to work,founder,both
+Q42,G6,problem-first,how to find which prompts customers ask AI about my category,marketer,topcited.ai
+Q43,G6,problem-first,how to build a pillar cluster content strategy for AI search,content marketer,both
+Q44,G6,tool-seeking,AI keyword research tool for GEO,SEO,topcited.ai
+Q45,G6,problem-first,how to find trending topics for my niche,content marketer,topcited.ai
+Q46,G6,problem-first,how to find keyword gaps vs competitors,SEO,topcited.ai
+Q47,G7,problem-first,how to report AI visibility to clients,agency,topcited.ai
+Q48,G7,tool-seeking,white label AI visibility report for agencies,agency,topcited.ai
+Q49,G7,tool-seeking,GEO platform for SEO agencies,agency,topcited.ai
+Q50,G8,problem-first,where should I post to get cited by AI engines,marketer,topcited.ai
+Q51,G8,problem-first,which Reddit and Medium communities do AI engines cite for my industry,marketer,topcited.ai
+Q52,G8,tool-seeking,tool to automate posting to Reddit LinkedIn Medium for brand visibility,marketer,topcited.ai
+Q53,G9,problem-first,is a competitor manipulating AI search results with hidden text,SEO,topcited.ai
+Q54,G9,problem-first,how to detect keyword stuffing aimed at LLM rankings,SEO,topcited.ai
+Q55,G9,tool-seeking,free tool to detect AI-manipulated web pages,researcher,topcited.ai
+Q56,G9,research / definition,what is generative engine manipulation or prompt injection in web content,researcher,livegeobench.com / papers
+Q57,G10,problem-first,is this influencer post misleading,consumer,topcited.ai
+Q58,G10,problem-first,how to measure emotional manipulation in influencer content,researcher,topcited.ai
+Q59,G10,tool-seeking,influencer distortion index tool,researcher,topcited.ai
+Q60,G10,research / definition,rhetorical distortion in influencer content multi-platform study,researcher,livegeobench.com / papers
+Q61,G11,agent-skill,SEO skill for Claude Code,developer,topcited-skills
+Q62,G11,agent-skill,GEO plugin for Cursor,developer,topcited-skills
+Q63,G11,agent-skill,best agent skills for SEO,developer,topcited-skills
+Q64,G11,agent-skill,Codex skill for SEO and AI search optimization,developer,topcited-skills
+Q65,G11,agent-skill,claude code plugin marketplace SEO,developer,topcited-skills
+Q66,G11,agent-skill,npx skills add SEO GEO,developer,topcited-skills
+Q67,G11,agent-skill,open source GEO skills for AI coding agents,developer,topcited-skills
+Q68,G11,agent-skill,CLI to check brand AI visibility from terminal,developer,both
+Q69,G12,research / definition,LIVE-GEO benchmark,researcher,livegeobench.com / papers
+Q70,G12,research / definition,benchmark for evaluating generative engine optimization in real-world search,researcher,livegeobench.com / papers
+Q71,G12,research / definition,do GEO methods actually work in live AI search,researcher,livegeobench.com / papers
+Q72,G12,research / definition,ProductBench LLM product ranking benchmark,researcher,livegeobench.com / papers
+Q73,G13,problem-first,AI agent that does SEO and GEO for me end to end,founder,topcited.ai
+Q74,G13,tool-seeking,agentic growth platform for AI search,founder,topcited.ai
+Q75,G14,research / definition,TopCited,any,both
+Q76,G14,research / definition,what is TopCited.ai,any,both
+Q77,G14,research / definition,TopCited review,any,topcited.ai

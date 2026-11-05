@@ -1,6 +1,6 @@
 ---
 name: optimize-website
-description: Audit and optimize a website for search engines (SEO) and AI answer engines (GEO) — ChatGPT, Claude, Gemini, Perplexity, Google AI Overviews. Use when the user says "optimize my website", "improve my SEO", "SEO audit", "GEO", "AI search visibility", "get my site cited by ChatGPT / Perplexity", "why doesn't AI recommend my site", or gives a URL and asks how to rank or be found. Runs a free audit, ranks fixes, and writes the actual title, meta, schema, robots.txt and llms.txt changes. Works with no account.
+description: Audit and optimize a website for search engines (SEO) and AI answer engines (GEO) — ChatGPT, Claude, Gemini, Perplexity, Google AI Overviews. Use when the user says "optimize my website", "improve my SEO", "SEO audit", "GEO", "AI search visibility", "get my site cited by ChatGPT / Perplexity", "why doesn't AI recommend my site", "can AI crawlers (GPTBot, ClaudeBot) read my site", "add llms.txt", "schema markup for AI search", or gives a URL and asks how to rank or be found. Runs a free audit, ranks fixes, and writes the actual title, meta, schema, robots.txt and llms.txt changes. Works with no account.
 ---
 
 # Optimize a website (SEO + GEO)

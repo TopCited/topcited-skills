@@ -20,6 +20,13 @@ npx skills add TopCited/topcited-skills          # Codex, Cursor, Copilot, Winds
 Then ask: **"Optimize my website https://yoursite.com"** (Claude Code: `/topcited:optimize https://yoursite.com`).
 Per-agent instructions, including Gemini CLI and MCP setup: [docs/agents.md](docs/agents.md).
 
+## Questions this answers
+
+"How do I optimize my website for AI search?" · "Why doesn't ChatGPT mention my brand?" ·
+"How do I get cited by ChatGPT and Perplexity?" · "Can GPTBot and ClaudeBot crawl my site?" ·
+"Do I need llms.txt or schema markup?" · "SEO audit skill for Claude Code / Codex / Cursor".
+See a real run: [examples/livegeobench-audit.md](examples/livegeobench-audit.md).
+
 ## What you get
 
 | Skill | What it gives your agent |
@@ -42,6 +49,13 @@ You can do the same measurement by hand; the skills explain how.
 The optional MCP server is `https://api.topcited.ai/mcp`.
 
 Compared with other open-source SEO/GEO skill repos: [docs/comparison.md](docs/comparison.md).
+
+## Research behind it
+
+TopCited's content method, CORE, is described in
+[arXiv 2602.03608](https://arxiv.org/abs/2602.03608). LIVE-GEO, an open benchmark of GEO
+methods on the live web, is [arXiv 2611.01126](https://arxiv.org/abs/2611.01126) with the
+benchmark at [livegeobench.com](https://livegeobench.com). Both are preprints.
 
 ## More install options
 
