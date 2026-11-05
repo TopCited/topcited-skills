@@ -1,0 +1,11 @@
+"LIVE-GEO benchmark" is too short for me to know what you want, and the working directory is empty. I also don't recognize a benchmark with that exact name, so I'd rather not guess at its details.
+
+Which of these do you mean?
+
+1. **Research and summary.** I'd search the web for LIVE-GEO and summarize what it is: the task, dataset, metrics, and leaderboard.
+2. **Run it.** If you have a repo or dataset, point me to it, or give me a URL to clone. I'd set up the environment and run the evaluation.
+3. **Build one.** I'd implement a benchmark harness from a spec you give me. This might be generative engine optimization (GEO), meaning how content gets cited in AI search answers, or it might be something geospatial.
+4. **Evaluate a model on it.** Tell me which model and which metrics.
+
+Tell me which one, plus any link, paper title, or path you have.
+nk, send it and tell me which of these you want.

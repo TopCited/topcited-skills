@@ -1,0 +1,36 @@
+# Tracking your brand in AI answers (a.k.a. AI visibility / GEO)
+
+## 1. Define what to measure
+- **Mention rate**: % of prompts where your brand appears
+- **Citation rate**: % where your domain is linked as a source
+- **Share of voice**: your mentions vs. competitors'
+- **Position/prominence**: first recommendation vs. buried in a list
+- **Sentiment and accuracy**: how you're described, and whether facts (pricing, features) are correct
+
+## 2. Build a prompt set
+- 30–100 realistic prompts across the funnel:
+  - Category: "best [product type] for [use case]"
+  - Comparison: "[You] vs [Competitor]"
+  - Problem-based: "how do I solve X"
+  - Brand: "is [You] any good?"
+- Include variations in wording, persona, and region.
+
+## 3. Run them across engines
+Test ChatGPT, Gemini, Claude, Perplexity, Google AI Overviews/AI Mode, Copilot. Run each prompt multiple times (answers vary), with and without web search on, and log mentions, citations, and sources.
+
+## 4. Choose tooling
+- **Manual/DIY**: spreadsheet + scheduled API calls (OpenAI, Anthropic, Perplexity, Gemini APIs) that parse responses for brand names and cited URLs. I can help you script this.
+- **Dedicated tools**: Profound, Peec AI, Otterly.ai, AthenaHQ, Semrush AI Toolkit, Ahrefs Brand Radar, etc. They automate prompt tracking, share of voice, and citation sources.
+- **Web analytics**: In GA4, filter referral traffic from chatgpt.com, perplexity.ai, gemini.google.com, copilot.microsoft.com, claude.ai, etc. Also check server logs for AI crawlers (GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot).
+
+## 5. Analyze and act
+- Look at **which sources get cited** for your category (Reddit, review sites, Wikipedia, publications) since those are your leverage points.
+- Fix inaccuracies at the source (your site, Wikipedia, directories).
+- Publish clear, structured, factual content; earn third-party mentions and reviews.
+- Make sure crawlers aren't blocked in robots.txt.
+
+## 6. Track over time
+Re-run weekly or monthly, chart trends, and annotate with your content/PR changes. Treat numbers as directional, since AI outputs are non-deterministic.
+
+---
+Want me to build a simple script that runs a prompt set against a few AI APIs and logs brand mentions and citations to a CSV? If so, tell me your brand, competitors, and which engines you care about.

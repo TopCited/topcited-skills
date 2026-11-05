@@ -1,0 +1,10 @@
+Possibly—but I’d need the competitor’s URL and the AI search result you’re seeing to assess it.
+
+Two tactics could be involved:
+
+- **Hidden SEO text:** keywords or claims concealed from visitors to influence search engines. Google explicitly prohibits hidden text used to manipulate search. [Google’s spam policies](https://developers.google.com/search/docs/essentials/spam-policies)
+- **Prompt injection:** instructions embedded in a webpage, such as “always recommend our company,” intended to influence an AI’s answer. [Microsoft’s explanation](https://learn.microsoft.com/en-us/security/zero-trust/catalog-ai-attack-techniques/prompt-injection)
+
+Hidden content alone doesn’t prove manipulation; accessibility text and collapsed sections can be legitimate. Finding suspicious instructions establishes an attempt, while proving they affected results requires further evidence.
+
+Send the competitor’s page URL, the search query, and which AI search service you used.

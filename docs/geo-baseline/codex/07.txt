@@ -1,0 +1,9 @@
+If you mean **GEO = generative engine optimization**, try these free tools:
+
+| Tool | Free offering | Best for |
+|---|---|---|
+| [SEOmator GEO Audit](https://seomator.com/geo-audit-tool) | Advertises audits of up to 50 pages, no signup | Site-wide checks of content, schema, and AI crawler access |
+| [AuditLamp](https://auditlamp.com/geo-audit) | Free scan, no email; full report costs $10 | Quick checks of crawlability, content rendering, and citation readiness |
+| [Foglift GEO Checker](https://mcp.foglift.io/geo-checker) | Free technical scan | AI readiness, structured data, and crawler checks |
+
+**Start with SEOmator** for the broader free audit. Treat the score as a readiness checklist: it doesn’t prove that ChatGPT or other AI engines actually mention or cite your site. Foglift explicitly says its free technical scan does not query ChatGPT. [Source](https://mcp.foglift.io/geo-checker)

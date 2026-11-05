@@ -1,0 +1,11 @@
+{
+  "name": "topcited",
+  "owner": { "name": "TopCited" },
+  "plugins": [
+    {
+      "name": "topcited",
+      "source": ".",
+      "description": "Free website SEO + GEO audit and fixes, an SEO/GEO knowledge base, and optional TopCited live AI-citation tracking."
+    }
+  ]
+}

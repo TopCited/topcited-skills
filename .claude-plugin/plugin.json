@@ -1,13 +1,26 @@
 {
-  "name": "topcited-skills",
-  "description": "SEO/GEO knowledge, the TopCited API reference, and a guided visibility-improvement workflow — as Agent Skills.",
-  "version": "0.1.0",
+  "name": "topcited",
+  "displayName": "TopCited SEO + GEO",
+  "version": "0.2.0",
+  "description": "Optimize a website for search and AI answer engines: free audit and fixes (/topcited:optimize), an SEO/GEO knowledge base, and optional TopCited live-citation tracking.",
   "author": {
     "name": "TopCited",
     "url": "https://topcited.ai"
   },
   "homepage": "https://github.com/TopCited/topcited-skills",
   "repository": "https://github.com/TopCited/topcited-skills",
+  "documentationUrl": "https://github.com/TopCited/topcited-skills#readme",
+  "supportUrl": "https://github.com/TopCited/topcited-skills/issues",
   "license": "MIT",
-  "keywords": ["seo", "geo", "aeo", "topcited", "visibility", "llm-search"]
+  "keywords": [
+    "seo",
+    "geo",
+    "aeo",
+    "ai-search",
+    "llms-txt",
+    "schema",
+    "chatgpt",
+    "perplexity",
+    "topcited"
+  ]
 }

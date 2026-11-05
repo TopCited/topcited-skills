@@ -1,0 +1,13 @@
+**My default pick is Peec AI** for a marketing team tracking brand visibility in AI answers. For a smaller budget, I’d start with Otterly.
+
+| Tool | My recommendation | Current entry offer |
+|---|---|---|
+| **[Peec AI](https://peec.ai/pricing)** | Best starting point for ongoing marketing reporting: visibility, position, sentiment, and competitor comparisons. | **$95/month**; 50 prompts, 3 models, daily tracking, unlimited users. |
+| **[Otterly](https://otterly.ai/pricing)** | Best budget option for testing whether regular tracking is useful. Includes brand mentions and citation tracking. | **$29/month**; 15 prompts across ChatGPT, AI Overviews, Perplexity, and Copilot. Other engines cost extra. |
+| **[Profound](https://www.tryprofound.com/pricing)** | Best enterprise shortlist option when you need broader analytics, integrations, and SSO. | **Custom pricing**; free 7-day trial with 50 prompts across 3 engines. |
+
+These are recommendations based on current published features and pricing, rather than a hands-on accuracy benchmark.
+
+Before subscribing, run the same 20–50 buyer questions through a trial. Check whether it preserves the actual answers and citations, supports your target countries, and tracks the engines your customers use. Treat visibility scores as trends across sampled prompts.
+
+What’s your monthly budget, and are you tracking one brand or multiple clients?

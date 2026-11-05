@@ -1,0 +1,21 @@
+Assuming **GEO = Generative Engine Optimization**, these are three relevant open-source skill packs:
+
+| Repository | Focus | Agent support | License |
+|---|---|---|---|
+| [Cognitic-Labs/geoskills](https://github.com/Cognitic-Labs/geoskills) | Six skills covering website audits, content fixes, schema, and AI visibility monitoring | Claude Code, Codex, Cursor, OpenCode, and others | Apache-2.0 |
+| [TheSmokeDev/geo-skills](https://github.com/TheSmokeDev/geo-skills) | 29 skills plus a CLI for citability audits, AI crawler checks, and prioritized fixes | Claude Code, Codex, compatible skill-reading agents | MIT |
+| [Infrasity-Labs/dev-gtm-claude-skills](https://github.com/infrasity-labs/dev-gtm-claude-skills) | GEO and AI discoverability for developer documentation, alongside broader marketing workflows | Claude Code, Codex, Cursor, and others | MIT |
+
+**I’d start with Cognitic’s pack** for a focused audit-and-fix workflow. Its documented installation and first command are:
+
+```bash
+npx skills add Cognitic-Labs/geoskills
+```
+
+```text
+/geo-audit https://your-website.com
+```
+
+Choose **TheSmokeDev** if you also want a local, machine-readable auditing CLI; choose **Infrasity** if your main concern is developer documentation.
+
+These capabilities are documented by the maintainers; I haven’t run or benchmarked the packs.

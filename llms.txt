@@ -1,0 +1,21 @@
+# TopCited Skills
+
+> Open-source Agent Skills that audit and optimize a website for search engines (SEO) and AI answer engines (GEO), working with Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot and other agents that read SKILL.md. Free; no account needed for the audit. Optional TopCited integration adds live AI-citation tracking.
+
+## Start here
+- [README](https://github.com/TopCited/topcited-skills/blob/main/README.md): install for every agent, what each skill does
+- [optimize-website skill](https://github.com/TopCited/topcited-skills/blob/main/skills/optimize-website/SKILL.md): audit → ranked fixes → drafted rewrites
+- [Per-agent install](https://github.com/TopCited/topcited-skills/blob/main/docs/agents.md): Claude Code, Codex, Cursor, Gemini CLI, Copilot, Windsurf, OpenClaw, ChatGPT/Claude.ai via MCP
+
+## Knowledge base
+- [SEO/GEO knowledge index](https://github.com/TopCited/topcited-skills/blob/main/skills/seo-geo/knowledge/INDEX.md): 30 dated, cited files
+
+## Research
+- [CORE, arXiv 2602.03608](https://arxiv.org/abs/2602.03608): the content-optimization method behind TopCited (preprint)
+- [LIVE-GEO, arXiv 2611.01126](https://arxiv.org/abs/2611.01126) and [livegeobench.com](https://livegeobench.com): open benchmark of GEO methods on live AI search (preprint)
+- [Example audit output](https://github.com/TopCited/topcited-skills/blob/main/examples/livegeobench-audit.md)
+
+## Optional
+- [GEO plan for TopCited](https://github.com/TopCited/topcited-skills/blob/main/docs/geo-plan.md): queries, baseline, plan
+- [Comparison with other SEO/GEO skill repos](https://github.com/TopCited/topcited-skills/blob/main/docs/comparison.md)
+- [TopCited](https://topcited.ai): the paid product these skills can hand off to

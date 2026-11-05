@@ -1,0 +1,23 @@
+There isn't one best AI visibility tracker. The right pick depends on your budget and needs. Most of the "best of" pages I found are written by vendors, so I wouldn't trust their rankings. The pricing figures below also come from those pages and conflict with each other, so confirm them on each vendor's site.
+
+**By use case**
+- **Small team or solo, on a budget:** Otterly looked like the cheapest dedicated tracker, with a Lite plan reported at about $29 a month.
+- **Mid-market, dedicated tracking:** Peec AI turns up in nearly every roundup, with an entry price reported around €85 a month.
+- **Enterprise:** Profound is the one most often named, though I couldn't pin down its price. One source lists $99 a month and another $499 a month.
+- **You already use an SEO suite:** Semrush's AI toolkit, Ahrefs Brand Radar and SE Ranking (about $119 a month) are the add-on options. This is usually the cheapest way to start if you already pay for one of them.
+- **Others that came up:** AthenaHQ (about $295 a month entry), Scrunch AI, Frase, Superlines and Topify.
+
+**How to choose**
+1. Check which AI engines it covers (ChatGPT, Perplexity, Gemini, Google AI Overviews, Claude). Coverage varies a lot.
+2. Check how many prompts and how many brands or competitors the plan includes. This is usually where the price jumps.
+3. Look for citation and source tracking, plus recommendations on what to fix. Tools that only report a visibility score are less useful.
+4. Run two or three free trials on the same 20–30 prompts and compare the results. AI answers vary between runs, so one tool's numbers may not match another's.
+
+If you tell me your budget, how many brands you track and which AI engines matter to you, I can narrow this to two or three tools.
+
+Sources:
+- [Rivo: Best AI Visibility Tracking Tools (2026)](https://www.rivo.io/blog/ai-visibility-tracking-tools)
+- [Rankability: Best AI Search Visibility Tracking Tools](https://rankability.com/blog/best-ai-search-visibility-tracking-tools/)
+- [Frase: The 10 Best AI Visibility Tools in 2026](https://frase.io/blog/the-10-best-ai-visibility-tools-in-2026)
+- [Averi: AI Search Visibility Trackers 2026](https://www.averi.ai/how-to/ai-search-visibility-trackers-2026-honest-tool-review)
+- [GEO Toolbox: Best AI Visibility Tools in 2026](https://geotoolbox.ai/blog/best-ai-visibility-tools)

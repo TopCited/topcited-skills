@@ -1,0 +1,21 @@
+**Make your website easy to discover, understand, and trust.** AI search optimization—often called GEO or AEO—builds on SEO. Google confirms its AI search features use core search ranking and quality systems. [Google’s guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
+
+I’d prioritize these steps:
+
+1. **Check crawlability and indexing.** Verify your site in Google Search Console and Bing Webmaster Tools. Submit your sitemap, fix indexing errors, and ensure important content is accessible without login or user interaction.
+
+2. **Answer your customers’ actual questions.** Cover pricing, comparisons, use cases, limitations, and buying decisions. Use descriptive headings and clear answers, followed by supporting detail.
+
+3. **Publish information worth citing.** Add original research, firsthand experience, worked examples, or detailed case studies. Generic articles that repeat existing advice give search systems little new information. [Google’s content recommendations](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
+
+4. **Make claims easy to verify.** Show who wrote the content, their relevant experience, sources, and accurate update dates. Clearly describe your company, products, and contact details.
+
+5. **Keep business information consistent.** Maintain accurate prices, availability, product specifications, and location details. For relevant businesses, keep Google Business Profile and Merchant Center current. [Google’s business guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
+
+6. **Measure useful outcomes.** Track AI referral traffic, inquiries, purchases, and which pages attract visitors. Periodically test representative customer questions across AI search tools; treat individual answers as snapshots because results vary.
+
+**Skip shortcuts:** Google says `llms.txt` does not improve its search visibility, and there is no special schema required for AI search. Appropriate structured data still supports ordinary search features. [Google’s explanation](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
+
+Start with your five most valuable pages: fix access issues, answer missing customer questions, and add evidence that makes each page useful.
+
+Share your website URL and target audience, and I can identify the highest-priority improvements for your site.

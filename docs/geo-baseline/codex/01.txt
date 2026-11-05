@@ -1,0 +1,10 @@
+There are several possible reasons, but I’d need your brand and an example prompt to identify which applies.
+
+Likely possibilities include:
+
+- **Limited public information:** ChatGPT may lack enough information about your brand to describe or recommend it.
+- **Relevance to the question:** Your website may not clearly connect your products to the specific need, audience, or location in the prompt.
+- **Search access:** If your site blocks `OAI-SearchBot`, it won’t appear as a source in ChatGPT search answers, although navigational links can still appear. This is separate from allowing training access, according to [official OpenAI documentation](https://developers.openai.com/api/docs/bots).
+- **Variation between answers:** One missing mention doesn’t establish a consistent visibility problem.
+
+These are possibilities, not findings about your brand. **What’s your brand’s website, and what exact question did you ask ChatGPT?**

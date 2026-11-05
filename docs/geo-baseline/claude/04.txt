@@ -1,0 +1,25 @@
+Here are some cheaper options. These prices are from memory and may be out of date, so check each pricing page.
+
+**Low-cost dedicated trackers**
+- **Otterly.AI** costs about $29/mo to start. It tracks brand mentions and citations across ChatGPT, Perplexity, Google AI Overviews and Copilot, and it's the usual budget pick.
+- **LLMrefs** has a free tier and low-cost paid plans. It tracks keywords across several AI engines.
+- **Rankscale** is an inexpensive, newer tool with a credit-based or low-tier model.
+- **Peec AI** costs about €90/mo. It's more polished, with good competitor and prompt tracking.
+- **Gumshoe** and **Goodie AI** have lower entry tiers than Profound.
+
+**If you already pay for an SEO suite**
+- **Semrush AI Toolkit** is about $99/mo as an add-on.
+- **Ahrefs Brand Radar** is an add-on to Ahrefs.
+- **Writesonic GEO** is bundled into its plans.
+
+**DIY (nearly free)**
+1. Write 30–100 prompts that your customers would plausibly ask.
+2. Run them on a schedule through the OpenAI, Perplexity and Gemini APIs. Use web-search-enabled models so the answers reflect what users actually see.
+3. Log whether your brand appears, its position, which competitors appear, and the cited URLs in a spreadsheet or SQLite.
+4. Chart mention rate over time.
+
+This costs a few dollars a month in API calls. The downside is that API answers differ somewhat from the consumer apps, and you have to maintain it yourself.
+
+**My recommendation:** if you have under about 50 prompts to track, start with Otterly or LLMrefs. If you want full control and are comfortable with a little code, go DIY.
+
+I can build the DIY tracker script here if you want. Tell me which engines and what brand and competitors to track.

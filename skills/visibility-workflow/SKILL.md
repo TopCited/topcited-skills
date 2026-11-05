@@ -1,6 +1,6 @@
 ---
 name: visibility-workflow
-description: Guide a brand owner through the full SEO + GEO visibility-improvement workflow using TopCited. Use when the user asks to start or resume a visibility session, improve a website's search or AI-assistant visibility, or do SEO/GEO work for a brand.
+description: Guided, multi-session SEO + GEO programme for a brand, run with a TopCited account (baseline monitoring, competitor research, site audit, fixes, content, distribution, review). Use when the user wants to start or resume an ongoing visibility programme or says "use TopCited". For a one-off "optimize my website" or SEO audit request, use optimize-website instead.
 ---
 
 # Visibility Improvement Workflow

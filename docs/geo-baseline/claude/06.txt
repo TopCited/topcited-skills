@@ -1,0 +1,39 @@
+# Optimizing for AI Search (GEO / AEO)
+
+**1. Let AI crawlers in**
+- Check `robots.txt` doesn't block: `GPTBot`, `OAI-SearchBot`, `ChatGPT-User`, `ClaudeBot`, `Claude-SearchBot`, `PerplexityBot`, `Google-Extended`, `Applebot-Extended`.
+- Don't hide content behind JavaScript-only rendering. Many AI crawlers don't execute JS, so use server-side rendering or static HTML.
+- Check your CDN or firewall (e.g., Cloudflare bot protection) isn't silently blocking them.
+- Keep pages fast and return correct status codes.
+
+**2. Write content that's easy to extract and cite**
+- Lead with the direct answer, then add detail (the "answer first" pattern).
+- Use question-style headings that match how people prompt ("How much does X cost?").
+- Use short paragraphs, lists, tables, and FAQ sections. LLMs lift self-contained chunks.
+- Include concrete facts: numbers, dates, definitions, comparisons, original data. Specific, quotable statements get cited more than vague copy.
+- Keep each section understandable without the rest of the page.
+
+**3. Build structure machines can parse**
+- Use clean semantic HTML: one `<h1>`, logical `<h2>`/`<h3>`, and descriptive link text.
+- Add schema.org JSON-LD: `Organization`, `Article`, `FAQPage`, `Product`, `HowTo`, `Person` (for authors).
+- Add clear authorship, publish and updated dates, and an About page.
+- Optionally add an `llms.txt` file. It's low-cost, but there's little evidence that major engines use it, so don't rely on it.
+
+**4. Build authority and trust (E-E-A-T)**
+- AI engines favor sources that are widely mentioned. Earn mentions on reputable sites, in industry publications, on Reddit, Wikipedia, YouTube, and review sites, and in directories.
+- Show real expertise: named authors with credentials, original research, case studies, and cited sources.
+- Keep your brand name, description, and facts consistent across the web.
+- Refresh key pages regularly, since recency matters.
+
+**5. Don't neglect classic SEO**
+- Google AI Overviews and Bing-backed assistants draw on traditional indexes. Make sure you're indexed (Search Console, Bing Webmaster Tools), with a sitemap, good internal links, and mobile-friendly pages.
+- Submit to Bing in particular. It feeds ChatGPT search and other assistants.
+
+**6. Measure**
+- Check server logs for AI bot hits.
+- Track referral traffic from `chatgpt.com`, `perplexity.ai`, `claude.ai`, and `gemini.google.com` in analytics.
+- Regularly run your target prompts across ChatGPT, Perplexity, Gemini, and Claude, and note whether you're cited and what competitors show up. Tools like Profound, Otterly, and Semrush's AI toolkit can automate this.
+
+**Quick priority order:** unblock crawlers → server-render content → restructure key pages answer-first with schema → earn third-party mentions → track citations.
+
+If you share your site URL or tech stack, I can audit your `robots.txt`, rendering, and schema, or draft the changes for you.

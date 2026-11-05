@@ -20,7 +20,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SKILLS_DIR = ROOT / "skills"
-EXPECTED_SKILLS = {"seo-geo", "topcited-api", "visibility-workflow"}
+EXPECTED_SKILLS = {"optimize-website", "seo-geo", "topcited-api", "visibility-workflow"}
 
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 # Markdown links that are relative paths (not http(s):, mailto:, or #anchors).

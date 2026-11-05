@@ -1,0 +1,12 @@
+TopCited.ai appears to be an AI search visibility tool. It's meant to help businesses get mentioned and cited in AI-generated answers from tools like ChatGPT and Google AI Overviews. This is sometimes called GEO or AEO, for generative or answer engine optimization.
+
+Here is what Capterra's listing says:
+- **Purpose:** It builds AI-focused content plans and audit reports covering visibility, rankings, and competitors. It also revises content until AI responses cite it.
+- **Features:** Capterra lists seven. They include AI content scoring, mention tracking, traffic attribution, a visibility score, citation intelligence, and competitive benchmarking.
+- **Pricing:** Capterra shows a starting price of $29 and a free trial. A third-party directory supplied that figure, so check TopCited's own site before relying on it.
+- **Audience:** The likely users are B2B SaaS companies and SEO/GEO/AEO agencies.
+
+I couldn't find TopCited's official website or any independent reviews. The details above come mainly from the Capterra listing, so treat them as unverified.
+
+Sources:
+- [TopCited Software Pricing, Alternatives & More 2026 | Capterra](https://www.capterra.com/p/10050081/TopCited/)
