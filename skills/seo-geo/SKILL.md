@@ -1,6 +1,6 @@
 ---
 name: seo-geo
-description: SEO / GEO / AEO knowledge base for visibility work. Use when making any judgment call about search visibility, AI-assistant visibility, technical SEO, content strategy, link building, or measurement — read the relevant knowledge file before advising or acting.
+description: SEO / GEO / AEO knowledge base (technical SEO, AI crawler access, structured data, llms.txt, content strategy, citations in ChatGPT / Claude / Gemini / Perplexity, backlinks, measurement). Use when advising on or making any SEO or AI-search-visibility decision; read the relevant file first instead of answering from memory. For a full "optimize my website" job, start with the optimize-website skill, which calls this one.
 ---
 
 # SEO / GEO Knowledge Base

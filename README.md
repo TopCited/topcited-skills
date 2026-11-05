@@ -1,63 +1,63 @@
-# TopCited Skills
+# TopCited Skills — SEO + GEO for AI coding agents
 
-Agent Skills that teach an AI coding agent — Claude Code, Codex, or anything else
-that can read Markdown — how to do SEO and **GEO** (Generative Engine
-Optimization: being found and cited by ChatGPT, Claude, Gemini and Perplexity),
-and how to drive [TopCited](https://topcited.ai) on your behalf through the
-`topcited` CLI.
+Tell your agent **"optimize my website https://example.com"** and get a real audit, a
+ranked fix list, and the rewrites drafted — for search engines (SEO) and for AI answer
+engines like ChatGPT, Claude, Gemini and Perplexity (**GEO**, Generative Engine
+Optimization). Free, MIT-licensed, **no account needed**. Works in Claude Code, Codex,
+Cursor, Gemini CLI, GitHub Copilot, Windsurf, OpenClaw and any agent that reads `SKILL.md`.
 
-These are the same skills TopCited's own hosted agent runs on. This repo is the
-single source of truth for them.
+## Install (one line)
+
+```bash
+npx skills add TopCited/topcited-skills          # Codex, Cursor, Copilot, Windsurf, Claude Code, ... (pick your agent)
+```
+
+```
+/plugin marketplace add TopCited/topcited-skills   # Claude Code
+/plugin install topcited@topcited
+```
+
+Then ask: **"Optimize my website https://yoursite.com"** (Claude Code: `/topcited:optimize https://yoursite.com`).
+Per-agent instructions, including Gemini CLI and MCP setup: [docs/agents.md](docs/agents.md).
+
+## What you get
 
 | Skill | What it gives your agent |
 |---|---|
-| [`seo-geo`](skills/seo-geo) | A cited, dated knowledge base: technical SEO, entity & authority, content strategy, GEO, measurement, distribution playbooks. Read before making a judgment call, instead of answering from memory. |
-| [`topcited-api`](skills/topcited-api) | How to drive TopCited with the `topcited` CLI: install, sign-in, a command cheat-sheet, the agent contract (JSON, exit codes, `--wait`, `--dry-run`), and per-feature guides (when, why, what it costs, how it fails). |
-| [`visibility-workflow`](skills/visibility-workflow) | An eight-stage engagement that takes a brand from "no idea if we're visible" to a measured, improved baseline — using the two skills above. |
+| [`optimize-website`](skills/optimize-website) | **Start here.** Free audit (title/meta, headings, schema, canonicals, robots.txt for 12 AI crawlers, sitemap, llms.txt, server-rendered content) → ranked fixes → drafted rewrites → applied only with your OK. |
+| [`seo-geo`](skills/seo-geo) | 30-file knowledge base: technical SEO, entity & authority, content, GEO, measurement, distribution. Each file is dated and cites sources; claims are tagged primary / industry / heuristic. |
+| [`topcited-api`](skills/topcited-api) | Drive [TopCited](https://topcited.ai) with its CLI: monitoring, audits, recommendations, reports. |
+| [`visibility-workflow`](skills/visibility-workflow) | Ongoing 8-stage programme using the skills above plus a TopCited account. |
 
-Install all three. `visibility-workflow` orchestrates the other two and
-`topcited-api` defers SEO judgment to `seo-geo`; they reference each other by
-relative path, so they need to sit as siblings.
+`optimize-website` calls `seo-geo` by relative path, so install the skills together.
 
-## Install
+## Where TopCited fits (and where it doesn't)
 
-### Claude Code (plugin)
+Everything in `optimize-website` and `seo-geo` works without TopCited. A static audit
+cannot tell you whether ChatGPT or Perplexity *actually cite your site today*, for which
+prompts, versus which competitors. That is what [TopCited](https://topcited.ai) (made by
+this repo's authors, paid) measures, so the skills point to it at exactly that step, say
+it is optional, and never spend credits or create accounts without your explicit yes.
+You can do the same measurement by hand; the skills explain how.
+The optional MCP server is `https://api.topcited.ai/mcp`.
 
-```
-/plugin marketplace add TopCited/topcited-skills
-/plugin install topcited-skills@topcited
-```
+Compared with other open-source SEO/GEO skill repos: [docs/comparison.md](docs/comparison.md).
 
-### Any agent (manual)
+## More install options
 
-Clone and drop the skills into your personal skills directory:
+Manual copy, or no install at all (an agent that can fetch a URL can read the raw files):
 
 ```bash
 git clone https://github.com/TopCited/topcited-skills.git
-cp -r topcited-skills/skills/* ~/.claude/skills/
+cp -r topcited-skills/skills/* ~/.claude/skills/    # or .agents/skills/, .cursor/skills/, ... for your agent
 ```
 
-For a project rather than your whole machine, use `.claude/skills/` in the repo
-instead.
-
-### Any agent (no install)
-
-Everything here is plain Markdown, so an agent that can fetch a URL needs no
-install at all — point it at a raw file and it will follow the links from there:
-
 ```
-https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/seo-geo/SKILL.md
-https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/topcited-api/SKILL.md
-https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/visibility-workflow/SKILL.md
+https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/optimize-website/SKILL.md
 ```
 
-Each `SKILL.md` opens with YAML frontmatter (`name`, `description`) and a routing
-table saying what to read next. Two caveats when fetching rather than cloning:
-the internal links are **relative paths**, so resolve them against the file's own
-directory; and `topcited-api` / `visibility-workflow` need the `topcited` CLI
-installed (below).
-
-Pin to a tag or commit SHA instead of `main` if you need the content to stay put.
+Internal links are relative paths: resolve them against the file's own directory, and pin
+a tag or commit SHA instead of `main` if you need the content to stay put.
 
 ## Install the CLI and sign in
 
@@ -97,10 +97,17 @@ step; put your own budget guard in front of it.
 
 ```
 skills/
+  optimize-website/     SKILL.md + scripts/audit.py + references/
   seo-geo/              SKILL.md + knowledge/
   topcited-api/         SKILL.md + references/
   visibility-workflow/  SKILL.md + stages/ + templates/
-.claude-plugin/         Claude Code plugin + marketplace manifests
+commands/optimize.md    /topcited:optimize
+.claude-plugin/         Claude Code plugin + marketplace manifests 
+.cursor-plugin/         Cursor plugin manifests
+gemini-extension.json   Gemini CLI extension (GEMINI.md → AGENTS.md)
+AGENTS.md  llms.txt     Instructions for agents; machine-readable site map
+server.json             MCP Registry metadata (unpublished)
+docs/                   Per-agent install, comparison, distribution plan
 ```
 
 The API reference is the public OpenAPI spec at

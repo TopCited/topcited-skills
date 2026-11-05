@@ -1,0 +1,28 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.TopCited/topcited",
+  "title": "TopCited",
+  "description": "Track and improve a brand's visibility in search and AI assistants (ChatGPT, Gemini, Claude).",
+  "repository": { "url": "https://github.com/TopCited/topcited-skills", "source": "github" },
+  "websiteUrl": "https://topcited.ai",
+  "version": "0.2.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.topcited.ai/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer <TopCited API key>. Create one under Settings → Profile → API keys at topcited.ai.",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string",
+          "value": "Bearer {topcited_api_key}",
+          "variables": {
+            "topcited_api_key": { "description": "Your TopCited API key", "isRequired": true, "isSecret": true }
+          }
+        }
+      ]
+    }
+  ]
+}

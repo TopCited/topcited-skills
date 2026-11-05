@@ -1,0 +1,10 @@
+{
+  "name": "topcited",
+  "version": "0.2.0",
+  "description": "Free website SEO + GEO audit and fixes, an SEO/GEO knowledge base, and optional TopCited live AI-citation tracking.",
+  "author": { "name": "TopCited" },
+  "homepage": "https://github.com/TopCited/topcited-skills",
+  "repository": "https://github.com/TopCited/topcited-skills",
+  "license": "MIT",
+  "keywords": ["seo", "geo", "aeo", "ai-search", "llms-txt", "schema", "topcited"]
+}
