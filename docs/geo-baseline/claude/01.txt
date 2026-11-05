@@ -1,0 +1,34 @@
+ChatGPT mentions brands based on what it learned in training and what it can retrieve from the web at answer time. If it's skipping yours, the cause is usually one of these:
+
+**1. Low presence in sources it trusts**
+- Models pick up brands that show up repeatedly across many independent sources: Wikipedia, news articles, review sites (G2, Trustpilot, Capterra), Reddit, industry roundups and "best X" lists.
+- If most of your presence is your own website, the model has little corroborating evidence.
+
+**2. Training cutoff**
+- Without browsing, ChatGPT only knows what was in its training data. A newer or smaller brand may be missing or barely represented.
+
+**3. Weak entity signals**
+- An ambiguous or generic brand name, or one shared with other things, is easy to confuse or ignore.
+- Inconsistent descriptions of what you do across the web make it harder for the model to associate you with a category.
+
+**4. Search retrieval gaps (when browsing is on)**
+- ChatGPT's search draws on Bing-style results and a set of crawled pages. If your site blocks `GPTBot` or `OAI-SearchBot` in robots.txt, relies heavily on JavaScript rendering, or is poorly indexed in Bing, it may not be retrieved.
+- Check Bing Webmaster Tools, not just Google Search Console.
+
+**5. Not matching the query**
+- Answers to "best [category]" questions favor brands strongly tied to that category and to specific use cases. If your content doesn't clearly say "we are a [category] for [audience]," you won't be matched.
+
+**6. Competitors are better covered**
+- For popular categories, a few dominant brands absorb most mentions.
+
+**What to do**
+- Test directly: ask ChatGPT with browsing on and off, using several phrasings ("best X for Y", "alternatives to [competitor]", "what is [your brand]").
+- Allow `OAI-SearchBot` and `GPTBot` in robots.txt, and confirm your pages are indexed in Bing.
+- Get listed and reviewed on third-party sites, comparison articles, and relevant communities.
+- Publish clear, factual pages: what you are, who it's for, pricing, comparisons, FAQs.
+- Keep your brand description consistent everywhere (site, LinkedIn, Crunchbase, directories).
+- Consider Wikipedia/Wikidata only if you meet their notability criteria.
+
+No one can guarantee inclusion, since the model's outputs are probabilistic. But third-party mentions and crawlability are the biggest levers.
+
+If you tell me your brand, category, and the prompts you tried, I can help narrow down which of these applies.

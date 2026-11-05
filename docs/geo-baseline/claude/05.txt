@@ -1,0 +1,48 @@
+# Measuring Share of Voice (SOV) in AI Search
+
+**Core idea:** SOV = how often your brand is mentioned or cited in AI-generated answers, relative to competitors, across a representative set of prompts.
+
+## 1. Build a prompt set
+- Collect 50–500 prompts that mirror real buyer questions, grouped by intent:
+  - **Category/discovery:** "best CRM for small business"
+  - **Comparison:** "HubSpot vs Salesforce"
+  - **Problem-based:** "how do I reduce churn in SaaS"
+  - **Branded:** "is [brand] good for X"
+- Source them from search console queries, sales calls, support tickets, People Also Ask, and Reddit/forums.
+- Weight prompts by importance (volume, revenue relevance).
+
+## 2. Choose engines to track
+ChatGPT, Google AI Overviews/AI Mode, Perplexity, Gemini, Claude, Copilot. Track each separately since results differ a lot.
+
+## 3. Run prompts repeatedly
+AI answers are non-deterministic. Run each prompt **multiple times (e.g., 3–10)**, across days, and ideally with different locations/personas. Use the same settings (web search on/off, logged-out) for consistency.
+
+## 4. Record what appears
+For each response, log:
+- Brands mentioned (and order/position)
+- Whether your brand is **cited as a source** (URL linked)
+- Sentiment (positive/neutral/negative)
+- Whether it's a recommendation vs. passing mention
+
+## 5. Calculate metrics
+- **Mention SOV** = your brand mentions ÷ total mentions of all tracked brands (× 100)
+- **Citation SOV** = citations to your domain ÷ total citations in the set
+- **Appearance rate** = % of responses that include your brand
+- **Position-weighted SOV:** give higher weight to brands listed first (e.g., 1/rank)
+- **Sentiment-adjusted SOV:** weight by positive/neutral/negative
+- Break down by engine, topic, and intent.
+
+**Example:** Across 200 prompts × 5 runs = 1,000 responses, total tracked-brand mentions = 3,000; yours = 450 → SOV = 15%.
+
+## 6. Tooling
+- **Dedicated platforms:** Profound, Semrush AI Toolkit, Ahrefs Brand Radar, Peec AI, Otterly.ai, Scrunch, Goodie, AthenaHQ
+- **DIY:** Script prompts through APIs (with web search enabled), parse responses with an LLM or regex for brand names, store in a spreadsheet/warehouse. Note that API answers can differ from the consumer UI.
+
+## 7. Best practices
+- Define your **competitor set** upfront (include aliases/misspellings).
+- Track trends over time (weekly/monthly), not single snapshots.
+- Report confidence ranges because of variance.
+- Pair with downstream signals: referral traffic from AI engines (GA4), branded search lift, and "how did you hear about us" responses.
+- Identify which **source domains** AI engines cite for your topics (Reddit, review sites, publishers) to guide where to earn mentions.
+
+If you tell me your industry and tools, I can help draft a prompt set or a scoring spreadsheet/script.

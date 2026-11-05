@@ -1,0 +1,12 @@
+"GEO plugin for Cursor" could mean a few different things. My best guess is Generative Engine Optimization (GEO), which is optimizing content so AI search engines like ChatGPT, Perplexity and Google AI Overviews cite it.
+
+If so, I'd build a Cursor plugin with:
+- **Rules** (`.cursor/rules/*.mdc`) that guide content and page markup toward GEO best practices. These would cover structured data, citation-friendly formatting, FAQ and answer-first structure, and `llms.txt`.
+- **Skills or commands** for auditing a page or site for GEO readiness and generating JSON-LD and `llms.txt`.
+- **An optional MCP server** for fetching a page and scoring it.
+
+Before I start, can you confirm two things?
+1. Is GEO here Generative Engine Optimization, or something else, such as geospatial or GeoJSON tooling?
+2. Do you want the full plugin with rules, commands and an MCP server, or just a rules and commands package to start with?
+
+If you'd like me to go with my guess, I'll scaffold the rules and commands version in the current directory.

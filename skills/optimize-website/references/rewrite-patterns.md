@@ -1,5 +1,12 @@
 # Rewrite patterns
 
+**Evidence note (read before promising anything).** Controlled studies found no reliable citation
+lift from JSON-LD (Ahrefs difference-in-differences, 2026-05) or llms.txt (Ahrefs and SE Ranking logs
+and correlations, 2025-2026), and Google says it uses neither for its AI features. Do these for rich
+results, clarity and hygiene, not as a growth lever. What the evidence supports more: pages that match
+the question asked, put the answer early, show price/specs/dates, carry sourced and *verifiable*
+numbers, and are mentioned by third parties. See [evidence.md](evidence.md).
+
 Templates for step 4. Replace every `<placeholder>` with real facts from the site; if
 you don't have the fact, ask or leave the field out. Never invent.
 

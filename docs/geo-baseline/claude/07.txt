@@ -1,0 +1,14 @@
+Do you want me to build a GEO (Generative Engine Optimization) audit tool, or find existing free ones? I'm assuming you mean build.
+
+**If you want me to build it**, I'd make a small Python CLI in this directory. Given a URL, it would check:
+- **AI crawler access:** whether `robots.txt` allows GPTBot, ClaudeBot, PerplexityBot, Google-Extended, and similar bots. It would also look for an `llms.txt` file.
+- **Structured data:** JSON-LD schema such as Organization, FAQ, Article, and Product. It would also check author and date markup.
+- **Content extractability:** heading hierarchy, whether the answer comes first, lists and tables, FAQ-style Q&A, and whether the content is server-rendered rather than JS-only.
+- **Citation signals:** statistics, outbound citations, quotable short passages, and freshness dates.
+- **Technical basics:** title, meta description, canonical, Open Graph, sitemap, and status codes.
+
+It would give a score out of 100 with a prioritized fix list, as terminal output, JSON, or an HTML report. It would need no API keys and cost nothing to run. An optional LLM check, such as asking a model whether it would cite the page, could be added later.
+
+**If you want existing tools**, I can search for current free GEO audit tools and compare them.
+
+Which do you want? If you want the build, tell me whether you prefer a CLI or a web page, and Python or Node.

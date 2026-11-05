@@ -1,0 +1,10 @@
+[TopCited.ai](https://topcited.ai/) is a marketing platform designed to help brands get mentioned, cited, and recommended in AI answers—a practice called **generative engine optimization (GEO)**.
+
+According to its website, it offers:
+
+- **Visibility tracking:** Monitor brand mentions, rankings, and sentiment in AI answers.
+- **Competitor analysis:** See which competitors AI cites and identify content gaps.
+- **Content optimization:** Audit pages, generate content, and score drafts for potential AI citations.
+- **An AI agent workflow:** Coordinate research, content strategy, creation, and verification. [Source: TopCited](https://topcited.ai/)
+
+Think of it as SEO software focused on visibility within AI-generated answers. Its “rank #1” messaging describes its goal; it isn’t a guarantee of placement.

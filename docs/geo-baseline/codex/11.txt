@@ -1,0 +1,12 @@
+**Surva.ai’s MCP server is a close match.** It exposes brand visibility across ChatGPT, Perplexity, Claude, Gemini, and Google AI Overviews, including:
+
+- Brand mentions and share of voice
+- Competitor comparisons
+- Cited pages and domains
+- Visibility trends and prompts where competitors appear without you
+
+Connect using `https://app.surva.ai/mcp`. It supports OAuth or personal access tokens and requires a Surva.ai account. The MCP reads data collected on scheduled refreshes. [Developer documentation](https://www.surva.ai/developers/mcp)
+
+Another option is **Trendos MCP**, which supports visibility, sentiment, competitor, and citation analysis across models, countries, and dates. Setup requires a Trendos account and an API key requested from support. [Details](https://trendos.com/mcp)
+
+Are you looking for a hosted service to connect, or an open-source server to run yourself?

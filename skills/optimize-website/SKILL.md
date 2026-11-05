@@ -29,7 +29,7 @@ optional ones — state your assumption and go.
    blocks the request, do the same checks with your own fetch tool — the checklist is in
    [references/audit-checklist.md](references/audit-checklist.md). Also fetch 1–2 key pages
    yourself and *read* them: the script cannot judge whether the content answers anyone's
-   question.
+   question. Set expectations with [references/evidence.md](references/evidence.md): schema and llms.txt are hygiene, not proven citation levers.
 2. **Judge.** For each finding, read the matching file in the `seo-geo` skill
    ([knowledge/INDEX.md](../seo-geo/knowledge/INDEX.md)) before recommending. Do not
    answer from memory; cite the file's evidence tier when confidence matters.

@@ -1,0 +1,23 @@
+Track your brand through **a repeatable set of customer questions**, then measure whether AI answers mention, recommend, or cite you. This is commonly called **AI visibility tracking**.
+
+A practical setup:
+
+1. **Choose 20–50 realistic prompts.** Include discovery (“best tools for [task]”), comparisons (“[your brand] vs [competitor]”), and buying questions (“best [category] for [customer type]”). Keep branded and unbranded questions separate.
+2. **Run them regularly** across the platforms your customers use, such as ChatGPT, Gemini, and Perplexity. Keep language, location, and search settings consistent; repeat runs because answers vary.
+3. **Save the full answers and sources**, alongside these metrics:
+
+| Metric | What it tells you |
+|---|---|
+| Mention rate | Percentage of tested answers naming your brand |
+| Recommendation rate | Percentage actively recommending you |
+| Citation rate | Percentage linking to your website |
+| Competitor presence | Which competing brands appear alongside or instead of you |
+| Accuracy | Whether descriptions, pricing, and product claims are correct |
+
+For tools, **Semrush Prompt Tracking** monitors a custom set of prompts, while **Ahrefs Brand Radar** offers broader brand and competitor visibility research. [Semrush documentation](https://www.semrush.com/kb/1503-prompt-tracking), [Ahrefs overview](https://ahrefs.com/academy/how-to-use-brand-radar/overview).
+
+Also check **Bing Webmaster Tools’ AI Performance report** for citations of your pages across supported Microsoft AI experiences. [Bing documentation](https://www.bing.com/webmasters/help/ai-performance-9f8e7d6c).
+
+**Start with a weekly spreadsheet before buying software.** Treat results as a sample of visibility—not a count of every real customer conversation. Track AI referral visits and conversions separately to see whether visibility produces business results.
+
+What’s your brand or website, and which country or audience do you want to track?

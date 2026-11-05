@@ -1,0 +1,11 @@
+I couldn't create the skill. Both writes were denied because the session doesn't have write permission for `.claude/skills/seo-audit/`. Nothing was created.
+
+I didn't try to work around the denial, for example by writing the files through Bash or into a Google Doc. A skill has to be a file on disk to work, and the Docs tools wouldn't give you that.
+
+This is what I tried to create:
+- **`SKILL.md`:** an `/seo-audit <url or path>` skill. It has a checklist covering crawlability and indexing, on-page tags, social and structured data, mobile and performance, and international and content. Its output is a report ranked as Critical, Important, Nice to have, Passed checks, and Not verified.
+- **`scripts/check_page.py`:** a dependency-free script that fetches one URL. It checks HTTPS, the title and meta description lengths, h1 count, canonical, robots directives, viewport, `lang`, Open Graph tags, JSON-LD, image alt text, `robots.txt`, and `sitemap.xml`.
+
+I haven't run the script, since it was never written.
+
+To go ahead, you can grant write access to that directory and I'll retry. I can also put the skill in `~/.claude/skills/seo-audit/` if you want it available in every project. If you meant something different, such as running an audit on a specific site, tell me the URL.

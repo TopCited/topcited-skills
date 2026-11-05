@@ -1,0 +1,1 @@
+Do you mean a **Generative Engine Optimization (GEO)** plugin for Cursor? Are you looking for an existing plugin to install, or help building one?

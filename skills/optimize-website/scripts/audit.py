@@ -212,7 +212,7 @@ def audit_page(url: str) -> dict:
     if "viewport" not in p.meta:
         issues.append("no viewport meta")
     if not types:
-        issues.append("no JSON-LD structured data")
+        issues.append("no JSON-LD structured data (rich-result eligibility; studies show no AI-citation lift)")
     if bad_ld:
         issues.append(f"{bad_ld} JSON-LD block(s) fail to parse")
     if p.imgs and p.imgs_no_alt / p.imgs > 0.3:
@@ -280,7 +280,7 @@ def run(site: str, pages: int) -> dict:
     if blocked:
         g.append("AI crawlers blocked in robots.txt: " + ", ".join(blocked))
     if not llms["ok"]:
-        g.append("no /llms.txt (optional, low-cost; see seo-geo/knowledge/technical-seo/llms-txt.md)")
+        g.append("no /llms.txt (optional hygiene; studies show no citation lift; see seo-geo/knowledge/technical-seo/llms-txt.md)")
     if not any(s.get("urls") for s in rep.get("sitemaps", [])):
         g.append("no readable sitemap")
     if not base.startswith("https"):

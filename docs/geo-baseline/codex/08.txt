@@ -1,0 +1,94 @@
+Here’s a ready-to-use skill. This session has read-only filesystem access, so I can provide it but cannot install it.
+
+Save it as `.claude/skills/seo-audit/SKILL.md` in your project, then invoke `/seo-audit https://example.com`. Claude Code supports this folder format and slash-command invocation. [Claude Code documentation](https://code.claude.com/docs/en/skills)
+
+```markdown
+---
+name: seo-audit
+description: Audit a website or repository for technical and on-page SEO issues, with evidence and prioritized fixes. Use when asked to review SEO, indexing, crawlability, metadata, or organic-search problems.
+argument-hint: "[URL or repository path]"
+---
+
+# SEO Audit
+
+Audit the target supplied in $ARGUMENTS. If none is supplied,
+inspect the current repository. Ask for a target only when neither
+is available.
+
+An audit produces findings and recommendations. Modify code only
+when the user also requests implementation.
+
+## Establish scope
+
+Identify the framework, rendering strategy, public URL if known,
+and important page types. Use existing tools and configuration.
+
+For a live site, begin with the homepage and a representative sample
+of up to 10 pages across its major templates. Report the sample;
+do not imply a complete crawl.
+
+For repository-only audits, distinguish source-code findings from
+behavior that requires a deployment to verify.
+
+## Gather evidence
+
+Inspect the following where applicable:
+
+- Crawlability: HTTP status codes, redirects, robots.txt, meta robots,
+  X-Robots-Tag, and resources needed for rendering.
+- Indexing signals: canonicals, sitemap URLs, URL variants, pagination,
+  faceted navigation, and accidental staging restrictions.
+- Rendering: compare initial HTML with rendered content when browser
+  tools are available; check primary content, metadata, and links.
+- On-page content: descriptive titles, useful descriptions, logical
+  headings, search intent, duplication, and meaningful image alt text.
+- Internal links: crawlable anchor links, broken destinations,
+  navigation depth, and descriptive anchor text.
+- Structured data: syntax, consistency with visible content, and
+  eligibility under current Google requirements.
+- Mobile and performance: usability, image delivery, blocking assets,
+  and available Core Web Vitals evidence.
+- International SEO, when relevant: language URLs, hreflang reciprocity,
+  canonical consistency, and locale navigation.
+
+Use Search Console or analytics only when access or exports are
+available. Never invent rankings, traffic, indexing status, backlinks,
+or performance measurements.
+
+## Interpret carefully
+
+- A robots.txt disallow controls crawling; it does not reliably prevent
+  indexing. A crawler must be able to access a page to see its noindex.
+- A canonical is a signal, not proof of Google's selected canonical.
+- Missing content in initial HTML warrants rendering investigation;
+  it does not alone prove Google cannot index the page.
+- Separate field Core Web Vitals data from laboratory measurements.
+  Do not infer field performance from a Lighthouse score.
+- Treat title lengths, description lengths, word counts, and heading
+  counts as contextual guidance rather than universal ranking rules.
+- Do not recommend meta keywords, keyword density targets, or schema
+  that does not describe visible content.
+- Do not label pages orphaned without sufficient link-graph evidence.
+- Verify changing requirements with current official documentation.
+  If tools or network access are unavailable, state the limitation.
+
+## Report
+
+Lead with the most consequential supported findings.
+
+For each finding include:
+- Priority: critical, high, medium, or low, with a brief rationale.
+- Evidence: affected URLs or file paths and relevant observations.
+- Impact: the likely search consequence, without ranking guarantees.
+- Fix: a concrete recommendation suited to the site's framework.
+- Verification: how to confirm the fix works.
+
+Separate confirmed issues from hypotheses and untested checks.
+Group repeated template issues into one finding with examples.
+Prioritize by affected scope, likely impact, confidence, and effort.
+
+Finish with the recommended fix order, checks completed, sample size,
+and limitations. Avoid an arbitrary overall SEO score.
+```
+
+The crawling and rendering safeguards follow Google’s guidance on [robots.txt](https://developers.google.com/search/docs/crawling-indexing/robots/intro) and [JavaScript SEO](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics).

@@ -1,0 +1,23 @@
+Several open-source GEO (Generative Engine Optimization) skill packs exist for AI coding agents. I found them with one web search and didn't open the repos, so check each on GitHub before relying on it.
+
+| Project | What it does | Notes |
+|---|---|---|
+| [geo-seo-claude](https://geo.deeflect.com/repos/geo-seo-claude/) | Claude Code skill for GEO-first SEO: citability scoring, AI crawler analysis, schema markup, PDF reports | Most stars of the four (about 7k, per an aggregator). A [Vietnamese write-up](https://viblo.asia/p/open-source-238-geo-seo-claude-code-skill-ha-tang-toi-uu-hoa-website-cho-ai-search-geo-voi-kien-truc-orchestrator-subagent-python-va-co-che-danh-gia-citability-thong-minh-3RL1BYRXVao) links it to `v8u7/geo-seo-claude-code-skill`. |
+| [geoskills](https://geolyze-org.pages.dev/docs/geoskills) (Cognitic-Labs) | Audit, fix and monitor cycle, with commands like `/geo-audit https://your-site.com` | Works with any AgentSkills-compatible agent, including Claude Code, Codex CLI and Cursor. |
+| [dev-gtm-claude-skills](https://github.com/infrasity-labs/dev-gtm-claude-skills) (Infrasity-Labs) | SEO, GEO, AI discoverability and developer-marketing skills | MIT license. The SEO pack has 26 skills. Install with `npx skills add Infrasity-Labs/dev-gtm-claude-skills`. |
+| [GTM Engineer Skills](https://aiproductivity.ai/news/gtm-engineer-skills-seo-geo-claude-code/) (onvoyage-ai) | Nine skills in one pipeline. The GEO part runs 16 checks across 6 dimensions. | MIT license. |
+
+The [GitHub `generative-engine-optimization` topic](https://github.com/topics/generative-engine-optimization) lists more.
+
+**Which to pick:** geoskills fits best if you use several agents, since it isn't tied to Claude Code. dev-gtm-claude-skills covers the most ground. geo-seo-claude is the most popular.
+
+If you meant something else, tell me. I can write a GEO skill of my own (for example `SKILL.md` plus scripts for `llms.txt`, schema and crawler checks), or open one of these repos and review it.
+
+Sources:
+- [dev gtm claude skills](https://github.com/infrasity-labs/dev-gtm-claude-skills)
+- [GitHub topic: generative-engine-optimization](https://github.com/topics/generative-engine-optimization)
+- [geoskills — Open-Source GEO Optimization Suite](https://geolyze-org.pages.dev/docs/geoskills)
+- [DEV Community guide](https://dev.to/mayur_rathore_b735983a686/claude-skills-for-seo-geo-and-developer-marketing-the-complete-2026-guide-3699)
+- [Viblo write-up on geo-seo-claude](https://viblo.asia/p/open-source-238-geo-seo-claude-code-skill-ha-tang-toi-uu-hoa-website-cho-ai-search-geo-voi-kien-truc-orchestrator-subagent-python-va-co-che-danh-gia-citability-thong-minh-3RL1BYRXVao)
+- [GTM Engineer Skills article](https://aiproductivity.ai/news/gtm-engineer-skills-seo-geo-claude-code/)
+- [geo-seo-claude listing](https://geo.deeflect.com/repos/geo-seo-claude/)

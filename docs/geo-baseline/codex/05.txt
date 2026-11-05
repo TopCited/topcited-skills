@@ -1,0 +1,41 @@
+Measure **AI search share of voice (SOV) as your brand’s share of brand appearances in answers to a defined set of relevant questions.** Treat it as a sampled benchmark, rather than a measure of all AI searches.
+
+A practical approach:
+
+1. **Build a representative prompt set.** Start with 50–100 questions your customers might ask: category discovery, use cases, comparisons, and purchase decisions. For a CRM brand: “What are the best CRMs for a small sales team?” Track branded questions separately because they naturally favor the named brand.
+
+2. **Define the comparison group.** Choose your brand plus a fixed set of competitors. Document brand aliases and product names so you count them consistently.
+
+3. **Collect answers consistently.** Run the prompts across the AI search experiences your audience uses. Keep language, location, search mode, and account conditions consistent. Repeat each prompt several times per measurement period to capture answer variation.
+
+4. **Count each brand once per answer.** This prevents an answer repeating one brand’s name from inflating its visibility.
+
+Then calculate:
+
+**AI SOV = your brand–answer appearances ÷ all tracked brands’ answer appearances × 100**
+
+For example, across 100 answers:
+
+| Brand | Answers mentioning brand | SOV |
+|---|---:|---:|
+| Your brand | 40 | 40% |
+| Competitor A | 35 | 35% |
+| Competitor B | 25 | 25% |
+
+One answer can mention several brands. If your brand appears in 40 of 100 answers, its **mention rate is 40%**; its SOV depends on competitors’ total appearances.
+
+Track these alongside SOV:
+
+| Metric | What it tells you |
+|---|---|
+| Mention rate | How often your brand appears at all |
+| Recommendation rate | How often the answer actually recommends you |
+| Citation rate | How often an answer links to your domain |
+| Accuracy and sentiment | Whether the answer describes you correctly and favorably |
+| Referral visits and conversions | Whether visibility produces business results |
+
+Keep mentions and citations separate: an AI answer can recommend your brand while citing another website. Tools such as Ahrefs distinguish these metrics, though vendor definitions and weighting can vary. [Ahrefs metric definitions](https://help.ahrefs.com/en/articles/15501968-ai-visibility-metrics)
+
+**Report weekly trends by platform, topic, and intent**, using the same prompts and competitor set. Label any combined score’s weighting explicitly; Google keyword volume, for example, is only a proxy for AI prompt demand. Bing’s native AI Performance report can supplement your sampling with citation data for your site across supported Microsoft experiences. [Bing AI Performance](https://www.bing.com/webmasters/help/ai-performance-9f8e7d6c)
+
+The key caveat: **SOV can rise because competitors lose mentions even when your own visibility stays flat.** Always show absolute mention rate beside it.

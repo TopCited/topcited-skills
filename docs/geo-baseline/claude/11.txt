@@ -1,0 +1,14 @@
+I haven't built anything yet. The permission prompts for writing `server.py` and `README.md` and for running the compile check weren't granted, and this session can't answer them.
+
+Here is what I was about to create in `work_c/`:
+
+- **`server.py`**: a Python MCP server using FastMCP and SQLite, with these tools:
+  - `add_brand(name, domain, aliases, is_competitor)` registers your brand or a competitor.
+  - `add_prompts([...])` saves the questions users might ask AI search.
+  - `list_config()` shows what's tracked and which providers have API keys.
+  - `run_check(providers?)` runs every prompt through Claude (web search tool) and OpenAI (Responses API with web search), then stores each answer and its cited URLs.
+  - `visibility_report(days, provider?)` gives each brand's mention rate, average rank when mentioned, citation rate, and share of voice.
+  - `get_answers(prompt_contains, limit)` lets you inspect raw answers and citations.
+- **`README.md`**: setup instructions. Install with `pip install "mcp[cli]" httpx`, set `ANTHROPIC_API_KEY` and/or `OPENAI_API_KEY`, then register it with `claude mcp add brand-visibility -- python /path/to/server.py`.
+
+To go ahead, you can grant write and Bash permission for this directory and I'll write the files and check that they compile. If you'd rather have TypeScript, other providers (Perplexity, Gemini), or sentiment scoring, say so first. I haven't run the code, so it's untested.

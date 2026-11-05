@@ -1,0 +1,11 @@
+**Otterly.AI is my pick if price is your main concern.** Here are three cheaper options for tracking your brand in AI answers, with current monthly pricing:
+
+| Tool | Price | What you get | Main limitation |
+|---|---:|---|---|
+| **[Otterly.AI](https://otterly.ai/pricing/)** | **$29/month** | 15 prompts tracked daily across ChatGPT, Google AI Overviews, Perplexity and Copilot; citation and competitor tracking | Small prompt allowance; Gemini, Claude and AI Mode cost extra |
+| **[Promptmonitor](https://promptmonitor.io/pricing)** | **$39/month** | 25 prompts, one website, 2,250 AI answers/month | Starter lists semi-weekly tracking; its page has conflicting coverage claims, so confirm included models |
+| **[Peec AI](https://peec.ai/pricing)** | **$95/month** | 50 prompts tracked daily across three selected models; unlimited users and competitor tracking | One project on Starter |
+
+**Start with Otterly’s trial** if you’re monitoring one brand and a handful of important buying questions. If 15 prompts feels restrictive, compare Promptmonitor Growth—**$79/month for 50 daily prompts and two websites**—with Peec’s $95 plan. [Promptmonitor pricing](https://promptmonitor.io/pricing)
+
+Choose based on **prompt allowance × included engines × tracking frequency**; the cheapest entry price can become expensive once you expand coverage.
