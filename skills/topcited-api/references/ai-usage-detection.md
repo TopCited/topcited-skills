@@ -15,7 +15,7 @@ check on any public URL.
 `topcited api` but may change:
 
 ```bash
-topcited api -X POST /sci-defense/analyze -d '{"url": "https://acmecoffee.com/blog/best-espresso-machines"}'
+topcited api -X POST sci-defense/analyze -d '{"url": "https://acmecoffee.com/blog/best-espresso-machines"}'
 ```
 
 Returns immediately (no polling) with a `verdict` of `clean`, `suspicious`, or

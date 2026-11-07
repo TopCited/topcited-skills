@@ -26,10 +26,10 @@ numbers against the Stage 2 baseline.
 | Estimate a run | `topcited monitor run <set> --dry-run` |
 | Run now and wait | `topcited monitor run <set> --wait --yes` |
 | Visibility, gaps, share of voice | `topcited monitor results [--set <set>] [--since YYYY-MM-DD] [--until …]` |
-| Pause / rename / change platforms | `topcited api -X PATCH /monitoring/query-sets/<id> -d '{"paused": true}'` |
-| Raw runs for a set | `topcited api /monitoring/runs -f query_set_id=<id> --paginate` |
-| Mention-rate time series, per-query table, mentions | `topcited api /monitoring/metrics/visibility` · `/monitoring/metrics/per-query` · `/monitoring/mentions` (same `query_set_id` / date filters) |
-| Projected spend vs balance | `topcited api /monitoring/credit-forecast` (also in `topcited usage`) |
+| Pause / rename / change platforms | `topcited api -X PATCH monitoring/query-sets/<id> -d '{"paused": true}'` |
+| Raw runs for a set | `topcited api monitoring/runs -f query_set_id=<id> --paginate` |
+| Mention-rate time series, per-query table, mentions | `topcited api monitoring/metrics/visibility` · `/monitoring/metrics/per-query` · `/monitoring/mentions` (same `query_set_id` / date filters) |
+| Projected spend vs balance | `topcited api monitoring/credit-forecast` (also in `topcited usage`) |
 
 A set is referenced by id, a 6+ character id prefix, or name; when names tie,
 the active brand's set wins.
@@ -57,7 +57,7 @@ the active brand's set wins.
   `SKIPPED` if credits ran out mid-batch — some queries ran, others didn't.
 - **Don't delete queries that have history.** `queries rm` on a query with past
   runs is refused (exit 6, `query_has_runs`); deactivate it instead with
-  `topcited api -X PATCH /monitoring/queries/<qid> -d '{"is_active": false}'`.
+  `topcited api -X PATCH monitoring/queries/<qid> -d '{"is_active": false}'`.
 
 ## UI links
 - `{TOPCITED_UI_URL}/monitoring` — the Query Tracking view: topics, queries,

@@ -19,19 +19,19 @@ dashboard and overlap view live in [brands.md](brands.md). Later stages
 |---|---|
 | List the active brand's competitors | `topcited competitors list` |
 | Add one | `topcited competitors add Gusto -w gusto.com -a "Gusto Payroll"` (`-a` repeatable: other names AI answers use) |
-| Get one | `topcited api /competitors/<id>` |
+| Get one | `topcited api competitors/<id>` |
 
 *Internal* (works via `topcited api`, not in the public spec, may change). Get
 the brand id from `topcited brand show --json`:
 
 | I want to… | Call |
 |---|---|
-| Discover competitors with AI | `topcited api -X POST /brands/<id>/competitors:suggest -d '{"query": "best payroll software"}'` |
-| Add several at once (all-or-nothing) | `topcited api -X POST /brands/<id>/competitors:bulk -d '[{"name": "Rival Co", "website": "https://rival.com"}]'` |
-| Update / remove | `topcited api -X PATCH /competitors/<cid> -d '{…}'` · `topcited api -X DELETE /competitors/<cid>` |
-| Start a keyword scan | `topcited api -X POST /competitors/<cid>/keyword-scans` |
-| Poll the latest scan | `topcited api /competitors/<cid>/keyword-scans/latest` |
-| Read extracted keywords | `topcited api /competitors/<cid>/keywords` |
+| Discover competitors with AI | `topcited api -X POST brands/<id>/competitors:suggest -d '{"query": "best payroll software"}'` |
+| Add several at once (all-or-nothing) | `topcited api -X POST brands/<id>/competitors:bulk -d '[{"name": "Rival Co", "website": "https://rival.com"}]'` |
+| Update / remove | `topcited api -X PATCH competitors/<cid> -d '{…}'` · `topcited api -X DELETE competitors/<cid>` |
+| Start a keyword scan | `topcited api -X POST competitors/<cid>/keyword-scans` |
+| Poll the latest scan | `topcited api competitors/<cid>/keyword-scans/latest` |
+| Read extracted keywords | `topcited api competitors/<cid>/keywords` |
 
 `:suggest` returns three suggestions that are **not saved** — add the ones the
 user picks with `competitors add` or `:bulk`. A keyword scan returns `202` with

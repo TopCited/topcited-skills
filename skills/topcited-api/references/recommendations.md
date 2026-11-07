@@ -23,7 +23,7 @@ accurate.
 | Generate keywords | `topcited recommend keywords --wait --yes` |
 | Generate content sentences | `topcited recommend content --topic "payroll compliance" --wait --yes` |
 | Show the latest results without spending | `topcited recommend <kind> --list` |
-| The brand's full lists (saved + staged) | `topcited api /brands/<id>/keywords` · `/brands/<id>/prompts` · `/brands/<id>/content-sentences` |
+| The brand's full lists (saved + staged) | `topcited api brands/<id>/keywords` · `/brands/<id>/prompts` · `/brands/<id>/content-sentences` |
 
 Without `--topic`, prompt and content runs are competitor-driven.
 
