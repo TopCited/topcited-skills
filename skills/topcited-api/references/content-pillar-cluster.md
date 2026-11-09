@@ -19,15 +19,15 @@ via `topcited api` but may change.
 
 | I want to… | Call |
 |---|---|
-| Start a run | `topcited api -X POST /pillar-cluster/runs -d '{"topic": "espresso machine buying guide", "language": "en"}'` |
-| List runs | `topcited api /pillar-cluster/runs` |
-| Check status/progress | `topcited api /pillar-cluster/runs/<task_id>` |
-| Cancel a run in progress | `topcited api -X POST /pillar-cluster/runs/<task_id>/cancel` |
-| Redo from a stage | `topcited api -X POST /pillar-cluster/runs/<task_id>/replay -d '{"from_stage": "draft"}'` |
-| Read the combined draft | `topcited api /pillar-cluster/runs/<task_id>/outputs/draft` |
-| List / read generated pages | `topcited api /pillar-cluster/runs/<task_id>/outputs/pages` · `…/outputs/pages/<slug>` |
+| Start a run | `topcited api -X POST pillar-cluster/runs -d '{"topic": "espresso machine buying guide", "language": "en"}'` |
+| List runs | `topcited api pillar-cluster/runs` |
+| Check status/progress | `topcited api pillar-cluster/runs/<task_id>` |
+| Cancel a run in progress | `topcited api -X POST pillar-cluster/runs/<task_id>/cancel` |
+| Redo from a stage | `topcited api -X POST pillar-cluster/runs/<task_id>/replay -d '{"from_stage": "draft"}'` |
+| Read the combined draft | `topcited api pillar-cluster/runs/<task_id>/outputs/draft` |
+| List / read generated pages | `topcited api pillar-cluster/runs/<task_id>/outputs/pages` · `…/outputs/pages/<slug>` |
 | Download everything as a zip | see **Lifecycle** below (binary — not through `topcited api`) |
-| Trending-topic ideas | `topcited api /pillar-cluster/trending-topics` |
+| Trending-topic ideas | `topcited api pillar-cluster/trending-topics` |
 
 **Inputs.** Supply exactly one of `topic`, `keyword_ids` (from
 [recommendations.md](recommendations.md)), or `topology` (pre-built

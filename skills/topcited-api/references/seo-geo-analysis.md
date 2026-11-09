@@ -22,7 +22,7 @@ optimizer and submissions rewrite existing pages (compare
 | Estimate, then audit a site | `topcited audit run example.com --dry-run` → `topcited audit run https://example.com --wait --yes` |
 | Show a run's summary and issues | `topcited audit show <run-id> [--site example.com]` |
 | List audit runs | `topcited audit list [--site example.com]` |
-| Raw issues / site records | `topcited api /seo/sites/<site_id>/audit-runs/<run_id>/issues` · `topcited api /seo/sites` |
+| Raw issues / site records | `topcited api seo/sites/<site_id>/audit-runs/<run_id>/issues` · `topcited api seo/sites` |
 
 `audit run` registers the site on first use and reuses it after that.
 
@@ -35,19 +35,19 @@ cascades pages, runs and issues).
 One page, no site registration. Works via `topcited api`, may change:
 
 ```bash
-topcited api -X POST /seo/analyze -d '{"url": "https://acmecoffee.com/blog/best-espresso-machines"}'
+topcited api -X POST seo/analyze -d '{"url": "https://acmecoffee.com/blog/best-espresso-machines"}'
 ```
 
 The score and findings return immediately; for a signed-in caller the analysis
 is saved and an AI-visibility check starts in the background
 (`result.ai_visibility.status` = `pending`). Poll
-`topcited api /seo/analyses/<analysis_id>` until it settles; retry a failed
+`topcited api seo/analyses/<analysis_id>` until it settles; retry a failed
 check with `POST /seo/analyses/<analysis_id>/ai-visibility` (free).
 
 ## GEO content optimizer — *internal*
 Works via `topcited api`, may change.
 
-1. `topcited api -X POST /geo-optimizer/analyze -d '{"url": "…"}'` (or
+1. `topcited api -X POST geo-optimizer/analyze -d '{"url": "…"}'` (or
    `{"content": "…"}` for pasted text) — fetches and splits the content into
    blocks and **detects** the mode: whole-page or per-block. No LLM yet.
 2. Then, per the detected mode:
@@ -72,9 +72,9 @@ In the public spec, via `topcited api`:
 
 | I want to… | Call |
 |---|---|
-| List strategies | `topcited api /optimization/strategies` |
-| Submit content | `topcited api -X POST /optimization/submissions -d '{"input_content": "…", "output_mode": "…", "strategy_id": "…"}'` |
-| List / get submissions | `topcited api /optimization/submissions` · `/optimization/submissions/<id>` |
+| List strategies | `topcited api optimization/strategies` |
+| Submit content | `topcited api -X POST optimization/submissions -d '{"input_content": "…", "output_mode": "…", "strategy_id": "…"}'` |
+| List / get submissions | `topcited api optimization/submissions` · `/optimization/submissions/<id>` |
 
 Small submissions (≤2,000 words) come back processed; larger ones run async —
 poll the submission. The result is in the submission's `output_data` (there is no

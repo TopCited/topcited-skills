@@ -102,9 +102,9 @@ Every command's `--help` has a runnable example; read it before first use.
 ## Anything else: `topcited api`
 
 ```bash
-topcited api /users/me
-topcited api /monitoring/runs -f query_set_id=<id> -f limit=100 --paginate
-topcited api -X POST /brands -d '{"name": "Acme Coffee", "website": "https://acmecoffee.com"}'
+topcited api users/me
+topcited api monitoring/runs -f query_set_id=<id> -f limit=100 --paginate
+topcited api -X POST brands -d '{"name": "Acme Coffee", "website": "https://acmecoffee.com"}'
 ```
 
 Like `gh api`: auth is added for you, the `/api/v1` prefix is optional, `-f`
@@ -112,6 +112,11 @@ fields are query params on GET and JSON body fields otherwise, `-F` types
 `true`/`false`/numbers, `-d` takes JSON text, `@file` or `@-`, and `--paginate`
 follows skip/limit pages into one array. Fields alone don't switch to POST —
 pass `-X` or `-d`.
+
+**Write the path without a leading slash** (`users/me`, not `/users/me`). On
+Windows, Git Bash — the shell Claude Code runs there — rewrites any argument
+starting with `/` into a file path (`C:/Program Files/Git/users/me`), and the
+call fails. If you see that path in an error, drop the slash and retry.
 
 The public contract is the OpenAPI spec at
 **`https://api.topcited.ai/api/v1/openapi.public.json`** (`<base-url>/api/v1/openapi.public.json`

@@ -25,8 +25,8 @@ large Stage 2/8 monitoring run (1 T-coin per query per engine — see
 | Plan, T-coin balance, quotas, monitoring forecast | `topcited usage` |
 | Diagnose config / connectivity / version skew | `topcited doctor` |
 | List background tasks | `topcited tasks list [--status] [--type]` · `topcited tasks show <id> [--wait]` |
-| List this account's API keys (prefix, expiry, last use) | `topcited api /users/me/api-keys` |
-| T-coin balance by bucket | `topcited api /users/me/coin-balance` |
+| List this account's API keys (prefix, expiry, last use) | `topcited api users/me/api-keys` |
+| T-coin balance by bucket | `topcited api users/me/coin-balance` |
 
 ## How sign-in behaves
 - `auth login` prints a URL and a short code and waits while the user approves
@@ -54,8 +54,8 @@ large Stage 2/8 monitoring run (1 T-coin per query per engine — see
 `topcited usage` combines the plan, the T-coin balance, per-feature quotas and
 this period's monitoring forecast in one view — the number to quote before a
 spend is the T-coin `total_available`. The raw breakdown
-(`topcited api /users/me/coin-balance`) separates plan allowance, carryover,
-bonus and purchased balance; `topcited api /users/me/usage` gives one row per
+(`topcited api users/me/coin-balance`) separates plan allowance, carryover,
+bonus and purchased balance; `topcited api users/me/usage` gives one row per
 plan feature (`feature`, `used`, `limit`, `reset_period`, `reset_at`).
 
 ## UI links

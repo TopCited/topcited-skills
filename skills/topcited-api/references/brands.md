@@ -16,9 +16,9 @@ active brand.
 | List brands | `topcited brand list` |
 | Pick the brand later commands act on | `topcited brand use <name\|id>` (or `--brand` / `TOPCITED_BRAND` per command) |
 | Show the active brand (incl. its id) | `topcited brand show [brand]` |
-| Create a brand | `topcited api -X POST /brands -d '{"name": "Acme Coffee", "website": "https://acmecoffee.com"}'` |
-| Check brand count against the plan cap | `topcited api /brands/limits` |
-| Rename / change website | `topcited api -X PATCH /brands/<id> -d '{"website": "https://…"}'` |
+| Create a brand | `topcited api -X POST brands -d '{"name": "Acme Coffee", "website": "https://acmecoffee.com"}'` |
+| Check brand count against the plan cap | `topcited api brands/limits` |
+| Rename / change website | `topcited api -X PATCH brands/<id> -d '{"website": "https://…"}'` |
 
 *Internal* (works via `topcited api`, not in the public spec, may change):
 competitor-keyword views for Stage 3 — `GET /brands/<id>/competitor-keywords/dashboard`,
