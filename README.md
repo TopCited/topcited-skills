@@ -107,6 +107,15 @@ The API reference is the public OpenAPI spec at
 `https://api.topcited.ai/api/v1/openapi.public.json`; the guides under
 `topcited-api/references/` cover only what the CLI's `--help` can't.
 
+## Research
+
+TopCited also runs the [LIVE-GEO benchmark](https://livegeobench.com), an open, live benchmark for
+testing which Generative Engine Optimization rewrites AI search engines actually cite and
+recommend: a catalogue of fictional products, each rewritten by competing GEO methods and
+published on the open web, so anyone can ask a web-connected AI and record the result. Round 001
+(October 2026) has 80 brands and 480 listings; the method is on the
+[methodology page](https://topcited.ai/benchmark). It is research, separate from the skills above.
+
 ## Contributing
 
 Issues and PRs welcome, especially: a knowledge file that has gone stale (each
