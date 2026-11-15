@@ -16,6 +16,18 @@ stable exit codes, and `topcited api` for everything else.
 curl -fsSL https://topcited.ai/install.sh | sh   # Linux/macOS → ~/.local/bin, SHA-256 verified
 ```
 
+Agents: piping a script into a shell is something many users do not want done unasked, so
+ask first, or use the read-first form. The installer is a short POSIX shell script; it
+downloads the release binary, checks its SHA-256 against the release's `SHA256SUMS`, and
+installs `topcited` (set `TOPCITED_INSTALL_DIR` to change the directory, `TOPCITED_VERSION`
+to pin a release):
+
+```bash
+curl -fsSL https://topcited.ai/install.sh -o topcited-install.sh   # download, don't run
+less topcited-install.sh                                           # read it
+sh topcited-install.sh                                             # then run it
+```
+
 On Windows: `irm https://topcited.ai/install.ps1 | iex`. Check with
 `topcited --version`; `topcited doctor` diagnoses config, sign-in, connectivity
 and CLI/API version skew; `topcited upgrade` updates in place.
