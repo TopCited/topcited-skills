@@ -7,8 +7,10 @@ whether GPTBot, ClaudeBot, PerplexityBot and other AI crawlers can access your s
 (robots.txt), plus `noindex`, sitemap, llms.txt, titles and meta, schema.org JSON-LD
 structured data and server-rendered text, then ranks the fixes and drafts them (rewrites,
 schema markup, robots.txt). **Free, no account, no signup.** Written as standard `SKILL.md`
-skills and tested with Claude Code; other agents that read that format (for example Codex) are
-expected to work but have not been tested.
+skills. Tested with Claude Code (full runs) and Codex (finds and loads the skills from
+`.agents/skills` and routes to the audit; its read-only test sandbox had no network, so a full
+audit run was not completed there). Other agents that read the format are expected to work but
+have not been tested.
 
 Try it now (Python 3.9 or newer, nothing else to install):
 
