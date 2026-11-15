@@ -1,6 +1,6 @@
 {
   "name": "topcited",
-  "description": "TopCited skills for AI coding agents: SEO/GEO knowledge, the TopCited API, and a guided visibility workflow.",
+  "description": "TopCited skills for AI coding agents: a free SEO and GEO audit, an SEO/GEO knowledge base, and skills for TopCited's AI-citation tracking.",
   "owner": {
     "name": "TopCited",
     "url": "https://topcited.ai"
@@ -9,8 +9,8 @@
     {
       "name": "topcited-skills",
       "source": "./",
-      "description": "SEO/GEO knowledge, the TopCited API reference, and a guided visibility-improvement workflow, as Agent Skills.",
-      "version": "0.1.1",
+      "description": "Free SEO and GEO (AI search) audit skill, an evidence-based SEO/GEO knowledge base, and skills that drive TopCited's AI-citation tracking (those need a TopCited account), as Agent Skills.",
+      "version": "0.2.0",
       "license": "MIT",
       "homepage": "https://github.com/TopCited/topcited-skills"
     }
