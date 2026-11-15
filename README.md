@@ -40,6 +40,32 @@ Install all four. `visibility-workflow` orchestrates `topcited-api` and `seo-geo
 `seo-geo-audit` and `topcited-api` defer SEO judgment to `seo-geo`. They reference each other
 by relative path, so they need to sit as siblings.
 
+## What works without an account, and what costs what
+
+| You want to | Skill | TopCited account? | Cost |
+|---|---|---|---|
+| Audit a site for SEO and AI search; check AI-crawler access, `noindex`, sitemap, llms.txt, metadata, schema; get ranked fixes and rewrites | `seo-geo-audit` | No | Free |
+| Evidence-backed SEO/GEO guidance | `seo-geo` | No | Free |
+| Track whether AI assistants and search engines mention a brand, over time, with share of voice against competitors | `topcited-api` | Yes | 1 T-coin per query per engine per run |
+| Crawl a site with TopCited's site audit | `topcited-api` | Yes | 9 T-coins per crawl |
+| Check a URL for content manipulation ([what it does and doesn't cover](skills/topcited-api/references/ai-usage-detection.md)) | `topcited-api` | Yes | 5 T-coins per check |
+| Keyword, prompt or content-sentence recommendations | `topcited-api` | Yes | 3 T-coins per run |
+| Optimization submission (rewrite and score a page) | `topcited-api` | Yes | 7 T-coins each |
+| Client-ready report | `topcited-api` | Yes | 10 T-coins each |
+| Run the whole eight-stage engagement | `visibility-workflow` | Yes | the sum of the steps it uses |
+
+TopCited monitors ChatGPT, Gemini, Grok and DeepSeek among the AI assistants, and Google, Bing,
+Brave and Baidu among the search engines. It does not monitor Claude or Perplexity.
+
+Where the numbers come from: the per-feature guides under
+[`skills/topcited-api/references/`](skills/topcited-api/references) and the workflow stages;
+they were checked against TopCited's per-feature cost configuration on 2026-11-15 and can change. For real
+figures, run `topcited usage` (free; shows your plan and balance) and add `--dry-run` to any
+command that spends T-coins (it prints the cost first; for a site audit the CLI cannot estimate
+it, so quote the 9 T-coins yourself). Current plans and prices: <https://topcited.ai/pricing>.
+The skills are written to check your balance and run `--dry-run` before anything that spends,
+and to ask you first (see [A note on spending](#a-note-on-spending) below).
+
 ## Install
 
 ### Claude Code (plugin)
