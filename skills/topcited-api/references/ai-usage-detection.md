@@ -28,6 +28,26 @@ unauthenticated, IP-rate-limited version behind the public demo page, and
 contact details for a human follow-up and analyzes nothing. Neither is for an
 agent session.
 
+## What it looks at, and what it doesn't
+Tell the user this before they rely on a verdict.
+
+- It fetches the URL from TopCited's servers, extracts the page's **text from the HTML**
+  (it drops `script`, `style`, `head`, `noscript`, `nav`, `header` and `footer` elements
+  and keeps roughly the first 8,000 characters), and scores that text.
+- The scores come from three text-level detectors: a perplexity-based check for
+  injected strings (`ppl_score`, `ppl_label`), a four-dimension reasoning/review
+  manipulation score (`sis_score`, with `attribute_alignment`, `narrative_purposiveness`,
+  `comparative_aggressiveness`, `temporal_coherence`), and a comparative-density check
+  (`icd_score`). They are combined into `combined_score` and the `verdict`.
+- **It does not interpret CSS or JavaScript.** It is not a hidden-text, cloaking or
+  keyword-stuffing detector: text hidden by styling (which is still in the HTML, so it is
+  scored like any other text), white-on-white text and off-screen elements are not
+  recognised as hidden, and content served only to crawlers is not seen. If the question
+  is "is there hidden text on this page?", read the page source or the rendered DOM
+  yourself and say that the verdict does not cover it.
+- The public demo behind `/try-sci-defense` runs a reduced analysis (without the
+  language-model stage), so its scores are not comparable with this call.
+
 ## UI links
 - `{TOPCITED_UI_URL}/optimization/sci-defense` — the signed-in manipulation check.
 - `{TOPCITED_UI_URL}/try-sci-defense` — the public demo (listed only so you don't
