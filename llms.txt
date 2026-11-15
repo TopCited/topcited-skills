@@ -1,6 +1,6 @@
 # TopCited Skills
 
-> Open-source agent skills (SKILL.md files) for SEO and GEO, tested with Claude Code, and readable by any agent that can read Markdown. `seo-geo-audit` is a free, no-account audit of a website for SEO and AI search with ranked fixes and drafted rewrites. `seo-geo` is a cited SEO/GEO knowledge base. `topcited-api` and `visibility-workflow` drive TopCited, the authors' paid service for live AI-citation tracking; they need a TopCited account and spend T-coins.
+> Open-source agent skills (SKILL.md files) for SEO and GEO, tested with Claude Code and Codex (skill loading and routing), and readable by any agent that can read Markdown. `seo-geo-audit` is a free, no-account audit of a website for SEO and AI search with ranked fixes and drafted rewrites. `seo-geo` is a cited SEO/GEO knowledge base. `topcited-api` and `visibility-workflow` drive TopCited, the authors' paid service for live AI-citation tracking; they need a TopCited account and spend T-coins.
 
 Links below are raw GitHub files on the main branch. Relative links inside each SKILL.md resolve against that file's own directory, so keep the skills together.
 
