@@ -6,7 +6,8 @@ header or snippet), not just pass/fail.
 **Access and indexing**
 - Home page returns 200 over HTTPS; one canonical host (www vs non-www, http to https redirect).
 - `/robots.txt` exists. Does it block `GPTBot`, `OAI-SearchBot`, `ChatGPT-User`, `ClaudeBot`,
-  `Claude-SearchBot`, `PerplexityBot`, `Google-Extended` or `*`? Blocking *training* crawlers is a
+  `Claude-SearchBot`, `Claude-User`, `PerplexityBot`, `Perplexity-User`, `Google-Extended`,
+  `Applebot-Extended`, `CCBot`, `Bytespider` or `*`? (The same 12 the script checks.) Blocking *training* crawlers is a
   legitimate choice; blocking *search/answer* crawlers removes you from those answers. Which
   crawler does what: [ai-crawler-access.md](../../seo-geo/knowledge/technical-seo/ai-crawler-access.md).
 - Sitemap listed in robots.txt or at `/sitemap.xml`; URLs return 200 and are canonical.

@@ -10,6 +10,7 @@ import json
 import pathlib
 import threading
 import unittest
+from unittest import mock
 
 SCRIPT = pathlib.Path(__file__).resolve().parent.parent / "skills" / "seo-geo-audit" / "scripts" / "topcited_audit.py"
 spec = importlib.util.spec_from_file_location("topcited_audit", SCRIPT)
@@ -189,6 +190,56 @@ class EndToEnd(unittest.TestCase):
         self.assertEqual(hits, [])
         self.assertTrue(any(s.get("skipped") for s in rep["sitemaps"]))
         self.assertIn("not fetched", audit.render(rep))
+
+    def test_child_sitemap_on_another_host_is_not_fetched(self):
+        hits = []
+
+        class Other(http.server.BaseHTTPRequestHandler):
+            def do_GET(self):  # noqa: N802
+                hits.append(self.path)
+                self.send_response(200)
+                self.end_headers()
+                self.wfile.write(b"<urlset></urlset>")
+
+            def log_message(self, *a):
+                pass
+
+        other = http.server.ThreadingHTTPServer(("127.0.0.1", 0), Other)
+        threading.Thread(target=other.serve_forever, daemon=True).start()
+        old_index = Handler.routes["/sitemap.xml"]
+        try:
+            child = f"http://localhost:{other.server_address[1]}/child.xml"  # different host from 127.0.0.1
+            Handler.routes["/sitemap.xml"] = (f"<sitemapindex><sitemap><loc>{child}</loc></sitemap></sitemapindex>", "application/xml", {})
+            rep = audit.run(self.base, 2)
+        finally:
+            other.shutdown()
+            other.server_close()
+            Handler.routes["/sitemap.xml"] = old_index
+        self.assertEqual(hits, [])
+        self.assertTrue(any(s.get("skipped") for s in rep["sitemaps"]))
+
+    def test_unreadable_robots_is_not_reported_as_missing(self):
+        old = Handler.routes.pop("/robots.txt")
+        try:
+            rep = audit.run(self.base, 1)  # 404 -> genuinely missing
+            self.assertIn("no robots.txt", rep["site_level_issues"])
+        finally:
+            Handler.routes["/robots.txt"] = old
+        self.assertEqual(audit.parse_robots("")["GPTBot"], "unspecified")
+
+    def test_robots_server_error_is_reported_as_unreadable(self):
+        real = audit.fetch
+
+        def fake(url, *a, **k):
+            if url.endswith("/robots.txt"):
+                return {"ok": False, "status": 503, "final_url": url, "headers": {}, "body": ""}
+            return real(url, *a, **k)
+
+        with mock.patch.object(audit, "fetch", fake):
+            rep = audit.run(self.base, 1)
+        msg = " ".join(rep["site_level_issues"])
+        self.assertIn("could not be read (HTTP 503)", msg)
+        self.assertNotIn("no robots.txt", msg)
 
     def test_unreachable_home_reports_error(self):
         rep = audit.run("http://127.0.0.1:9", 3)

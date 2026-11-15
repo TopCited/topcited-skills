@@ -38,7 +38,11 @@ optional ones: state your assumption and go.
 
    Limits to tell the user: it does not run JavaScript, does not read compressed (`.xml.gz`)
    sitemaps, and does not obey robots.txt when fetching (it is auditing that file), so use it
-   only on sites the user owns or may audit. If python3 is unavailable or the site blocks the
+   only on sites the user owns or may audit. It evaluates robots.txt by group rules only (no
+   per-URL wildcard or longest-path matching), so "allowed" does not prove a given path is
+   crawlable, and it cannot see CDN or firewall rules that block a crawler's user agent. It
+   samples early URLs from the sitemap (following at most two child sitemaps, same host only)
+   or internal links, not a representative crawl. If python3 is unavailable or the site blocks the
    request, do the same checks with your own fetch tool using
    [references/audit-checklist.md](references/audit-checklist.md). Also fetch 1-2 key pages
    yourself and *read* them: the script cannot judge whether the content answers anyone's question.

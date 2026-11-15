@@ -293,8 +293,9 @@ def bare_host(url: str) -> str:
     return host[4:] if host.startswith("www.") else host
 
 
-def read_sitemap(url: str, depth: int = 0) -> tuple[list[dict], list[str]]:
-    """Return (sitemap records, page URLs). Follows up to 2 child sitemaps of an index."""
+def read_sitemap(url: str, depth: int = 0, host: str = "") -> tuple[list[dict], list[str]]:
+    """Return (sitemap records, page URLs). Follows up to 2 child sitemaps of an index, only on `host` (www. ignored)
+    when given: a sitemap file can name any URL, and we never fetch other hosts on the user's behalf."""
     s = fetch(url)
     if not s["ok"]:
         return [{"url": url, "status": s["status"]}], []
@@ -303,8 +304,12 @@ def read_sitemap(url: str, depth: int = 0) -> tuple[list[dict], list[str]]:
     children = [u for u in locs if u.lower().endswith(".xml")]
     pages = [u for u in locs if not u.lower().endswith(".xml")]
     if children and depth == 0:
-        for child in children[:2]:
-            rec, more = read_sitemap(child, depth + 1)
+        same = [c for c in children if not host or bare_host(c) == host]
+        for c in children:
+            if c not in same:
+                records.append({"url": c, "status": None, "skipped": "different host"})
+        for child in same[:2]:
+            rec, more = read_sitemap(child, depth + 1, host)
             records += rec
             pages += more
     return records, pages
@@ -337,7 +342,7 @@ def run(site: str, pages: int) -> dict:
         else:  # robots.txt can name any URL; never fetch other hosts on the user's behalf
             rep.setdefault("sitemaps", []).append({"url": sm, "status": None, "skipped": "different host"})
     for sm in (safe_sitemaps or [base + "/sitemap.xml"])[:3]:
-        records, found = read_sitemap(sm)
+        records, found = read_sitemap(sm, 0, bare_host(base))
         rep.setdefault("sitemaps", []).extend(records)
         sm_urls += found
 
@@ -361,7 +366,9 @@ def run(site: str, pages: int) -> dict:
                  f"them): {', '.join(noindexed[:5])}{' ...' if len(noindexed) > 5 else ''}")
     ai = rep["robots_txt"].get("ai_crawlers", {})
     if not robots["ok"]:
-        g.append("no robots.txt")
+        g.append("no robots.txt" if robots["status"] == 404 else
+                 f"robots.txt could not be read ({'HTTP ' + str(robots['status']) if robots['status'] else robots.get('error', 'no response')}); "
+                 "crawler access was not evaluated")
     blocked = [b for b, v in ai.items() if v.startswith(("blocked", "partly blocked"))]
     if blocked:
         g.append("AI crawlers blocked (fully or partly) in robots.txt: "
