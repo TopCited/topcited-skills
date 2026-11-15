@@ -17,22 +17,31 @@ optional ones: state your assumption and go.
 
 ## Steps
 
-1. **Audit (read-only).** Run the bundled script (Python 3.9+, standard library only,
-   plain GET requests, writes nothing):
+1. **Audit (read-only).** Run the bundled script. It needs Python 3.9 or newer and nothing
+   else (standard library only; plain GET requests; it writes nothing):
 
    ```bash
-   python3 <this-skill-dir>/scripts/topcited_audit.py <url> --pages 5
+   python3 --version        # 3.9 or newer
+   # from a clone of this repo:
+   python3 skills/seo-geo-audit/scripts/topcited_audit.py <url> --pages 5
+   # installed as a skill: the same file, under this skill's folder
+   python3 <skills-dir>/seo-geo-audit/scripts/topcited_audit.py <url> --pages 5
    ```
 
-   It checks: HTTP/HTTPS; robots.txt rules for 12 AI crawlers (blocked, partly blocked,
-   allowed, or inherited from `*`); sitemap (index files are followed); llms.txt; and per
-   page the `noindex` signals (meta robots and `X-Robots-Tag`), title, meta description,
-   canonical, h1, lang, Open Graph, JSON-LD types, image alt text and server-rendered word
-   count. Add `--json` for machine-readable output. If python3 is unavailable or the site
-   blocks the request, do the same checks with your own fetch tool using
+   It checks: HTTP/HTTPS; robots.txt rules for 12 AI crawlers (`GPTBot`, `OAI-SearchBot`,
+   `ChatGPT-User`, `ClaudeBot`, `Claude-SearchBot`, `Claude-User`, `PerplexityBot`,
+   `Perplexity-User`, `Google-Extended`, `Applebot-Extended`, `CCBot`, `Bytespider`), each
+   reported as blocked, partly blocked, allowed, or inherited from `*`; sitemap (index files are
+   followed); llms.txt; and per page the `noindex` signals (meta robots and `X-Robots-Tag`),
+   title, meta description, canonical, h1, lang, Open Graph, JSON-LD types, image alt text and
+   server-rendered word count. Add `--json` for machine-readable output.
+
+   Limits to tell the user: it does not run JavaScript, does not read compressed (`.xml.gz`)
+   sitemaps, and does not obey robots.txt when fetching (it is auditing that file), so use it
+   only on sites the user owns or may audit. If python3 is unavailable or the site blocks the
+   request, do the same checks with your own fetch tool using
    [references/audit-checklist.md](references/audit-checklist.md). Also fetch 1-2 key pages
-   yourself and *read* them: the script cannot judge whether the content answers anyone's
-   question, and it does not run JavaScript.
+   yourself and *read* them: the script cannot judge whether the content answers anyone's question.
 2. **Judge.** For each finding, read the matching file in the `seo-geo` skill
    ([knowledge/INDEX.md](../seo-geo/knowledge/INDEX.md)) before recommending; do not answer
    from memory. Those files carry evidence tags and `last-verified` dates: say which tier a

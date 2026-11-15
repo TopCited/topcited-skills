@@ -9,6 +9,10 @@ Fetches the home page, robots.txt, sitemap(s) and llms.txt, then samples up to
 opinions: every finding names the evidence. Read-only: plain GET requests with
 an honest User-Agent, no login, no writes, no third-party services.
 
+Limits: it does not obey robots.txt when fetching pages (it is auditing that file, so
+point it only at sites you own or are allowed to audit); it does not run JavaScript;
+compressed sitemaps (.xml.gz) are not read; robots.txt is checked by its group rules only.
+
 Exit code: 0 = report produced, 1 = the home page could not be fetched.
 """
 
@@ -155,8 +159,8 @@ def parse_robots(txt: str) -> dict[str, str]:
     """Return {bot: verdict} for AI_BOTS.
 
     Verdicts: 'blocked' (Disallow: / and no Allow rules in the matching group),
-    'partly blocked' (Disallow: / plus some Allow rules), 'allowed', or
-    'unspecified' (no group names the bot and there is no '*' group). A bot-specific
+    'partly blocked' (Disallow: / plus some Allow rules), 'allowed' (optionally
+    'allowed, but some paths disallowed'), or 'unspecified' (no group names the bot and there is no '*' group). A bot-specific
     group wins over '*' (RFC 9309); a verdict inherited from '*' says so.
     """
     groups: list[tuple[list[str], list[tuple[str, str]]]] = []
@@ -198,6 +202,8 @@ def parse_robots(txt: str) -> dict[str, str]:
             if blocks_root and not allow_root:
                 has_allow = any(k == "allow" and v for k, v in rs)
                 return ("partly blocked" if has_allow else "blocked") + via
+            if any(k == "disallow" and v not in ("", "/") for k, v in rs):
+                return "allowed, but some paths disallowed" + via
             return "allowed" + via
         return "unspecified"
 
@@ -275,6 +281,7 @@ def audit_page(url: str) -> dict:
         lang=p.lang, h1=[x.strip() for x in p.h["h1"]], h2_count=len(p.h["h2"]),
         word_count=words, schema_types=types, images=p.imgs, images_missing_alt=p.imgs_no_alt,
         meta_robots=p.meta.get("robots", ""), x_robots_tag=x_robots, issues=issues,
+        redirected_to=(r["final_url"] if r["final_url"].rstrip("/") != url.rstrip("/") else ""),
         _links=p.links,
     )
     return out
@@ -376,6 +383,8 @@ def render(rep: dict) -> str:
         if pg.get("error"):
             L.append(f"- fetch failed: {pg['error']}")
             continue
+        if pg.get("redirected_to"):
+            L.append(f"- redirected to: {pg['redirected_to']}")
         L += [f"- title ({pg['title_len']}): {pg['title']!r}",
               f"- meta description: {pg['meta_description']!r}",
               f"- h1: {pg['h1']}  |  h2 count: {pg['h2_count']}  |  words: {pg['word_count']}",

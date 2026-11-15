@@ -37,6 +37,10 @@ class RobotsTests(unittest.TestCase):
         v = audit.parse_robots("User-agent: ClaudeBot\nDisallow: /\nAllow: /blog/\n")
         self.assertEqual(v["ClaudeBot"], "partly blocked")
 
+    def test_path_rules_are_reported_but_not_as_a_block(self):
+        v = audit.parse_robots("User-agent: GPTBot\nDisallow: /blog\n")
+        self.assertEqual(v["GPTBot"], "allowed, but some paths disallowed")
+
     def test_empty_disallow_means_allowed(self):
         self.assertEqual(audit.parse_robots("User-agent: GPTBot\nDisallow:\n")["GPTBot"], "allowed")
 
