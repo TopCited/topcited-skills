@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "topcited-audit"
+version = "0.3.0"
+description = "Free, account-less SEO and GEO (AI search) audit of a website: AI-crawler access, noindex, sitemap, llms.txt, metadata, schema."
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = []
+keywords = ["seo", "geo", "seo-audit", "geo-audit", "ai-search", "llms-txt"]
+
+[project.urls]
+Homepage = "https://github.com/TopCited/topcited-skills"
+
+[project.scripts]
+topcited-audit = "topcited_audit:main"
+
+# The script lives inside the skill so agents find it next to SKILL.md; this exposes the
+# same file as a command. Keep `version` in step with UA in topcited_audit.py.
+[tool.setuptools]
+py-modules = ["topcited_audit"]
+
+[tool.setuptools.package-dir]
+"" = "skills/seo-geo-audit/scripts"

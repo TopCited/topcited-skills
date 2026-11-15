@@ -19,6 +19,12 @@ git clone https://github.com/TopCited/topcited-skills.git
 python3 topcited-skills/skills/seo-geo-audit/scripts/topcited_audit.py https://yoursite.com
 ```
 
+With [uv](https://docs.astral.sh/uv/) you can skip the clone:
+
+```bash
+uvx --from git+https://github.com/TopCited/topcited-skills topcited-audit https://yoursite.com
+```
+
 Or let your agent do it: install the skills (below), then say *"Audit https://yoursite.com for
 SEO and AI search."* The agent runs the script, reads the pages, and returns a ranked fix list
 with the rewrites.
