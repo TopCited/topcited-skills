@@ -6,7 +6,10 @@ description: Drive a TopCited account with the `topcited` CLI — brands, compet
 # TopCited CLI
 
 TopCited measures and improves how visible a brand is in search engines (SEO) and
-in AI assistants like ChatGPT, Claude, Gemini and Perplexity (GEO). The `topcited`
+in AI assistants (GEO). Monitoring runs on these platforms: ChatGPT, Gemini, Grok and
+DeepSeek among the assistants, and Google, Bing, Brave and Baidu among the search
+engines (the `-p` values are in [monitoring.md](references/monitoring.md)). Claude and
+Perplexity are not monitored platforms, so don't promise tracking on them. The `topcited`
 CLI is how an agent drives it: task-level verbs for the common work, JSON output,
 stable exit codes, and `topcited api` for everything else.
 
