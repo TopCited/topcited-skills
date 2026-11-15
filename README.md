@@ -82,6 +82,9 @@ or cloned, or the manual checklist in `references/audit-checklist.md`.
 
 Pin to a tag or commit SHA instead of `main` if you need the content to stay put.
 
+For an agent that wants one index instead of the README, [`llms.txt`](llms.txt) lists every
+entry point with absolute raw URLs.
+
 ## Install the CLI and sign in
 
 `seo-geo` and `seo-geo-audit` need nothing. `topcited-api` and `visibility-workflow` drive TopCited

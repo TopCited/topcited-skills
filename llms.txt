@@ -1,0 +1,22 @@
+# TopCited Skills
+
+> Open-source agent skills (SKILL.md files) for SEO and GEO, for Claude Code, Codex and any agent that can read Markdown. `seo-geo-audit` is a free, no-account audit of a website for SEO and AI search with ranked fixes and drafted rewrites. `seo-geo` is a cited SEO/GEO knowledge base. `topcited-api` and `visibility-workflow` drive TopCited, the authors' paid service for live AI-citation tracking; they need a TopCited account and spend T-coins.
+
+Links below are raw GitHub files on the main branch. Relative links inside each SKILL.md resolve against that file's own directory, so keep the skills together.
+
+## Start here (free, no account)
+- [seo-geo-audit skill](https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/seo-geo-audit/SKILL.md): when to use it, and the six steps from audit to drafted fixes
+- [audit script](https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/seo-geo-audit/scripts/topcited_audit.py): `python3 topcited_audit.py <url>`; Python 3.9+, standard library only, read-only GET requests
+- [manual audit checklist](https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/seo-geo-audit/references/audit-checklist.md): the same checks without running the script
+- [rewrite templates](https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/seo-geo-audit/references/rewrite-patterns.md): title, meta, JSON-LD, robots.txt, llms.txt patterns
+
+## Knowledge base (free, no account)
+- [seo-geo skill](https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/seo-geo/SKILL.md): how to use the knowledge base
+- [knowledge index](https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/seo-geo/knowledge/INDEX.md): every file, with evidence tags and last-verified dates
+
+## TopCited CLI (needs a TopCited account; spends T-coins)
+- [topcited-api skill](https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/topcited-api/SKILL.md): install, sign-in, command cheat-sheet, the dry-run-then-confirm contract
+- [visibility-workflow skill](https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/visibility-workflow/SKILL.md): an eight-stage engagement from baseline to measured improvement
+
+## Optional
+- [README](https://raw.githubusercontent.com/TopCited/topcited-skills/main/README.md): install options for Claude Code and other agents, and what is free versus paid
