@@ -2,11 +2,13 @@
 
 Open-source agent skills for SEO and **GEO** (Generative Engine Optimization: being found
 and cited by ChatGPT, Claude, Gemini and Perplexity). Start with
-[`seo-geo-audit`](skills/seo-geo-audit): it audits any public website (AI-crawler access in
-robots.txt, `noindex`, sitemap, llms.txt, titles and meta, schema, server-rendered text),
-ranks the fixes and drafts them. **Free, no account.** Written as standard `SKILL.md` skills and
-tested with Claude Code; other agents that read that format (for example Codex) are expected to
-work but have not been tested.
+[`seo-geo-audit`](skills/seo-geo-audit), a free SEO and AI-search audit checker: it checks
+whether GPTBot, ClaudeBot, PerplexityBot and other AI crawlers can access your site
+(robots.txt), plus `noindex`, sitemap, llms.txt, titles and meta, schema.org JSON-LD
+structured data and server-rendered text, then ranks the fixes and drafts them (rewrites,
+schema markup, robots.txt). **Free, no account, no signup.** Written as standard `SKILL.md`
+skills and tested with Claude Code; other agents that read that format (for example Codex) are
+expected to work but have not been tested.
 
 Try it now (Python 3.9 or newer, nothing else to install):
 
