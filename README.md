@@ -1,23 +1,44 @@
-# TopCited Skills
+# TopCited Skills: free SEO + GEO audit skill for AI coding agents
 
-Agent Skills that teach an AI coding agent — Claude Code, Codex, or anything else
-that can read Markdown — how to do SEO and **GEO** (Generative Engine
-Optimization: being found and cited by ChatGPT, Claude, Gemini and Perplexity),
-and how to drive [TopCited](https://topcited.ai) on your behalf through the
-`topcited` CLI.
+Open-source agent skills for SEO and **GEO** (Generative Engine Optimization: being found
+and cited by ChatGPT, Claude, Gemini and Perplexity). Start with
+[`seo-geo-audit`](skills/seo-geo-audit), a free SEO and AI-search audit checker: it checks
+whether GPTBot, ClaudeBot, PerplexityBot and other AI crawlers can access your site
+(robots.txt), plus `noindex`, sitemap, llms.txt, titles and meta, schema.org JSON-LD
+structured data and server-rendered text, then ranks the fixes and drafts them (rewrites,
+schema markup, robots.txt). **Free, no account, no signup.** Written as standard `SKILL.md`
+skills. Tested with Claude Code (full runs) and Codex (finds and loads the skills from
+`.agents/skills` and routes to the audit; its read-only test sandbox had no network, so a full
+audit run was not completed there). Other agents that read the format are expected to work but
+have not been tested.
 
-These are the same skills TopCited's own hosted agent runs on. This repo is the
-single source of truth for them.
+Try it now (Python 3.9 or newer, nothing else to install):
+
+```bash
+git clone https://github.com/TopCited/topcited-skills.git
+python3 topcited-skills/skills/seo-geo-audit/scripts/topcited_audit.py https://yoursite.com
+```
+
+Or let your agent do it: install the skills (below), then say *"Audit https://yoursite.com for
+SEO and AI search."* The agent runs the script, reads the pages, and returns a ranked fix list
+with the rewrites.
+
+The same repo also teaches an agent to drive [TopCited](https://topcited.ai), the authors'
+service for live AI-citation tracking (needs a TopCited account; see the skill table).
 
 | Skill | What it gives your agent |
 |---|---|
-| [`seo-geo`](skills/seo-geo) | A cited, dated knowledge base: technical SEO, entity & authority, content strategy, GEO, measurement, distribution playbooks. Read before making a judgment call, instead of answering from memory. |
-| [`topcited-api`](skills/topcited-api) | How to drive TopCited with the `topcited` CLI: install, sign-in, a command cheat-sheet, the agent contract (JSON, exit codes, `--wait`, `--dry-run`), and per-feature guides (when, why, what it costs, how it fails). |
-| [`visibility-workflow`](skills/visibility-workflow) | An eight-stage engagement that takes a brand from "no idea if we're visible" to a measured, improved baseline — using the two skills above. |
+| [`seo-geo-audit`](skills/seo-geo-audit) | **Start here.** A free, no-account audit of a website for SEO and AI search, ranked fixes and drafted rewrites. Runs a Python script (standard library only) and links to `seo-geo` for the evidence. |
+| [`seo-geo`](skills/seo-geo) | A cited, dated knowledge base: technical SEO, entity & authority, content strategy, GEO, measurement, distribution playbooks. Read before making a judgment call, instead of answering from memory. No account. |
+| [`topcited-api`](skills/topcited-api) | How to drive TopCited with the `topcited` CLI: install, sign-in, a command cheat-sheet, the agent contract (JSON, exit codes, `--wait`, `--dry-run`), and per-feature guides (when, why, what it costs, how it fails). Needs a TopCited account. |
+| [`visibility-workflow`](skills/visibility-workflow) | An eight-stage engagement that takes a brand from "no idea if we're visible" to a measured, improved baseline, using the skills above. Needs a TopCited account. |
 
-Install all three. `visibility-workflow` orchestrates the other two and
-`topcited-api` defers SEO judgment to `seo-geo`; they reference each other by
-relative path, so they need to sit as siblings.
+`seo-geo`, `topcited-api` and `visibility-workflow` are the same skills TopCited's own hosted
+agent runs on; this repo is their single source of truth.
+
+Install all four. `visibility-workflow` orchestrates `topcited-api` and `seo-geo`, while
+`seo-geo-audit` and `topcited-api` defer SEO judgment to `seo-geo`. They reference each other
+by relative path, so they need to sit as siblings.
 
 ## Install
 
@@ -46,6 +67,7 @@ Everything here is plain Markdown, so an agent that can fetch a URL needs no
 install at all — point it at a raw file and it will follow the links from there:
 
 ```
+https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/seo-geo-audit/SKILL.md
 https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/seo-geo/SKILL.md
 https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/topcited-api/SKILL.md
 https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/visibility-workflow/SKILL.md
@@ -55,13 +77,14 @@ Each `SKILL.md` opens with YAML frontmatter (`name`, `description`) and a routin
 table saying what to read next. Two caveats when fetching rather than cloning:
 the internal links are **relative paths**, so resolve them against the file's own
 directory; and `topcited-api` / `visibility-workflow` need the `topcited` CLI
-installed (below).
+installed (below). `seo-geo-audit` also needs its script (`scripts/topcited_audit.py`) fetched
+or cloned, or the manual checklist in `references/audit-checklist.md`.
 
 Pin to a tag or commit SHA instead of `main` if you need the content to stay put.
 
 ## Install the CLI and sign in
 
-`seo-geo` needs nothing. `topcited-api` and `visibility-workflow` drive TopCited
+`seo-geo` and `seo-geo-audit` need nothing. `topcited-api` and `visibility-workflow` drive TopCited
 through the `topcited` CLI:
 
 ```bash
@@ -98,9 +121,11 @@ step; put your own budget guard in front of it.
 ```
 skills/
   seo-geo/              SKILL.md + knowledge/
+  seo-geo-audit/        SKILL.md + scripts/ + references/
   topcited-api/         SKILL.md + references/
   visibility-workflow/  SKILL.md + stages/ + templates/
 .claude-plugin/         Claude Code plugin + marketplace manifests
+tests/                  offline tests for the audit script
 ```
 
 The API reference is the public OpenAPI spec at
