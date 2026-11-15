@@ -143,6 +143,7 @@ class EndToEnd(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.server.shutdown()
+        cls.server.server_close()
 
     def test_full_run(self):
         rep = audit.run(self.base, 5)
@@ -161,6 +162,33 @@ class EndToEnd(unittest.TestCase):
         text = audit.render(rep)
         self.assertIn("GPTBot=blocked", text)
         json.dumps(rep)  # serialisable for --json
+
+    def test_sitemap_on_another_host_is_not_fetched(self):
+        hits = []
+
+        class Other(http.server.BaseHTTPRequestHandler):
+            def do_GET(self):  # noqa: N802
+                hits.append(self.path)
+                self.send_response(200)
+                self.end_headers()
+                self.wfile.write(b"<urlset></urlset>")
+
+            def log_message(self, *a):
+                pass
+
+        other = http.server.ThreadingHTTPServer(("127.0.0.1", 0), Other)
+        threading.Thread(target=other.serve_forever, daemon=True).start()
+        try:
+            evil = f"http://localhost:{other.server_address[1]}/internal-sitemap.xml"  # different host from 127.0.0.1
+            Handler.routes["/robots.txt"] = (f"User-agent: *\nAllow: /\nSitemap: {evil}\n", "text/plain", {})
+            rep = audit.run(self.base, 2)
+        finally:
+            other.shutdown()
+            other.server_close()
+            Handler.routes["/robots.txt"] = (f"User-agent: GPTBot\nDisallow: /\n\nSitemap: {self.base}/sitemap.xml\n", "text/plain", {})
+        self.assertEqual(hits, [])
+        self.assertTrue(any(s.get("skipped") for s in rep["sitemaps"]))
+        self.assertIn("not fetched", audit.render(rep))
 
     def test_unreachable_home_reports_error(self):
         rep = audit.run("http://127.0.0.1:9", 3)

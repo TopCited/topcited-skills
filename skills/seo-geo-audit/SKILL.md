@@ -32,7 +32,7 @@ optional ones: state your assumption and go.
    `ChatGPT-User`, `ClaudeBot`, `Claude-SearchBot`, `Claude-User`, `PerplexityBot`,
    `Perplexity-User`, `Google-Extended`, `Applebot-Extended`, `CCBot`, `Bytespider`), each
    reported as blocked, partly blocked, allowed, or inherited from `*`; sitemap (index files are
-   followed); llms.txt; and per page the `noindex` signals (meta robots and `X-Robots-Tag`),
+   followed; only on the audited host); llms.txt; and per page the `noindex` signals (meta robots and `X-Robots-Tag`),
    title, meta description, canonical, h1, lang, Open Graph, JSON-LD types, image alt text and
    server-rendered word count. Add `--json` for machine-readable output.
 

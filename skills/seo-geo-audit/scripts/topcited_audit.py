@@ -11,7 +11,7 @@ an honest User-Agent, no login, no writes, no third-party services.
 
 Limits: it does not obey robots.txt when fetching pages (it is auditing that file, so
 point it only at sites you own or are allowed to audit); it does not run JavaScript;
-compressed sitemaps (.xml.gz) are not read; robots.txt is checked by its group rules only.
+compressed sitemaps (.xml.gz) are not read; sitemaps named in robots.txt on other hosts are not fetched; robots.txt is checked by its group rules only.
 
 Exit code: 0 = report produced, 1 = the home page could not be fetched.
 """
@@ -287,6 +287,12 @@ def audit_page(url: str) -> dict:
     return out
 
 
+def bare_host(url: str) -> str:
+    """Lower-cased host:port of a URL without a leading 'www.' ('' if none)."""
+    host = urllib.parse.urlparse(url).netloc.lower()
+    return host[4:] if host.startswith("www.") else host
+
+
 def read_sitemap(url: str, depth: int = 0) -> tuple[list[dict], list[str]]:
     """Return (sitemap records, page URLs). Follows up to 2 child sitemaps of an index."""
     s = fetch(url)
@@ -324,7 +330,13 @@ def run(site: str, pages: int) -> dict:
     rep["llms_txt"] = {"status": llms["status"], "bytes": len(llms["body"]) if llms["ok"] else 0}
 
     sm_urls: list[str] = []
-    for sm in (sitemaps or [base + "/sitemap.xml"])[:3]:
+    safe_sitemaps = []
+    for sm in sitemaps:
+        if bare_host(sm) in ("", bare_host(base)):
+            safe_sitemaps.append(sm)
+        else:  # robots.txt can name any URL; never fetch other hosts on the user's behalf
+            rep.setdefault("sitemaps", []).append({"url": sm, "status": None, "skipped": "different host"})
+    for sm in (safe_sitemaps or [base + "/sitemap.xml"])[:3]:
         records, found = read_sitemap(sm)
         rep.setdefault("sitemaps", []).extend(records)
         sm_urls += found
@@ -377,7 +389,10 @@ def render(rep: dict) -> str:
         L.append("- AI crawler access: " + "; ".join(f"{b}={v}" for b, v in ai.items()))
     L.append(f"- llms.txt: HTTP {rep['llms_txt']['status']}")
     for s in rep.get("sitemaps", []):
-        L.append(f"- sitemap {s['url']}: HTTP {s['status']}, {s.get('urls', '?')} URLs")
+        if s.get("skipped"):
+            L.append(f"- sitemap {s['url']}: not fetched ({s['skipped']}; only the audited host is fetched)")
+        else:
+            L.append(f"- sitemap {s['url']}: HTTP {s['status']}, {s.get('urls', '?')} URLs")
     for pg in [h] + rep["sampled_pages"]:
         L += ["", f"## {pg['url']}"]
         if pg.get("error"):
