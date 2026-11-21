@@ -47,14 +47,13 @@ def readme_block(what: str, match) -> str:
     return found[0]
 
 
-def run(args: list[str], env: dict, what: str, expect_ok: bool = True) -> str:
+def run(args: list[str], env: dict, what: str, expect_ok: bool = True) -> subprocess.CompletedProcess:
     r = subprocess.run(args, env=env, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300)
-    out = r.stdout + r.stderr
     if expect_ok and r.returncode != 0:
-        sys.exit(f"FAIL {what} (exit {r.returncode}):\n{out}")
+        sys.exit(f"FAIL {what} (exit {r.returncode}):\n{r.stdout}{r.stderr}")
     if not expect_ok and r.returncode == 0:
-        sys.exit(f"FAIL {what}: expected a failure but it worked:\n{out}")
-    return out
+        sys.exit(f"FAIL {what}: expected a failure but it worked:\n{r.stdout}{r.stderr}")
+    return r
 
 
 def no_git_path(tmp: Path) -> str:
@@ -154,7 +153,8 @@ def main() -> None:
     home, env = home_env(base, "old-route", path)
     if WIN:
         reset_windows_profile(env)
-    out = run(["claude", "plugin", "marketplace", "add", "TopCited/topcited-skills"], env, "old route", expect_ok=False)
+    r = run(["claude", "plugin", "marketplace", "add", "TopCited/topcited-skills"], env, "old route", expect_ok=False)
+    out = r.stdout + r.stderr
     if "git" not in out.lower():
         sys.exit(f"FAIL old route: it failed, but not for lack of Git:\n{out}")
     print("ok   the old route fails without Git")
@@ -166,7 +166,7 @@ def main() -> None:
     for line in filter(None, (l.strip() for l in claude_steps.splitlines())):
         args = ["claude", *line.lstrip("/").replace(README_MARKETPLACE_URL, marketplace_url).split()]
         run(args, env, " ".join(args))
-    installed = {p["id"]: p for p in json.loads(run(["claude", "plugin", "list", "--json"], env, "plugin list"))}
+    installed = {p["id"]: p for p in json.loads(run(["claude", "plugin", "list", "--json"], env, "plugin list").stdout)}
     if PLUGIN not in installed or not installed[PLUGIN].get("enabled"):
         sys.exit(f"FAIL Claude Code: {PLUGIN} is not installed and enabled: {installed}")
     check_skill_folder(Path(installed[PLUGIN]["installPath"]) / "skills", "Claude Code plugin")
@@ -190,11 +190,14 @@ def main() -> None:
     # 4. The README's CLI install.
     home, env = home_env(base, "cli", path)
     if WIN:
-        out = run(powershell("powershell", f"{cli.group(2)}\ntopcited --version"), env, "CLI install (Windows PowerShell)")
+        r = run(powershell("powershell", f"{cli.group(2)}\ntopcited --version"), env, "CLI install (Windows PowerShell)")
     else:
         run(["sh", "-c", cli.group(1)], env, "CLI install")
-        out = run([str(home / ".local" / "bin" / "topcited"), "--version"], env, "topcited --version")
-    print(f"ok   the CLI installs and runs: {out.strip().splitlines()[-1]}")
+        r = run([str(home / ".local" / "bin" / "topcited"), "--version"], env, "topcited --version")
+    version = re.search(r"^v?(\d+\.\d+\.\d+)\s*$", r.stdout, re.M)
+    if not version:
+        sys.exit(f"FAIL the CLI installed but `topcited --version` printed no version:\n{r.stdout}{r.stderr}")
+    print(f"ok   the CLI installs and runs: topcited {version.group(1)}")
 
     if not WIN:
         shutil.rmtree(base, ignore_errors=True)
