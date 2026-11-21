@@ -1,0 +1,21 @@
+{
+  "name": "topcited",
+  "description": "TopCited skills for AI coding agents: SEO/GEO knowledge, the TopCited API, and a guided visibility workflow.",
+  "owner": {
+    "name": "TopCited",
+    "url": "https://topcited.ai"
+  },
+  "plugins": [
+    {
+      "name": "topcited-skills",
+      "source": {
+        "source": "archive",
+        "url": "https://github.com/TopCited/topcited-skills/archive/refs/heads/main.zip"
+      },
+      "description": "SEO/GEO knowledge, the TopCited API reference, and a guided visibility-improvement workflow, as Agent Skills.",
+      "version": "0.1.1",
+      "license": "MIT",
+      "homepage": "https://github.com/TopCited/topcited-skills"
+    }
+  ]
+}
