@@ -159,7 +159,7 @@ def main() -> None:
         reset_windows_profile(env)
     r = run(["claude", "plugin", "marketplace", "add", "TopCited/topcited-skills"], env, "old route", expect_ok=False)
     out = r.stdout + r.stderr
-    if not re.search(r"git.{0,40}(not found|not recognized|ENOENT)|(not found|ENOENT).{0,80}git", out, re.I | re.S):
+    if not re.search(r'Executable not found in \$PATH: "git"|ENOENT: git\b|Command .git. not found', out):
         sys.exit(f"FAIL old route: it failed, but not for lack of Git:\n{out}")
     print("ok   the old route fails without Git")
 
@@ -174,6 +174,9 @@ def main() -> None:
     if PLUGIN not in installed or not installed[PLUGIN].get("enabled"):
         sys.exit(f"FAIL Claude Code: {PLUGIN} is not installed and enabled: {installed}")
     check_skill_folder(Path(installed[PLUGIN]["installPath"]) / "skills", "Claude Code plugin")
+    details = run(["claude", "plugin", "details", PLUGIN], env, "plugin details").stdout
+    if missing := [s for s in SKILLS if s not in details]:
+        sys.exit(f"FAIL Claude Code does not load {missing} from {PLUGIN}:\n{details}")
     print(f"ok   Claude Code installs {PLUGIN} with {', '.join(SKILLS)}")
 
     # 3. The README's download for Codex and other agents, run twice (first install, then update).
@@ -183,9 +186,15 @@ def main() -> None:
         home, env = home_env(base, f"download-{shell}", path)
         if WIN:
             reset_windows_profile(env)
+        skill_md = home / ".agents" / "skills" / SKILLS[0] / "SKILL.md"
         for attempt in ("first run", "second run"):
             run(wrap(ps_download if WIN else sh_download), env, f"{shell} download, {attempt}")
             check_skill_folder(home / ".agents" / "skills", f"{shell} download, {attempt}")
+            if attempt == "first run":
+                fresh = skill_md.read_bytes()
+                skill_md.write_text("stale")  # the second run must replace this
+            elif skill_md.read_bytes() != fresh:
+                sys.exit(f"FAIL {shell} download, second run: it did not update {skill_md}")
         # From another folder, so only the user-level ~/.agents/skills can supply them.
         elsewhere = base / f"elsewhere-{shell}"
         elsewhere.mkdir()

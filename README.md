@@ -34,9 +34,10 @@ Run these inside Claude Code:
 
 In a terminal, the same steps are `claude plugin marketplace add …` and
 `claude plugin install …`. Claude Code downloads the plugin as a zip over HTTPS,
-which needs Claude Code 2.1.224 or later (`claude update`). If you added the
-marketplace earlier as `TopCited/topcited-skills`, skip the first line; that older
-route clones the repo and needs Git.
+which needs Claude Code 2.1.224 or later (`claude update`). If
+`/plugin marketplace add TopCited/topcited-skills` worked for you before, skip the
+first line. That older route clones the repo, so it fails without Git; if it
+failed for you, run both lines.
 
 ### Codex and other agents (download)
 
