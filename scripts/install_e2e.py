@@ -163,10 +163,8 @@ def main() -> None:
         sys.exit(f"FAIL old route: it failed, but not for lack of Git:\n{out}")
     print("ok   the old route fails without Git")
 
-    # 2. The README's Claude Code steps, run from a terminal.
-    home, env = home_env(base, "claude", path)
-    if WIN:
-        reset_windows_profile(env)
+    # 2. The README's Claude Code steps, run from a terminal in the same profile: a user who
+    #    tried the old route and saw it fail then runs both lines.
     for line in filter(None, (l.strip() for l in claude_steps.splitlines())):
         args = ["claude", *line.lstrip("/").replace(README_MARKETPLACE_URL, marketplace_url).split()]
         run(args, env, " ".join(args))
@@ -177,7 +175,7 @@ def main() -> None:
     details = run(["claude", "plugin", "details", PLUGIN], env, "plugin details").stdout
     if missing := [s for s in SKILLS if s not in details]:
         sys.exit(f"FAIL Claude Code does not load {missing} from {PLUGIN}:\n{details}")
-    print(f"ok   Claude Code installs {PLUGIN} with {', '.join(SKILLS)}")
+    print(f"ok   after the failed old route, Claude Code installs {PLUGIN} with {', '.join(SKILLS)}")
 
     # 3. The README's download for Codex and other agents, run twice (first install, then update).
     shells = [("powershell", lambda s: powershell("powershell", s)), ("pwsh", lambda s: powershell("pwsh", s))] if WIN \
