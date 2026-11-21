@@ -21,24 +21,47 @@ relative path, so they need to sit as siblings.
 
 ## Install
 
+None of these need Git, and they work the same on Windows, macOS and Linux.
+
 ### Claude Code (plugin)
 
-```
-/plugin marketplace add TopCited/topcited-skills
+Run these inside Claude Code:
+
+```text
+/plugin marketplace add https://topcited.ai/claude-plugins.json
 /plugin install topcited-skills@topcited
 ```
 
-### Any agent (manual)
+In a terminal, the same steps are `claude plugin marketplace add …` and
+`claude plugin install …`. Claude Code downloads the plugin as a zip over HTTPS,
+which needs Claude Code 2.1.224 or later (`claude update`). If
+`/plugin marketplace add TopCited/topcited-skills` worked for you before, skip the
+first line. That older route clones the repo, so it fails without Git; if it
+failed for you, run both lines.
 
-Clone and drop the skills into your personal skills directory:
+### Codex and other agents (download)
 
-```bash
-git clone https://github.com/TopCited/topcited-skills.git
-cp -r topcited-skills/skills/* ~/.claude/skills/
+This puts the three skills in `~/.agents/skills`, which Codex reads. For Claude
+Code without the plugin, use `~/.claude/skills` instead. Run it again to update.
+
+macOS, Linux:
+
+```sh
+mkdir -p ~/.agents/skills
+curl -fsSL https://github.com/TopCited/topcited-skills/archive/refs/heads/main.tar.gz | tar -xz -C ~/.agents/skills --strip-components=2 topcited-skills-main/skills
 ```
 
-For a project rather than your whole machine, use `.claude/skills/` in the repo
-instead.
+Windows (PowerShell):
+
+```powershell
+New-Item -ItemType Directory -Force "$HOME\.agents\skills" | Out-Null
+curl.exe -fsSL -o "$env:TEMP\topcited-skills.zip" https://github.com/TopCited/topcited-skills/archive/refs/heads/main.zip
+tar -xf "$env:TEMP\topcited-skills.zip" -C "$HOME\.agents\skills" --strip-components=2 topcited-skills-main/skills
+Remove-Item "$env:TEMP\topcited-skills.zip"
+```
+
+For one project rather than your whole machine, put them in the repo's
+`.agents/skills/` (Codex) or `.claude/skills/` (Claude Code) instead.
 
 ### Any agent (no install)
 
@@ -52,7 +75,7 @@ https://raw.githubusercontent.com/TopCited/topcited-skills/main/skills/visibilit
 ```
 
 Each `SKILL.md` opens with YAML frontmatter (`name`, `description`) and a routing
-table saying what to read next. Two caveats when fetching rather than cloning:
+table saying what to read next. Two caveats when fetching rather than installing:
 the internal links are **relative paths**, so resolve them against the file's own
 directory; and `topcited-api` / `visibility-workflow` need the `topcited` CLI
 installed (below).
@@ -101,6 +124,8 @@ skills/
   topcited-api/         SKILL.md + references/
   visibility-workflow/  SKILL.md + stages/ + templates/
 .claude-plugin/         Claude Code plugin + marketplace manifests
+                        (url-marketplace.json: the same marketplace, installed
+                        over HTTPS without Git)
 ```
 
 The API reference is the public OpenAPI spec at

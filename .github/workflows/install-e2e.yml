@@ -1,0 +1,85 @@
+name: install-e2e
+
+# Runs the README's install steps, exactly as written, with no Git on the machine:
+# Claude Code (plugin), Codex and other agents (download), and the CLI. Windows gets
+# Git deleted; on macOS and Linux the script hides it from PATH. See scripts/install_e2e.py.
+on:
+  pull_request:
+    paths:
+      - ".claude-plugin/**"
+      - "README.md"
+      - "scripts/install_e2e.py"
+      - ".github/workflows/install-e2e.yml"
+  push:
+    branches: [main]
+    paths:
+      - ".claude-plugin/**"
+      - "skills/**"
+      - "README.md"
+      - "scripts/install_e2e.py"
+      - ".github/workflows/install-e2e.yml"
+  # Weekly, so a change in Claude Code, Codex or GitHub that breaks these steps shows up here.
+  schedule:
+    - cron: "0 15 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    env:
+      # A pull request installs from its own url-marketplace.json; main and the weekly run
+      # use the URL in the README.
+      MARKETPLACE_URL: ${{ github.event_name == 'pull_request' && format('https://raw.githubusercontent.com/{0}/{1}/.claude-plugin/url-marketplace.json', github.event.pull_request.head.repo.full_name, github.event.pull_request.head.sha) || '' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Delete Git (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          Rename-Item 'C:\Program Files\Git' 'Git.removed'
+          $path = ($env:Path -split ';' | Where-Object { $_ -and -not (Test-Path (Join-Path $_ 'git.exe')) }) -join ';'
+          "PATH=$path" >> $env:GITHUB_ENV
+
+      - name: Install Claude Code and Codex (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          if (Get-Command git -ErrorAction SilentlyContinue) { throw 'Git is still on PATH' }
+          irm https://claude.ai/install.ps1 | iex
+          "$HOME\.local\bin" >> $env:GITHUB_PATH
+          npm install -g @openai/codex
+
+      - name: Install Claude Code and Codex (macOS, Linux)
+        if: runner.os != 'Windows'
+        shell: bash
+        run: |
+          curl -fsSL https://claude.ai/install.sh | bash
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          npm install -g @openai/codex
+
+      - name: Install as the README says, without Git (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: python scripts/install_e2e.py
+
+      - name: Install as the README says, without Git (macOS, Linux)
+        if: runner.os != 'Windows'
+        shell: bash
+        run: python3 scripts/install_e2e.py
+
+      # actions/checkout's cleanup runs Git.
+      - name: Put Git back (Windows)
+        if: always() && runner.os == 'Windows'
+        shell: pwsh
+        run: if (Test-Path 'C:\Program Files\Git.removed') { Rename-Item 'C:\Program Files\Git.removed' 'Git' }
