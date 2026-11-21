@@ -30,6 +30,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import threading
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -96,17 +97,19 @@ def powershell(shell: str, script: str) -> list[str]:
     return [shell, "-NoProfile", "-NonInteractive", "-EncodedCommand", encoded]
 
 
-def codex_skills(home: Path, env: dict) -> set[str]:
-    """Ask Codex's app server which skills it sees from `home`."""
+def codex_skills(project: Path, env: dict) -> dict[str, str]:
+    """Ask Codex's app server which skills it sees in `project`, as {name: scope}."""
     proc = subprocess.Popen(
-        [shutil.which("codex") or "codex", "app-server"], cwd=home, env=env,
+        [shutil.which("codex") or "codex", "app-server"], cwd=project, env=env,
         stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True, encoding="utf-8",
     )
+    timer = threading.Timer(120, proc.kill)
+    timer.start()
     try:
         messages = [
             {"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {"clientInfo": {"name": "install-e2e", "version": "0"}}},
             {"jsonrpc": "2.0", "method": "initialized"},
-            {"jsonrpc": "2.0", "id": 2, "method": "skills/list", "params": {"cwds": [str(home)]}},
+            {"jsonrpc": "2.0", "id": 2, "method": "skills/list", "params": {"cwds": [str(project)]}},
         ]
         proc.stdin.write("".join(json.dumps(m) + "\n" for m in messages))
         proc.stdin.flush()
@@ -118,9 +121,10 @@ def codex_skills(home: Path, env: dict) -> set[str]:
             if msg.get("id") == 2:
                 if "result" not in msg:
                     sys.exit(f"FAIL Codex skills/list: {msg}")
-                return {s["name"] for entry in msg["result"]["data"] for s in entry["skills"]}
-        sys.exit("FAIL Codex app server closed without answering skills/list")
+                return {s["name"]: s.get("scope") for entry in msg["result"]["data"] for s in entry["skills"]}
+        sys.exit("FAIL Codex app server closed (or timed out) without answering skills/list")
     finally:
+        timer.cancel()
         proc.kill()
 
 
@@ -155,7 +159,7 @@ def main() -> None:
         reset_windows_profile(env)
     r = run(["claude", "plugin", "marketplace", "add", "TopCited/topcited-skills"], env, "old route", expect_ok=False)
     out = r.stdout + r.stderr
-    if "git" not in out.lower():
+    if not re.search(r"git.{0,40}(not found|not recognized|ENOENT)|(not found|ENOENT).{0,80}git", out, re.I | re.S):
         sys.exit(f"FAIL old route: it failed, but not for lack of Git:\n{out}")
     print("ok   the old route fails without Git")
 
@@ -182,9 +186,12 @@ def main() -> None:
         for attempt in ("first run", "second run"):
             run(wrap(ps_download if WIN else sh_download), env, f"{shell} download, {attempt}")
             check_skill_folder(home / ".agents" / "skills", f"{shell} download, {attempt}")
-        seen = codex_skills(home, {**env, "PATH": os.environ["PATH"]})
-        if missing := set(SKILLS) - seen:
-            sys.exit(f"FAIL Codex does not list {sorted(missing)} after the {shell} download; it lists {sorted(seen)}")
+        # From another folder, so only the user-level ~/.agents/skills can supply them.
+        elsewhere = base / f"elsewhere-{shell}"
+        elsewhere.mkdir()
+        seen = codex_skills(elsewhere, {**env, "PATH": os.environ["PATH"]})
+        if missing := [s for s in SKILLS if seen.get(s) != "user"]:
+            sys.exit(f"FAIL Codex does not list {missing} as user skills after the {shell} download; it lists {seen}")
         print(f"ok   {shell}: the download puts all three skills where Codex finds them, also on a re-run")
 
     # 4. The README's CLI install.

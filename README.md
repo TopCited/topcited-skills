@@ -33,9 +33,10 @@ Run these inside Claude Code:
 ```
 
 In a terminal, the same steps are `claude plugin marketplace add …` and
-`claude plugin install …`. Claude Code downloads the plugin as a zip over HTTPS.
-If you added the marketplace earlier as `TopCited/topcited-skills`, the plugin is
-already installed, so skip this; that older route clones the repo and needs Git.
+`claude plugin install …`. Claude Code downloads the plugin as a zip over HTTPS,
+which needs Claude Code 2.1.224 or later (`claude update`). If you added the
+marketplace earlier as `TopCited/topcited-skills`, skip the first line; that older
+route clones the repo and needs Git.
 
 ### Codex and other agents (download)
 
@@ -55,6 +56,7 @@ Windows (PowerShell):
 New-Item -ItemType Directory -Force "$HOME\.agents\skills" | Out-Null
 curl.exe -fsSL -o "$env:TEMP\topcited-skills.zip" https://github.com/TopCited/topcited-skills/archive/refs/heads/main.zip
 tar -xf "$env:TEMP\topcited-skills.zip" -C "$HOME\.agents\skills" --strip-components=2 topcited-skills-main/skills
+Remove-Item "$env:TEMP\topcited-skills.zip"
 ```
 
 For one project rather than your whole machine, put them in the repo's
