@@ -73,7 +73,11 @@ def no_git_path(tmp: Path) -> str:
 
 
 def home_env(base: Path, name: str, path: str) -> tuple[Path, dict]:
-    env = {k: v for k, v in os.environ.items() if k not in ("CLAUDE_CONFIG_DIR", "CODEX_HOME")}
+    # PSModulePath: CI starts this from PowerShell 7, whose module path breaks Windows
+    # PowerShell's own modules (Get-FileHash goes missing). Someone who opens PowerShell
+    # from the Start menu gets the default path, which is what dropping it gives.
+    drop = {"CLAUDE_CONFIG_DIR", "CODEX_HOME", "PSMODULEPATH"}
+    env = {k: v for k, v in os.environ.items() if k.upper() not in drop}
     if WIN:
         return Path.home(), env
     home = base / name
