@@ -7,19 +7,27 @@ Checks, per skill:
   - `name` matches the directory name and is lowercase-kebab
   - `description` is non-empty and under 1024 characters
 
-Then, repo-wide: every relative markdown link resolves to a file that exists.
+Then, repo-wide: every relative markdown link resolves to a file that exists,
+and the two marketplace files and plugin.json agree.
 
 No third-party dependencies, so it runs anywhere python3 does.
 """
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SKILLS_DIR = ROOT / "skills"
+PLUGIN_DIR = ROOT / ".claude-plugin"
+# What url-marketplace.json installs: this repo's main branch as a zip, so no Git is needed.
+ARCHIVE_SOURCE = {
+    "source": "archive",
+    "url": "https://github.com/TopCited/topcited-skills/archive/refs/heads/main.zip",
+}
 EXPECTED_SKILLS = {"seo-geo", "topcited-api", "visibility-workflow"}
 
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
@@ -93,6 +101,33 @@ def check_links() -> None:
                 fail(f"{md.relative_to(ROOT)}: broken relative link -> {target}")
 
 
+def check_marketplaces() -> None:
+    """url-marketplace.json is marketplace.json for installs by URL (Claude Code downloads
+    the plugin as a zip instead of cloning the repo). Apart from each plugin's source the
+    two must match, and their versions must match plugin.json."""
+    try:
+        repo, by_url, plugin = (
+            json.loads((PLUGIN_DIR / name).read_text(encoding="utf-8"))
+            for name in ("marketplace.json", "url-marketplace.json", "plugin.json")
+        )
+    except (OSError, ValueError) as e:
+        fail(f".claude-plugin: {e}")
+        return
+
+    def without_sources(m: dict) -> dict:
+        return {**m, "plugins": [{k: v for k, v in p.items() if k != "source"} for p in m.get("plugins", [])]}
+
+    if without_sources(repo) != without_sources(by_url):
+        fail(".claude-plugin/url-marketplace.json differs from marketplace.json in more than the plugin source")
+    for p in by_url.get("plugins", []):
+        if p.get("source") != ARCHIVE_SOURCE:
+            fail(f".claude-plugin/url-marketplace.json: {p.get('name')!r} must use the source {ARCHIVE_SOURCE}")
+    for name, m in (("marketplace.json", repo), ("url-marketplace.json", by_url)):
+        for p in m.get("plugins", []):
+            if p.get("name") == plugin.get("name") and p.get("version") != plugin.get("version"):
+                fail(f".claude-plugin/{name}: version {p.get('version')!r} != plugin.json {plugin.get('version')!r}")
+
+
 def main() -> int:
     if not SKILLS_DIR.is_dir():
         print("no skills/ directory", file=sys.stderr)
@@ -104,13 +139,14 @@ def main() -> int:
         if d.is_dir():
             check_skill(d)
     check_links()
+    check_marketplaces()
 
     if errors:
         print(f"FAIL — {len(errors)} problem(s):", file=sys.stderr)
         for e in errors:
             print(f"  - {e}", file=sys.stderr)
         return 1
-    print(f"OK — {len(found)} skills valid, all relative links resolve.")
+    print(f"OK — {len(found)} skills valid, all relative links resolve, marketplaces agree.")
     return 0
 
 
