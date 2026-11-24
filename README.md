@@ -25,19 +25,25 @@ None of these need Git, and they work the same on Windows, macOS and Linux.
 
 ### Claude Code (plugin)
 
-Run these inside Claude Code:
+Run these two commands in a terminal (PowerShell, cmd, bash or zsh), one after the
+other. You need Claude Code 2.1.224 or later (`claude update`), and a new terminal
+after you install it. Claude Code downloads the plugin as a zip over HTTPS.
 
 ```text
-/plugin marketplace add https://topcited.ai/claude-plugins.json
-/plugin install topcited-skills@topcited
+claude plugin marketplace add https://topcited.ai/claude-plugins.json
 ```
 
-In a terminal, the same steps are `claude plugin marketplace add …` and
-`claude plugin install …`. Claude Code downloads the plugin as a zip over HTTPS,
-which needs Claude Code 2.1.224 or later (`claude update`). If
-`/plugin marketplace add TopCited/topcited-skills` worked for you before, skip the
-first line. That older route clones the repo, so it fails without Git; if it
-failed for you, run both lines.
+```text
+claude plugin install topcited-skills@topcited
+```
+
+If `/plugin marketplace add TopCited/topcited-skills` worked for you before, skip the
+first command. That older route clones the repo, so it fails without Git; if it
+failed for you, run both.
+
+Inside a Claude Code session the same steps are `/plugin marketplace add https://topcited.ai/claude-plugins.json`
+and `/plugin install topcited-skills@topcited`. Enter them one at a time rather than
+pasting both, and when the install panel opens, choose **Install for you (user scope)**.
 
 ### Codex and other agents (download)
 
@@ -87,9 +93,22 @@ Pin to a tag or commit SHA instead of `main` if you need the content to stay put
 `seo-geo` needs nothing. `topcited-api` and `visibility-workflow` drive TopCited
 through the `topcited` CLI:
 
-```bash
-curl -fsSL https://topcited.ai/install.sh | sh    # Windows: irm https://topcited.ai/install.ps1 | iex
-topcited auth login                               # approve in the browser
+macOS, Linux:
+
+```sh
+curl -fsSL https://topcited.ai/install.sh | sh
+```
+
+Windows (PowerShell):
+
+```powershell
+irm https://topcited.ai/install.ps1 | iex
+```
+
+Then sign in, and approve in the browser:
+
+```text
+topcited auth login
 ```
 
 `auth login` prints a URL and a code and waits while you approve; it stores an
